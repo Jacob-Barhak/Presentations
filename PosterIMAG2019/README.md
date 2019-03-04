@@ -32,9 +32,10 @@ Dependant libraries are: panel, bokeh, some external html files are made with ho
 
 FILES:
 ------
-* MSM_IMAG_Poster_Combined.py : Code that generates the poster
-* Resources : a directory containing mages used to generate the poster
-* InteractivePoster_MSM_IMAG_2019.html : The poster file
+* MSM_IMAG_Poster_Combined.py : Code that generates the poster.
+* Resources : a directory containing mages used to generate the poster.
+* InteractivePoster_MSM_IMAG_2019.html : The poster file.
+* License.txt : the license file
 
 
 DEVELOPER CONTACT INFO:

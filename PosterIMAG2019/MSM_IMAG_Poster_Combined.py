@@ -206,9 +206,9 @@ Poster2KeyPoints = panel.panel("""## Solution Key Points:
     * Visualization
     * Database and web deployment
  
-""", width=400, height=400)
+""", width=400, height=440)
 
-Poster2WebSiteStaticImage = panel.panel(ConstractImageLinkAnchor('https://clinicalunitmapping.com/','ClinicalUnitMappingScreenShot.png','ClinicalUnitMapping.com web site',780), width=800, height=400)
+Poster2WebSiteStaticImage = panel.panel(ConstractImageLinkAnchor('https://clinicalunitmapping.com/','ClinicalUnitMappingScreenShot.png','ClinicalUnitMapping.com web site',790), width=800, height=440)
 
 Poster2KeyElements = panel.Row(Poster2WebSiteStaticImage, Poster2KeyPoints)
 
@@ -225,7 +225,7 @@ CDISC units were processed and 4008 unique units were chosen. A similarity matri
 To improve user experience and allow the user to see similar units bunched together, unsupervised machine learning was applied using MiniBatchKMeans from the scikit-learn Python library.
 
 Clustering was performed multiple times with different variations of the similarity matrix. Each unit was classified according to combined clusters considering each run - thus creating a splintering effect that ensured close units stay close. Then small clusters were eliminated by reattaching their units to the closest unit in a larger cluster. Ultimately, 129 clusters were created.
-""", width=600, height=250)
+""", width=600, height=280)
 
 Poster2MachineLearningDiagram = (panel.panel(ConstractImageLinkAnchor('https://scikit-learn.org/stable/modules/generated/sklearn.cluster.MiniBatchKMeans.html','MultipleClusters.png','clustering algorithm executed multiple times',600), width=600, height=150))
 

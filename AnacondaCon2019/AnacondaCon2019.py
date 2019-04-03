@@ -71,7 +71,6 @@ ExternalResourcesIMAG2019 = 'https://jacob-barhak.github.io/PosterIMAG2019Resour
 
 
 
-
 def CovertFileToData(FileName):
     "Convert file to data that can be used in html"
     DataFile = open(FileName,'rb')
@@ -135,15 +134,17 @@ def VideoInlineHTML(ExtrnalFileName,Width=1200,Height=700, EmbedVideo = EmbedVid
 BokehDocument = bokeh.document.Document()
 
 
-#PresentationCode = panel.panel(ConstractImageLinkAnchor('https://github.com/Jacob-Barhak/Presentations/tree/master/AnacondaCon2019','AnacondaCon_2019_Code.png','Download the code that generated this presentation',100), width=100, height=100)
 PresentationURL = panel.panel(ConstractImageLinkAnchor('https://jacob-barhak.github.io/AnacondaCon_2019.html','AnacondaCon_2019_Presentation.png','View this presentation on the web',600), width=600, height=600)
 
-PresentationTitle = panel.panel('# Clinical Data Modeling with Python', width=800, height=30)
-PresentationVenue = panel.panel('AnacondaCon 3-4 April 2019', width=200, height=30)
+PresentationTitle = panel.panel('# &nbsp; Clinical Data Modeling with Python', width=800, height=40, margin = (0,0,0,0), background='#5f259f', style = {'color':'#ffffff'})
+PresentationVenue = panel.panel("""3rd - 5th
+    
+April 2019
+""", width=200, height=40, margin = (0,0,0,0), background='#5f259f', style = {'color':'#ffffff'})
 
-PresentationVenueFigure = panel.panel(ConstractImageLinkAnchor('https://anacondacon.io/','AnacondaConLogo.png','AnacondaCon 2019',200), width=200, height=30)
+PresentationVenueFigure = panel.panel(ConstractImageLinkAnchor('https://anacondacon.io/','AnacondaConLogo.png','AnacondaCon 2019',160), width=160, height=40, margin = (0,0,0,0))
 
-PresentationHeader = panel.Row ( panel.Column(PresentationTitle),  PresentationVenue, PresentationVenueFigure )
+PresentationHeader = panel.Row ( PresentationTitle,  PresentationVenue, PresentationVenueFigure )
 
 
 Section0Title = panel.panel('# Introduction: How Can Machines Help Improve Healthcare?', width=1000, height=30)
@@ -161,16 +162,16 @@ Section0AnacondaText = panel.panel("""## The Role of Anaconda in this Automation
 ### The work presented in this presentation is based on Anaconda and its many libraries:
 &nbsp;
 
-| &nbsp;&nbsp;&nbsp; Data Science                                      | &nbsp;&nbsp;&nbsp; Human Interfaces                      | &nbsp;&nbsp;&nbsp; Simulation Tools                          | 
-|:---------------------------------------------------------------------|:---------------------------------------------------------|:-------------------------------------------------------------|
-| &nbsp;&nbsp;&nbsp; ** numpy ** - math and statistics                 | &nbsp;&nbsp;&nbsp; ** Jupyter notebook ** user Interface | &nbsp;&nbsp;&nbsp; ** MIST ** - MIcro Simulation Tool        |
-| &nbsp;&nbsp;&nbsp; ** xmllib ** ** - parsing XML data                | &nbsp;&nbsp;&nbsp; ** WxPython ** - user Interface       | &nbsp;&nbsp;&nbsp; ** Inspyred ** - Evolutionary Computation |
-| &nbsp;&nbsp;&nbsp; ** pandas ** - data management                    | &nbsp;&nbsp;&nbsp; ** PyQt ** - user interface           |                                                              |
-| &nbsp;&nbsp;&nbsp; ** sqite3 ** - database                           | &nbsp;&nbsp;&nbsp; ** flask ** - web deployment          |                                                              |
-| &nbsp;&nbsp;&nbsp; ** Difflib ** - text diff for NLP                 | &nbsp;&nbsp;&nbsp; ** matplotlib ** - visualization      |                                                              |
-| &nbsp;&nbsp;&nbsp; ** scikit-learn ** - machine learning & NLP       | &nbsp;&nbsp;&nbsp; ** Bokeh ** - visualization           |                                                              |
-| &nbsp;&nbsp;&nbsp; ** parser ** - creating a modeling language       | &nbsp;&nbsp;&nbsp; ** Holoviews ** - visualization       |                                                              |
-| &nbsp;&nbsp;&nbsp; ** dask ** - parallelization                      | &nbsp;&nbsp;&nbsp; ** panel ** - visualization           |                                                              |
+| &nbsp;&nbsp;&nbsp; Data Science                                      | &nbsp;&nbsp;&nbsp; Human Interfaces                        | &nbsp;&nbsp;&nbsp; Simulation Tools                          | 
+|:---------------------------------------------------------------------|:-----------------------------------------------------------|:-------------------------------------------------------------|
+| &nbsp;&nbsp;&nbsp; ** numpy ** - math and statistics                 | &nbsp;&nbsp;&nbsp; ** Jupyter notebook ** - user Interface | &nbsp;&nbsp;&nbsp; ** MIST ** - MIcro Simulation Tool        |
+| &nbsp;&nbsp;&nbsp; ** xmllib ** - parsing XML data                   | &nbsp;&nbsp;&nbsp; ** WxPython ** - user Interface         | &nbsp;&nbsp;&nbsp; ** Inspyred ** - Evolutionary Computation |
+| &nbsp;&nbsp;&nbsp; ** pandas ** - data management                    | &nbsp;&nbsp;&nbsp; ** PyQt ** - user interface             |                                                              |
+| &nbsp;&nbsp;&nbsp; ** sqite3 ** - database                           | &nbsp;&nbsp;&nbsp; ** flask ** - web deployment            |                                                              |
+| &nbsp;&nbsp;&nbsp; ** Difflib ** - text diff for NLP                 | &nbsp;&nbsp;&nbsp; ** matplotlib ** - visualization        |                                                              |
+| &nbsp;&nbsp;&nbsp; ** scikit-learn ** - machine learning & NLP       | &nbsp;&nbsp;&nbsp; ** Bokeh ** - visualization             |                                                              |
+| &nbsp;&nbsp;&nbsp; ** parser ** - creating a modeling language       | &nbsp;&nbsp;&nbsp; ** Holoviews ** - visualization         |                                                              |
+| &nbsp;&nbsp;&nbsp; ** dask ** - parallelization                      | &nbsp;&nbsp;&nbsp; ** panel ** - visualization             |                                                              |
 
 &nbsp;
 &nbsp;
@@ -185,7 +186,7 @@ Section0AnacondaText = panel.panel("""## The Role of Anaconda in this Automation
 
 ** libsbml ** - Systems Biology Markup Language (SBML)
 
-""", width=1000, height=40)
+""", width=1000, height=40, css_classes=['td','th','table'])
 
 
 SectionSelectorTab = panel.layout.Tabs (
@@ -200,33 +201,33 @@ Section1Title = panel.panel('# Intensive Care Unit Data Visualization Aided by M
 Section1Author = panel.panel('by: [Jacob Barhak](http://sites.google.com/site/jacobbarhak/)', width=200, height=30)
 
 
-Section1Text = panel.panel(""" Machines Help Humans through Visualization Cues
+Section1Text = panel.panel("""&nbsp; * Machines help humans through Visualization Cues
                            
-Single patient data from Flowsheet, Lab data, and Monitor data for less than 1 day.
+&nbsp; * Single patient data from Flowsheet, Lab data, and Monitor data for less than 1 day.
 
-Even a single patient for so little time generates large amounts of data that needs help visualizing.  
+&nbsp; * Even a single patient for so little time generates large amounts of data that needs help visualizing.  
 
 
-Usupervised Machine Learning and other techniques were used to Detect outliers:
+&nbsp; * Usupervised Machine Learning and other techniques were used to Detect outliers:
     
-&nbsp;&nbsp;&nbsp; * Gaussian Process
+&nbsp;&nbsp;&nbsp;&nbsp; - Gaussian Process
 
-&nbsp;&nbsp;&nbsp; * Support Vector Machine (SVM)
+&nbsp;&nbsp;&nbsp;&nbsp; - Support Vector Machine (SVM)
 
-&nbsp;&nbsp;&nbsp; * DBSCAN
+&nbsp;&nbsp;&nbsp;&nbsp; - DBSCAN
 
-&nbsp;&nbsp;&nbsp; * Agglomerative Clustering
+&nbsp;&nbsp;&nbsp;&nbsp; - Agglomerative Clustering
 
-&nbsp;&nbsp;&nbsp; * Local Outlier Factor
+&nbsp;&nbsp;&nbsp;&nbsp; - Local Outlier Factor
 
-&nbsp;&nbsp;&nbsp; * K Nearest Neighbors
+&nbsp;&nbsp;&nbsp;&nbsp; - K Nearest Neighbors
 
-&nbsp;&nbsp;&nbsp; * Filtering using a Window
+&nbsp;&nbsp;&nbsp;&nbsp; - Filtering using a Window
 
-Voting was used to give the viewer visual cues by coloring original data and filter outliers.
+&nbsp; * Voting was used to give the viewer visual cues by coloring original data and filter outliers.
 
 
-""", width=1200, height=300)
+""", width=1200, height=270)
 
 Section1Plot = panel.panel(ObjectInlineHTML('https://jacob-barhak.github.io/VisualICU.html', 1300), width=1500, height=6000)
 
@@ -242,26 +243,26 @@ Section2Header =  panel.Row(Section2Title, Section2Author)
 Section2PopulationGenerationText = panel.panel("""
 ## Why Generate Populations?
 
-Clinical Trials do not expose individual data due to privacy restrictions. 
+&nbsp; * Clinical trials ** do not expose individual data ** due to privacy restrictions. 
 
-However, clinical trials do publish statistics such as age distribution. 
+&nbsp; * Instead trials ** publish statistics with inclusion and exclusion criteria ** such as age distribution.
 
-They also publish their inclusion and exclusion criteria.
+&nbsp; 
 
-We create artificial populations that mimic these published statistics.
+&nbsp; * We create artificial populations that ** mimic these published statistics **.
 
-Tools that can help with this are the [MIcro Simulation Tool (MIST)](https://github.com/Jacob-Barhak/MIST) that uses [Inspyred](https://pythonhosted.org/inspyred/)
+&nbsp; * Tools that can help with this are the [MIcro Simulation Tool (MIST)](https://github.com/Jacob-Barhak/MIST) that uses [Inspyred](https://pythonhosted.org/inspyred/)
 
-""", width=600, height=80)
+""", width=600, height=130)
 
 
 Section2PopulationGenerationVideo1 = panel.panel(VideoInlineHTML(CommonResourceDir+'PopulationGeneration_Small.mp4',600,450), width=600, height=450)
-Section2PopulationGenerationVideo2 = panel.panel(VideoInlineHTML(CommonResourceDir+'InspyredMIST_Small.mp4',600,420), width=600, height=420)
+Section2PopulationGenerationVideo2 = panel.panel(VideoInlineHTML(CommonResourceDir+'InspyredMIST_Small.mp4',600,380), width=600, height=380)
 
 Section2PopulationGeneration = panel.Row(panel.Column(Section2PopulationGenerationText, Section2PopulationGenerationVideo2), Section2PopulationGenerationVideo1)
 
 Section2Problem = panel.panel(EnhanceMarkDown("""
-##A solution based on use of computing power to explore potential hypothesis for an epidemiological problem. 
+##An epidemiological problem solved by population generation. 
 &nbsp;
                                               
 ### Population Disease Occurrence Models: Problem Definition
@@ -275,7 +276,7 @@ Population of ~~~N=617~~~ preterm infants, where:
 
 ~~~P_2=75\%~~~ get Oxygen 
 
-it was observed that ~~~P_3=47%~~~ reached the outcome of [Retinopathy of Prematurity (ROP)](https://doi.org/10.1159/000312821)
+it was observed that ~~~P_3=47\%~~~ reached the outcome of [Retinopathy of Prematurity (ROP)](https://doi.org/10.1159/000312821)
 
 Odds ratios were: 
     
@@ -307,57 +308,58 @@ Using the [Inspyred library](https://pythonhosted.org/inspyred/) we can generate
 
 Each solution is a populations, so we are dealing with a population of populations.
 
+&nbsp;
+
 The EC solution walks through these main stages of a Genetic Algorithm:
+
+&nbsp;
+
+(1) **Generation:** A population of random solutions is generated. 
+
+&nbsp;
+
+(2) **Evaluation:** Where the fitness score is calculated for each solution.
+
+&nbsp;
+
+(3) **Selection:** Where the best solutions are ranked and selected to represent the next generation.
+
+&nbsp;
+
+(4) **Variation:** Where mutation and crossover operators create another generation of solutions.
     
-(1) Generation: A population of random solutions is generated. 
+&nbsp;
 
-(2) Evaluation: Where the fitness score is calculated for each solution.
+(5) **Termination:** where a stopping criteria is checked - if not stopped, go back to step 2.
 
-(3) Selection: Where the best solutions are ranked and selected to represent the next generation.
+&nbsp;
 
-(4) Variation: Where the selected solutions undergo mutation and crossover operators to create another generation of solutions.
-    
-(5) Termination: where a stopping criteria is checked - if a stop criteria was not reached, go back to step 2.
+(6) **Post termination:** the most fitting solution is considered as the answer.
 
-(6) Post termination, the most fitting solution is considered as the answer.
+"""), width=600, height=400)
 
-"""), width=800, height=400)
-
-Section2EvolutionaryComputationVideo = panel.panel(VideoInlineHTML(CommonResourceDir+'EvolutionaryComputation_Small.mp4',400,400), width=400, height=400)
+Section2EvolutionaryComputationVideo = panel.panel(VideoInlineHTML(CommonResourceDir+'EvolutionaryComputation_Small.mp4',600,500), width=600, height=500)
 
 Section2EvolutionaryComputation = panel.Row(Section2EvolutionaryComputationText,Section2EvolutionaryComputationVideo)
 
 
-Section2ResultsStep1Text = panel.panel(EnhanceMarkDown("""## Results Step 1
-            
-The EC algorithm 100 times, each time evolving the best solution. Recall that the solution is a population and we optimized many populations of populations
 
-Step 1 results are summarized in graphics below:
-    
-### The average solution results were passed as parameters to step 2.
+Section2ResultsStep2Text = panel.panel(EnhanceMarkDown("""## Results
 
-"""), width=1200, height=60)
-
-
-Section2ResultsStep1Figure =  ObjectInlineHTML(CommonResourceDir+'PlotAggregateResults_0.html',Width=1200,Height=6000)
-
-
-Section2ResultsStep1 = panel.Column(Section2ResultsStep1Text,Section2ResultsStep1Figure)
-
-
-
-Section2ResultsStep2Text = panel.panel(EnhanceMarkDown("""## Results Step 2
-
-Step 2 executed 8 strategies, each 100 simulations on a 64 core server. This time there was much more variability.
+We executed 8 strategies, each 100 simulations on a 64 core server.
 
 The plots below where dots represent population characteristics for a single run and solid lines represent average of the 100 simulations. 
+
+&nbsp;
 
 Results suggest that: When modeling the effect of a hypothetical treatment that drops sepsis from 32% to 8% of the population while keeping odds ratio constraints, 
 different models show a change in ROP from **47%** to the range of **(40.9% - 47.5%)** where the most informed model reached **43%**. 
 
+&nbsp;
+
 Full details and discussion will be provided in the [MODSIM world 2019](http://www.modsimworld.org/) paper.
 
-"""), width=1200, height=90)
+"""), width=1200, height=150)
 
 
 Section2ResultsStep2Figure =  ObjectInlineHTML(CommonResourceDir+'HoloviewsPlot.html',Width=1300,Height=1000)
@@ -369,9 +371,8 @@ Section2ResultsStep2 = panel.Column(Section2ResultsStep2Text,Section2ResultsStep
 Section2SlideSelectorTab = panel.layout.Tabs (
                                         ('Population Generation', Section2PopulationGeneration),
                                         ('Evolutionary Computation', Section2EvolutionaryComputation),
-                                        ('Population Disease Occurrence Models (PopDOM) Problem', Section2Problem),
-                                        ('PopDom: Results Step 1', Section2ResultsStep1),
-                                        ('PopDom: Results Step 2', Section2ResultsStep2),
+                                        ('Population Disease Occurrence Models (PopDOM): Problem Definition', Section2Problem),
+                                        ('PopDom: Results', Section2ResultsStep2),
                                       )
 
 Section2 = panel.Column(Section2Header, Section2SlideSelectorTab)
@@ -386,37 +387,37 @@ Section3Header = panel.Row(Section3Title,Section3Author)
 
 Section3KeyPoints = panel.panel("""### Key Points
                                 
-* Ensemble model 
+&nbsp; * Ensemble model 
 
-* Currently focuses on diabetic populations
+&nbsp; * Currently focuses on diabetic populations
 
-* Models Cardiovascular disease and mortality processes
+&nbsp; * Models Cardiovascular disease and mortality processes
 
-* Accumulates knowledge from:
+&nbsp; * Accumulates knowledge from:
     
-    * Existing models - currently 30
+&nbsp;&nbsp;&nbsp;&nbsp; - Existing models/assumptions - currently 30
     
-    * Observed outcomes - from 123 cohorts from 31 populations
+&nbsp;&nbsp;&nbsp;&nbsp; - Observed outcomes - from 123 cohorts from 31 populations
     
-* Focuses on summary data 
+&nbsp; * Focuses on summary data 
 
-    * Avoids individual data restrictions
+&nbsp;&nbsp;&nbsp;&nbsp; - Avoids individual data restrictions
     
-    * Larger merged population base
+&nbsp;&nbsp;&nbsp;&nbsp; - Larger merged population base
     
-* Flexible Import from ClinicalTrials.Gov
+&nbsp; * Flexible Import from ClinicalTrials.Gov
 
-* Traceable and reproducible
+&nbsp; * Traceable and reproducible
 
-* Can map our understanding gap
+&nbsp; * Can map our understanding gap
 
-* Output is now available online through this presentation
+&nbsp; * Output is now available online through this presentation
 
-* Protected by U.S. Patent 9,858,390
+&nbsp; * Protected by U.S. Patent 9,858,390
 
-* Uses High Performance Computing (HPC)
+&nbsp; * Uses High Performance Computing (HPC)
 
-* Uses MIST as an engine - based on python
+&nbsp; * Uses MIST as an engine - based on python
 
 &nbsp;
 
@@ -430,7 +431,11 @@ Section3TheRefModel = panel.Row(Section3KeyPoints,Section3TheRefModelVideo)
 
 Section3ResultsText = panel.panel("""### Results:
                                   
-The top plot shows the gap of our cumulative computational understanding by showing modeling error for cohorts of clinical studies. The vertical axis is the fitness score - The error of the best model prediction. Circles near the top of the plot represent outliers that the current model cannot explain well.
+The top plot shows the gap of our cumulative computational understanding by showing modeling error for cohorts of clinical studies. The vertical axis is the fitness score - The error of the best model prediction. 
+
+** Circles near the top of the plot represent outliers ** that the current model cannot explain well.
+
+&nbsp;
 
 The model mixture is explained at the bottom plot. The overall fitness is represented as the circle on the left. Each bar represents the influence of each model/assumption on the model for each iteration.
 """, width=1200, height=150)
@@ -447,11 +452,11 @@ Such misinterpretation will be common since clinical trial reports are still not
 
 Some efforts are planned to improve such modeling capabilities by:
 
-* Incorporating human expert interpretation
+&nbsp; * Incorporating human expert interpretation
 
-* Importing more data from [ClinicalTrials.Gov](https://clinicaltrials.gov/) - with the fast growth of this database, accumulation of knowledge is easier than ever before. 
+&nbsp; * Importing more data from [ClinicalTrials.Gov](https://clinicaltrials.gov/) - with the fast growth of this database, accumulation of knowledge is easier than ever before. 
 
-* Standardizing clinical trial data
+&nbsp; * Standardizing clinical trial data
 
 &nbsp;
 
@@ -485,19 +490,23 @@ Section4Header = panel.Row(Section4Title,Section4Author)
 
 Section4AbstractText = panel.panel("""## Introduction
                                    
-* ClinicalTrials.Gov now accumulates information from over 300K trials with over 10% recording trial results. 
+&nbsp; * ClinicalTrials.Gov now accumulates information from over 300K trials.
 
-* It is now a [U.S. Law](https://www.gpo.gov/fdsys/pkg/PLAW-110publ85/pdf/PLAW-110publ85.pdf#page=82) to upload many clinical trials to this [fast growing database](https://clinicaltrials.gov/ct2/resources/trends). 
+&nbsp;&nbsp;&nbsp;&nbsp; - Over 10% of trials report results. 
 
-* Data from this database can be extracted in XML format and used for modeling. 
+&nbsp; * It is now a [U.S. Law](https://www.gpo.gov/fdsys/pkg/PLAW-110publ85/pdf/PLAW-110publ85.pdf#page=82) to upload many clinical trials to this [fast growing database](https://clinicaltrials.gov/ct2/resources/trends). 
 
-* However, the database is based on textual input and is currently designed for human comprehension rather than computer comprehension. 
+&nbsp; * Data from this database can be extracted in XML format and used for modeling. 
+
+&nbsp; * However, the database is based on textual input. 
+
+&nbsp;&nbsp;&nbsp;&nbsp; - Designed for human comprehension rather than computer comprehension. 
  
-* Specifically, non standardized units prevent machine comprehending associated numbers. 
+&nbsp; * On 7 Feb 2019 all 34,751 trials with results had 23,733 different units
 
-* On 7 Feb 2019 all 34,751 trials with results had 23,733 different units
+&nbsp; * Non standardized units prevent machine comprehension of stored numbers. 
 
-* We created [ClinicalUnitMapping.com](https://clinicalunitmapping.com/) as a tools to  help standardize the units
+&nbsp; * We created [ClinicalUnitMapping.com](https://clinicalunitmapping.com/) as a tools to help standardize the units
 
 &nbsp;
 
@@ -510,18 +519,12 @@ Section4Abstract = panel.Row(Section4AbstractText,Section4ProcessingDiagram)
 
 
 
-
-
-
-
-
-
 Section4NLP = panel.panel("""### Natural Language Processing (NLP)
 Units were evaluated for text proximity using::
 
-* TfidfVectorizer and cosine_similarity in scikit-learn library using 3-6 character n-grams
+&nbsp; * TfidfVectorizer and cosine_similarity in scikit-learn library using 3-6 character n-grams
 
-* difflib.SequenceMatcher method to calculate similarity ratio
+&nbsp; * difflib.SequenceMatcher method to calculate similarity ratio
 
 CDISC units were processed and 4008 unique units were chosen. 
 
@@ -559,43 +562,43 @@ Section4Development = panel.Row(panel.Column(Section4NLP, Section4MachineLearnin
 
 Section4KeyPoints = panel.panel("""## Solution Key Points:
                                 
-* A web site was created to allow multiple users to view and map the units
+&nbsp; * A web site was created to allow multiple users to view and map the units
 
-* The web site is accessible thought [ClinicalUnitMapping.com](https://clinicalunitmapping.com/)
+&nbsp; * The web site is accessible thought [ClinicalUnitMapping.com](https://clinicalunitmapping.com/)
 
 #### User capabilities:
 
-* The user sees similar units clustered together and can switch clusters
+&nbsp; * The user sees similar units clustered together and can switch clusters
 
-* The user can see how many times the unit is used
+&nbsp; * The user can see how many times the unit is used
 
-* The user can see the contexts associated with a unit
+&nbsp; * The user can see the contexts associated with a unit
 
-* The user can view clinical trials that use each unit
+&nbsp; * The user can view clinical trials that use each unit
 
-* The user can map a unit to other suggested units
+&nbsp; * The user can map a unit to other suggested units
 
-    * Clinical Data Interchange Standards Consortium [(CDISC)](https://www.cdisc.org/) units are suggested for mapping
+&nbsp;&nbsp;&nbsp;&nbsp; - Clinical Data Interchange Standards Consortium [(CDISC)](https://www.cdisc.org/) units are suggested for mapping
     
-    * User can see CDISC-UCUM synonyms
+&nbsp;&nbsp;&nbsp;&nbsp; - User can see CDISC-UCUM synonyms
     
-    * Close units are bunched together in display
+&nbsp;&nbsp;&nbsp;&nbsp; - Close units are bunched together in display
     
-* The user can ignore suggestions and provide their own mapping
+&nbsp; * The user can ignore suggestions and provide their own mapping
 
 #### Solution Construction:
 
-* The solution is based on python technologies that include:
+&nbsp; * The solution is based on python technologies that include:
     
-    * Indexing
+&nbsp;&nbsp;&nbsp;&nbsp; - Indexing
     
-    * Natural Language Processing (NLP)
+&nbsp;&nbsp;&nbsp;&nbsp; - Natural Language Processing (NLP)
     
-    * Unsupervised machine learning
+&nbsp;&nbsp;&nbsp;&nbsp; - Unsupervised machine learning
     
-    * Visualization
+&nbsp;&nbsp;&nbsp;&nbsp; - Visualization
     
-    * Database and web deployment
+&nbsp;&nbsp;&nbsp;&nbsp; - Database and web deployment
     
  
 """, width=400, height=600)
@@ -615,11 +618,11 @@ Standardizing units may be only the first step.
 
 Current efforts are to expand this unit standardization project with the intention to work with:
 
-* Unified Medical Language System [(UMLS)](https://www.nlm.nih.gov/research/umls/)
+&nbsp; * Unified Medical Language System [(UMLS)](https://www.nlm.nih.gov/research/umls/)
 
-* Clinical Data Interchange Standards Consortium [(CDISC)](https://www.cdisc.org/)
+&nbsp; * Clinical Data Interchange Standards Consortium [(CDISC)](https://www.cdisc.org/)
 
-* Simulation Interoperability Standards Organization [(SISO)](https://www.sisostds.org/)
+&nbsp; * Simulation Interoperability Standards Organization [(SISO)](https://www.sisostds.org/)
 
 """, width=1200, height=120)
 
@@ -645,8 +648,8 @@ Python Tools have contributed significantly to exploring clinical data and will 
 
 &nbsp;
 
-####We are still very far from computers replacing medical expert reasoning, yet better tools will eventually lead to a computerized personal medical assistant!
-
+### <span style="color:magenta"> We are still very far from computers replacing medical expert reasoning, yet better tools will eventually lead to a computerized personal medical assistant!
+></span>
 &nbsp;
 
 ### Acknowledgments: 
@@ -667,6 +670,8 @@ Thanks to Matthew Rocklin for dask support.
 
 Thanks to Deanna J. M. Isaman who first introduced me to the the idea of accumulating knowledge from clinical trial summary data. 
 
+Thanks to John Rice for the fruitful discussions regarding standardization. 
+
 Thanks to CDISC consortium help
 
 Thanks to NIH persons who helped  and specifically to: 
@@ -675,8 +680,9 @@ Thanks to NIH persons who helped  and specifically to:
     
 &nbsp;&nbsp;&nbsp;- Erin E Muhlbradt from NCI for advice on CDISC unit data
 
-Many thanks to many other open source and Anaconda developers that supported these efforts by answering many questions.
+Thanks to Blaize Berry for discussions regarding NLP
 
+Many thanks to many other open source and Anaconda developers that supported these efforts by answering many questions.
 
 """, width=600, height=500)
     
@@ -689,7 +695,7 @@ Section5AdditionalInfo = panel.panel("""
                               
 ## Reproducibility:
     
-This presentation is accessible through the QR code. The presentation code can be accessed [here](https://github.com/Jacob-Barhak/Presentations/tree/master/AnacondaCon2019).
+This presentation is accessible [here](https://jacob-barhak.github.io/AnacondaCon_2019.html). The code that generated the presentation can be accessed [here](https://github.com/Jacob-Barhak/Presentations/tree/master/AnacondaCon2019).
 
 This presentation is generated using Python 2.7.15, panel 0.5.0a3, bokeh 1.1.0dev9 .
 
@@ -699,7 +705,7 @@ Population Disease Occurrence Models: results obtained with:
 
 &nbsp;&nbsp;&nbsp;- Compute server with 64 cores, Linux 18.04, Anaconda (64-bit) python 2.7.15, dask 0.19.1, bokeh 0.13.0, inspyred 1.0, numpy 1.15.3, holoviews 1.10.7. The code is stored in the [GitHub repository](https://github.com/Jacob-Barhak/PopDOM)
 
-The Referebce Model: The plots were created using the script ExploreOptimizationResults_2019_02_24.py on Windows 10 environment with bokeh 1.0.4 holoviews 1.11.2 on Python 2.7.14 64 bit based on simulation results executed on a 64 core compute server with Ubuntu and stored in: MIST_RefModel_2019_02_18_OPTIMIZE.zip
+The Reference Model: The plots were created using the script ExploreOptimizationResults_2019_02_24.py on Windows 10 environment with bokeh 1.0.4 holoviews 1.11.2 on Python 2.7.14 64 bit based on simulation results executed on a 64 core compute server with Ubuntu and stored in: MIST_RefModel_2019_02_18_OPTIMIZE.zip
 
 Clinical Unit Mapping : Code and data for this work are archived in the file: AnalyzeCT_2019_03_02.zip. Web site database was created using the database PartUnitsDB_2018_12_26.db that was created in a previous version of the code and data archived in the files: AnalyzeCT_GOV_Code_2019_01_16.zip , StudiesWithResults_Downloaded_2018_04_20.zip.
 
@@ -723,7 +729,7 @@ Clinical Unit Mapping : Code and data for this work are archived in the file: An
 
 * M. Chen, A. Citil, F. McCabe, K.M. Leicht, J. Fiascone,  C.E.L. Dammann, O. Dammann , (2011). Infection, oxygen, and immaturity: interacting risk factors for retinopathy of prematurity. Neonatology. 99, 125-32.[Paper](https://doi.org/10.1159/000312821)
 
-* J. Barhak, A. Garrett, Population Generation from Statistics Using Genetic Algorithms with MIST + INSPYRED. MODSIM World 2014, April 15 - 17, Hampton Roads Convention Center in Hampton, VA. [Paper](http://sites.google.com/site/jacobbarhak/home/MODSIM2014_MIST_INSPYRED_Paper_Submit_2014_03_10.pdf)'
+* J. Barhak, A. Garrett, Population Generation from Statistics Using Genetic Algorithms with MIST + INSPYRED. MODSIM World 2014, April 15 - 17, Hampton Roads Convention Center in Hampton, VA. [Paper](http://sites.google.com/site/jacobbarhak/home/MODSIM2014_MIST_INSPYRED_Paper_Submit_2014_03_10.pdf)
 
 * J. Barhak  (2015). The Reference Model uses Object Oriented Population Generation. SummerSim 2015. Chicago IL, USA. [Paper](http://dl.acm.org/citation.cfm?id=2874946)
 

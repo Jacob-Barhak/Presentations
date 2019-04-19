@@ -47,13 +47,10 @@
 # without their support and development of pyviz visualization tools, this
 # interactive presentation would not be possible.
 
-import bokeh
-import matplotlib
-matplotlib.use('agg')
+
 import panel
 import base64
 import os
-import re
 import sys
 
 EmbedVideo = False
@@ -80,31 +77,6 @@ def ConstractImageLinkAnchor(Link, ImageFileName, Text, Width):
 
 
 
-def EnhanceMarkDown(Text, Size=11, DPI=300):
-    "Replaces enclosed text to images using LaTex - useful for equations"
-    def MatchReplacer (MatchObj):
-        "Function to replace each Latex with an image"
-        EquationData = MatchObj.group(0)[3:-3]
-        # we assume no $ is in the data
-        SizeDataIndex = EquationData.find('$')
-        if SizeDataIndex != -1:
-            SizeToUse = int(EquationData[(SizeDataIndex+1):])
-            EquationDataToUse = '$'+EquationData[:SizeDataIndex]+'$'
-        else:
-            SizeToUse = Size
-            EquationDataToUse = '$'+EquationData+'$'
-        print ('Processing LaTeX: ' + EquationDataToUse + ' Size: ' + str(SizeToUse))
-        # Strip the token from the curly braces
-        ReplacementImage = panel.pane.LaTeX(EquationDataToUse, size=SizeToUse, dpi=DPI)
-        # write the image data
-        ImageData = ReplacementImage._img()
-        # Encode the image as html
-        EncodedImage=base64.b64encode(ImageData)
-        RetStr = '<img src="data:image/png;base64,%s" height="%i"/>'%(EncodedImage, SizeToUse) 
-        return RetStr
-    # First go over the sub string and separate LaTeX elements
-    ReplacedInputString = re.sub(r'~~~.*?~~~', MatchReplacer, Text)
-    return ReplacedInputString
 
 
 def ObjectInlineHTML(ExtrnalFileName,Width=1200,Height=700):
@@ -122,128 +94,165 @@ def VideoInlineHTML(ExtrnalFileName,Width=1200,Height=700, EmbedVideo = EmbedVid
     return RetStr
 
 
-BokehDocument = bokeh.document.Document()
-
 
 #PresentationCode = panel.panel(ConstractImageLinkAnchor('https://github.com/Jacob-Barhak/Presentations/tree/master/MODSIM2019','MODSIM_2019_Code.png','Download the code that generated this Presentation',600), width=600, height=600)
 PresentationURL = panel.panel(ConstractImageLinkAnchor('https://jacob-barhak.github.io/Presentation_MODSIM_2019.html','MODSIM_2019_Presentation.png','View this Presentation on the web',300), width=300, height=300)
 
-Section0Title = panel.panel('# Population Disease Occurrence Models Using Evolutionary Computation', width=1000, height=30)
-Section0Author = panel.panel('by: [Jacob Barhak](http://sites.google.com/site/jacobbarhak/), [Aaron Garret](http://sites.wofford.edu/garrettal/), [Anselm Blumer](https://engineering.tufts.edu/cs/people/faculty/anselm-blumer), [Olaf Dammann](https://medicine.tufts.edu/faculty/olaf-dammann)', width=800, height=40)
+Section0Title = panel.panel('# &nbsp; Population Disease Occurrence Models Using Evolutionary Computation', width=1000, height=70 , background='#104793', style = {'color':'#ffffff'}, margin = (0,0,0,0))
+Section0Author = panel.panel('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Jacob Barhak (Jacob Barhak) [Link](http://sites.google.com/site/jacobbarhak/) &nbsp;&nbsp;&nbsp;&nbsp; Aaron Garret (Wofford College) [Link](http://sites.wofford.edu/garrettal/) &nbsp;&nbsp;&nbsp;&nbsp; Anselm Blumer (Tufts) [Link](https://engineering.tufts.edu/cs/people/faculty/anselm-blumer) &nbsp;&nbsp;&nbsp;&nbsp; Olaf Dammann (Tufts) [Link](https://medicine.tufts.edu/faculty/olaf-dammann)', width=1000, height=40, background='#104793', style = {'color':'#ffffff'}, margin = (0,0,0,0))
 
-Section0VenueFigure = panel.panel(ConstractImageLinkAnchor('http://www.modsimworld.org/','MODSIM_generic.png','MODSIM world',200), width=200, height=20)
+Section0VenueFigure = panel.panel(ConstractImageLinkAnchor('http://www.modsimworld.org/','MODSIM_generic.png','MODSIM world',200), width=200, height=40, margin = (0,0,0,0), background='#104793')
 
-Section0VenueText = panel.panel('MODSIM World 2019 - Enabling Digital Transformation with M&S : April 22-24, 2019', width=200, height=50)
-Section0Venue = panel.Column(Section0VenueFigure,Section0VenueText)
+Section0VenueText = panel.panel('MODSIM World 2019 - Enabling Digital Transformation with M&S : April 22-24, 2019', width=200, height=70, background='#104793', style = {'color':'#ffffff'}, margin = (0,0,0,0))
+Section0Venue = panel.Column(Section0VenueFigure, Section0VenueText, margin = (0,0,0,0))
 
-Section0Header = panel.Row ( panel.Column(Section0Title, Section0Author),  panel.Column(Section0VenueFigure,Section0VenueText) )
+Section0Header = panel.Row ( panel.Column(Section0Title, Section0Author, margin = (0,0,0,0)), Section0Venue , margin = (0,0,0,0) )
 
 
-Section0Problem = panel.panel(EnhanceMarkDown("""
-##A solution based on use of computing power to explore potential hypothesis for an epidemiological problem. 
-&nbsp;
-                                              
+Section0Problem1 = panel.panel("""
+## A solution based on use of computing power to explore potential hypothesis for an epidemiological problem.
+                                       
 ### Problem Definition
-&nbsp;
                                       
 #### Known:
+""", width=1200, height=110)
 
-Population of ~~~N=617~~~ preterm infants, where:
+Section0Problem2 = panel.pane.LaTeX("Population of $N=617$ preterm infants, where:", width=1200, height=10) 
     
-~~~P_1=32\%~~~ are with Sepsis 
+Section0Problem3 = panel.pane.LaTeX("$P_1=32\%$ are with Sepsis", width=1200, height=10) 
 
-~~~P_2=75\%~~~ get Oxygen 
+Section0Problem4 = panel.pane.LaTeX("$P_2=75\%$ get Oxygen", width=1200, height=10) 
 
-it was observed that ~~~P_3=47%~~~ reached the outcome of [Retinopathy of Prematurity (ROP)](https://doi.org/10.1159/000312821)
+Section0Problem5 = panel.pane.LaTeX("it was observed that $P_3=47\%$ reached the outcome of Retinopathy of Prematurity (ROP)", width=1200, height=10) 
 
-Odds ratios were: 
+Section0Problem6 = panel.pane.LaTeX("Odds ratios were:", width=1200, height=10) 
     
-~~~O_{12} = Odds(Oxygen,Sepsis) = 2.6~~~ 
+Section0Problem7 = panel.pane.LaTeX("$O_{12} = Odds(Oxygen,Sepsis) = 2.6$", width=1200, height=10) 
 
-~~~O_{13} = Odds(ROP,Sepsis) = 2.8~~~
+Section0Problem8 = panel.pane.LaTeX("$O_{13} = Odds(ROP,Sepsis) = 2.8$", width=1200, height=10) 
 
-~~~O_{23} = Odds(ROP,Oxygen) = 3.6~~~
-
-
-&nbsp;
-#### To be solved:
-
-A new treatment is introduced that reduces the occurrence of sepsis from ~~~P_1=32\%~~~ to a lower value ~~~P_1^* = 16\%$13~~~. 
-
-Assuming that the odds ratios and the oxygen probability represent biological constraints that do not change, 
-
-what would be the resulting prevalence (percentage) of ROP?                        
-
-"""), width=1200, height=400)
+Section0Problem9 = panel.pane.LaTeX("$O_{23} = Odds(ROP,Oxygen) = 3.6$", width=1200, height=20) 
 
 
+Section0Problem10 = panel.panel("""#### To be solved:
+""", width=1200, height=30)
+
+Section0Problem11 = panel.pane.LaTeX("A new treatment is introduced that reduces the occurrence of sepsis from $P_1=32\%$ to a lower value $P_1^* = 16\%$", width=1200, height=10) 
+
+Section0Problem12 = panel.panel("""Assuming that the odds ratios and the oxygen probability represent biological constraints that do not change,
+
+what would be the resulting prevalence (percentage) of [Retinopathy of Prematurity (ROP)](https://doi.org/10.1159/000312821)?                
+
+""", width=1200, height=30)
+
+
+Section0Problem = panel.Column(Section0Problem1,
+                               Section0Problem2,
+                               Section0Problem3,
+                               Section0Problem4,
+                               Section0Problem5,
+                               Section0Problem6,
+                               Section0Problem7,
+                               Section0Problem8,
+                               Section0Problem9,
+                               Section0Problem10,
+                               Section0Problem11,
+                               Section0Problem12
+                               )
    
-Section0DefinitionsText = panel.panel(EnhanceMarkDown("""## Notation
-                                                      
-For individual ~~~k = 1..N~~~ there are 3 Boolean parameters:
-
-(1) Sepsis ~~~X_{1k}~~~
-
-(2) Oxygen ~~~X_{2k}~~~ 
-
-(3) ROP ~~~X_{3k} ~~~ 
-
-We will denote those as ~~~X_{ik}~~~
-
-&nbsp;
-
-The probabilities can be defined as:
-
-~~~Pi = \# (X_{ik}=1)/N~~~ 
-
-where ~~~\# ~~~ is the count operator
-
-&nbsp;
-
-The odds ratio of two parameters i,j defined by the following equation:
-
-~~~O_{ij} = \\frac{\# (X_{ik}=1 \\; & \\; X_{jk}=1) * \# (X_{ik}=0 \\; & \\; X_{jk}=0)} {\# (X_{ik}=0 \\; & \\; X_{jk}=1) * \# (X_{ik}=1 \\; & \\; X_{jk}=0)}$29~~~
-
-&nbsp;
-
-Let us define Groups of similar individuals:
+Section0DefinitionsText1 = panel.panel("""## Notation
+""", width=800, height=40) 
+                                                     
+Section0DefinitionsText2 = panel.pane.LaTeX("For individual $k = 1..N$ there are 3 Boolean parameters:", width=800, height=10) 
     
-~~~G_{abc}=\{X_{1k}=a \\; & \\; X_{2k}=b \\; & \\; X_{3k}=c\}~~~
 
-Where ~~~a,b,c~~~ are booleans that represent Sepsis, Oxygen , ROP respectively 
+Section0DefinitionsText3 = panel.pane.LaTeX("(1) Sepsis $X_{1k}$", width=800, height=10) 
 
-Therefore there are 8 groups representing all possible combinations:
+Section0DefinitionsText4 = panel.pane.LaTeX("(2) Oxygen $X_{2k}$ ", width=800, height=10) 
+
+Section0DefinitionsText5 = panel.pane.LaTeX("(3) ROP $X_{3k} $ ", width=800, height=10) 
+
+Section0DefinitionsText6 = panel.pane.LaTeX("We will denote those as $X_{ik}$", width=800, height=20) 
+
+
+
+Section0DefinitionsText7 = panel.pane.LaTeX("The probabilities can be defined as:", width=800, height=10) 
+
+Section0DefinitionsText8 = panel.pane.LaTeX("$Pi = \# (X_{ik}=1)/N$ ", width=800, height=10) 
+
+Section0DefinitionsText9 = panel.pane.LaTeX("where $\# $ is the count operator", width=800, height=20) 
+
+
+Section0DefinitionsText10 = panel.pane.LaTeX("The odds ratio of two parameters $i,j$ defined by the following equation:", width=800, height=10) 
+
+Section0DefinitionsText11 = panel.pane.LaTeX("$O_{ij} = \\frac{\# (X_{ik}=1 \\; \\& \\; X_{jk}=1) * \# (X_{ik}=0 \\; \\& \\; X_{jk}=0)} {\# (X_{ik}=0 \\; \\& \\; X_{jk}=1) * \# (X_{ik}=1 \\; \\& \\; X_{jk}=0)}$", width=800, height=20) 
+
+
+Section0DefinitionsText12 = panel.pane.LaTeX("Let us define Groups of similar individuals:", width=800, height=10) 
     
-~~~G_{000},G_{001}, G_{010}, G_{011}, G_{100},G_{101}, G_{110}, G_{111}~~~
+Section0DefinitionsText13 = panel.pane.LaTeX("$G_{abc}=\{X_{1k}=a \\; \\& \\; X_{2k}=b \\; \\& \\; X_{3k}=c\}$", width=800, height=10) 
 
-"""), width=800, height=400)
+Section0DefinitionsText14 = panel.pane.LaTeX("Where $a,b,c$ are booleans that represent Sepsis, Oxygen , ROP respectively ", width=800, height=20) 
+
+Section0DefinitionsText15 = panel.pane.LaTeX("Therefore there are 8 groups representing all possible combinations:", width=800, height=10) 
     
-Section0AnalyticalSolutionText = panel.panel(EnhanceMarkDown("""## Analytical Solution?
+Section0DefinitionsText16 = panel.pane.LaTeX("$G_{000},G_{001}, G_{010}, G_{011}, G_{100},G_{101}, G_{110}, G_{111}$", width=800, height=10) 
 
-Using the count operator ~~~\# ~~~ we can write the following equations to solve the number of individuals in each group ~~~\# G_{abc}~~~:
+Section0DefinitionsText = panel.Column(Section0DefinitionsText1,
+                                       Section0DefinitionsText2,
+                                       Section0DefinitionsText3,
+                                       Section0DefinitionsText4,
+                                       Section0DefinitionsText5,
+                                       Section0DefinitionsText6,
+                                       Section0DefinitionsText7,
+                                       Section0DefinitionsText8,
+                                       Section0DefinitionsText9,
+                                       Section0DefinitionsText10,
+                                       Section0DefinitionsText11,
+                                       Section0DefinitionsText12,
+                                       Section0DefinitionsText13,
+                                       Section0DefinitionsText14,
+                                       Section0DefinitionsText15,
+                                       Section0DefinitionsText16,
+                                       )
+    
+Section0AnalyticalSolutionText1 = panel.panel("""## Analytical Solution?
+""", width=800, height=40)
 
-(1) ~~~P_1 = (\# G_{100}+\# G_{101}+\# G_{110}+\# G_{111}) / N~~~
+Section0AnalyticalSolutionText2 = panel.pane.LaTeX("Using the count operator $\# $ we can write the following equations to solve the number of individuals in each group $\# G_{abc}$:", width=800, height=10) 
 
-(2) ~~~P_2 = (\# G_{010}+\# G_{011}+\# G_{110}+\# G_{111}) / N~~~
+Section0AnalyticalSolutionText3 = panel.pane.LaTeX("(1) $P_1 = (\# G_{100}+\# G_{101}+\# G_{110}+\# G_{111}) / N$", width=800, height=10) 
 
-(3) ~~~P_3 = (\# G_{001}+\# G_{101}+\# G_{011}+\# G_{111}) / N~~~
+Section0AnalyticalSolutionText4 = panel.pane.LaTeX("(2) $P_2 = (\# G_{010}+\# G_{011}+\# G_{110}+\# G_{111}) / N$", width=800, height=10) 
 
-(4) ~~~O_{12} = (\# G_{110}+\# G_{111})*(\# G_{000}+\# G_{001}) / ((\# G_{010}+\# G_{011})*(\# G_{100}+\# G_{101}))~~~
+Section0AnalyticalSolutionText5 = panel.pane.LaTeX("(3) $P_3 = (\# G_{001}+\# G_{101}+\# G_{011}+\# G_{111}) / N$", width=800, height=10) 
 
-(5) ~~~O_{13} = (\# G_{101}+\# G_{111})*(\# G_{000}+\# G_{010}) / ((\# G_{001}+\# G_{011})*(\# G_{100}+\# G_{110}))~~~
+Section0AnalyticalSolutionText6 = panel.pane.LaTeX("(4) $O_{12} = (\# G_{110}+\# G_{111})*(\# G_{000}+\# G_{001}) / ((\# G_{010}+\# G_{011})*(\# G_{100}+\# G_{101}))$", width=800, height=10) 
 
-(6) ~~~O_{23} = (\# G_{011}+\# G_{111})*(\# G_{000}+\# G_{100}) / ((\# G_{001}+\# G_{101})*(\# G_{010}+\# G_{110}))~~~
+Section0AnalyticalSolutionText7 = panel.pane.LaTeX("(5) $O_{13} = (\# G_{101}+\# G_{111})*(\# G_{000}+\# G_{010}) / ((\# G_{001}+\# G_{011})*(\# G_{100}+\# G_{110}))$", width=800, height=10) 
 
-(7) ~~~N = \# G_{000}+\# G_{001}+\# G_{010}+\# G_{011}+\# G_{100}+\# G_{101}+\# G_{110}+\# G_{111}~~~
+Section0AnalyticalSolutionText8 = panel.pane.LaTeX("(6) $O_{23} = (\# G_{011}+\# G_{111})*(\# G_{000}+\# G_{100}) / ((\# G_{001}+\# G_{101})*(\# G_{010}+\# G_{110}))$", width=800, height=10) 
 
-&nbsp;
+Section0AnalyticalSolutionText9 = panel.pane.LaTeX("(7) $N = \# G_{000}+\# G_{001}+\# G_{010}+\# G_{011}+\# G_{100}+\# G_{101}+\# G_{110}+\# G_{111}$", width=800, height=10) 
 
-## Note that we only have 7 equations with 8 unknown measures!!!
+Section0AnalyticalSolutionText10 = panel.panel("""## Note that we only have 7 equations with 8 unknown measures!!!
 
 &nbsp;
 
 ## This means that additional assumptions are needed!
-"""), width=800, height=400)
+""", width=800, height=80)
+
+Section0AnalyticalSolutionText = panel.Column(Section0AnalyticalSolutionText1,
+                                              Section0AnalyticalSolutionText2,
+                                              Section0AnalyticalSolutionText3,
+                                              Section0AnalyticalSolutionText4,
+                                              Section0AnalyticalSolutionText5,
+                                              Section0AnalyticalSolutionText6,
+                                              Section0AnalyticalSolutionText7,
+                                              Section0AnalyticalSolutionText8,
+                                              Section0AnalyticalSolutionText9,
+                                              Section0AnalyticalSolutionText10 
+                                              )
 
 Section0DefinitionsImage = panel.panel(ConstractImageLinkAnchor('','GroupDefinition.png','Spliting the population into different groups',400), width=400, height=400)
 
@@ -255,48 +264,55 @@ Section0AnalyticalSolution = panel.Row(Section0AnalyticalSolutionText,Section0De
 
 
 
-Section0EvolutionaryComputationText = panel.panel(EnhanceMarkDown("""## Evolutionary Computation (EC)
+Section0EvolutionaryComputationText1 = panel.panel("""## Evolutionary Computation (EC)
                                                                   
 Using the Inspyred library we can generate populations that match the statistics
 
 We defined a fitness function:
 
-&nbsp;
+""", width=600, height=100)
 
-~~~Fitness(s) = W_1\sum |P_i - P'_i|+ W_2 \sum |O_{ij} - O'_{ij}|$18~~~
+Section0EvolutionaryComputationText2 = panel.pane.LaTeX("$Fitness(s) = W_1\sum |P_i - P'_i|+ W_2 \sum |O_{ij} - O'_{ij}|$", width=600, height=20) 
 
-where ~~~W_1 , W_2~~~ are constants and P'_i and O'_{ij} are the probabilities and odds ratios of the candidate solutions.
+Section0EvolutionaryComputationText3 = panel.pane.LaTeX("where $W_1 , W_2$ are constants, and $P'_i$ / $O'_{ij}$ are the probabilities / odds ratios of candidate solutions.", width=600, height=30) 
 
-&nbsp;
+
    
-The EC solution walks through these main stages of a Genetic Algorithm:
+Section0EvolutionaryComputationText4 = panel.panel(""" The EC solution walks through these main stages of a Genetic Algorithm:
     
-(1) Generation: A population of random solutions is generated. 
+(1) **Generation**: A population of random solutions is generated. 
 
-(2) Evaluation: Where ~~~Fitness(s)$12~~~ is calculated for each solution ~~~s$7~~~
+(2) **Evaluation**: The fitness function is calculated for each solution
 
-(3) Selection: Where the best solutions are ranked and selected to represent the next generation
+(3) **Selection**: The best solutions are ranked and selected to represent the next generation
 
-(4) Variation: Where the selected solutions undergo mutation and crossover operators to create another generation using:
+(4) **Variation**: The selected solutions are modified to create another generation using:
     
-&nbsp;&nbsp;&nbsp;- Cross-over: from a pair of mother and father create two offspring solutions 
+&nbsp;&nbsp;&nbsp;- **Cross-over**: from a pair of mother and father create two offspring solutions 
    
-&nbsp;&nbsp;&nbsp;- Internal Swap mutator: swap a single parameter value ~~~i~~~ between two random individuals 
+&nbsp;&nbsp;&nbsp;- **Internal Swap mutator**: swap a parameter value between two random individuals 
    
-&nbsp;&nbsp;&nbsp;- Reroll mutator: completely reroll some individuals in the solution 
+&nbsp;&nbsp;&nbsp;- **Reroll mutator**: completely reroll some individuals in the solution 
     
-(5) Termination: where a stopping criteria is checked - if a stop criteria was not reached, go back to step 2
+(5) **Termination**: If a stop criteria was not reached, go back to step 2
 
-(6) Post termination, the most fitting population is considered as the answer
+(6) **Post termination**: The most fitting population is considered as the answer
 
-"""), width=800, height=400)
+""", width=600, height=300)
+    
+    
+Section0EvolutionaryComputationText = panel.Column(Section0EvolutionaryComputationText1,
+                                                   Section0EvolutionaryComputationText2,
+                                                   Section0EvolutionaryComputationText3,
+                                                   Section0EvolutionaryComputationText4
+                                                   )
 
-Section0EvolutionaryComputationVideo = panel.panel(VideoInlineHTML(CommonResourceDir + 'EvolutionaryComputation_Small.mp4',400,400), width=400, height=400)
+Section0EvolutionaryComputationVideo = panel.panel(VideoInlineHTML(CommonResourceDir + 'EvolutionaryComputation_Small.mp4',600,500), width=600, height=500)
 
 Section0EvolutionaryComputation = panel.Row(Section0EvolutionaryComputationText,Section0EvolutionaryComputationVideo)
 
 
-Section0SimpleSolution = panel.panel(EnhanceMarkDown("""## Simple Solution
+Section0SimpleSolution = panel.panel("""## Simple Solution
                                       
 Using the EC algorithm with the [Inspyred Python library](https://pythonhosted.org/inspyred/) we will try to solve the original problem in two steps:
     
@@ -321,31 +337,27 @@ Therefore many populations that fit this problem can be generated.
 
 ### We need an additional assumption to have one solution!
 
-"""), width=1200, height=400)
+""", width=1200, height=400)
 
 
-Section0FullSolution = panel.panel(EnhanceMarkDown("""## Full Solution
-                                                     
-We will add another element in the problem that was hidden so far to add more constraints. We define a division ratio between two inputs ~~~i,j~~~ which is part of an Odds ratio ~~~O_{ij}$12~~~ :
-    
-~~~ R_{ij} = \\frac{\#(X_{ik}=1 \\; & \\; X_{jk}=1)}{\#(X_{ik}=1 \\; & \\; X_{jk}=0)}$28~~~
+Section0FullSolution1 = panel.panel("""## Full Solution
+""", width=1200, height=40)
 
-&nbsp;
+Section0FullSolution2 = panel.pane.LaTeX(" We will add another element in the problem that was hidden so far to add more constraints. We define a division ratio $R_{ij}$ between two inputs $i,j$ which is part of an Odds ratio $O_{ij}$ :", width=1200, height=10) 
+ 
 
-### Now we can define the Population Disease Occurrence Model Algorithm
+Section0FullSolution3 = panel.pane.LaTeX("$ R_{ij} = \\frac{\#(X_{ik}=1 \\; \\& \\; X_{jk}=1)}{\#(X_{ik}=1 \\; \\& \\; X_{jk}=0)}$", width=1200, height=15) 
+
+
+Section0FullSolution4 = panel.panel("""### Now we can define the Population Disease Occurrence Model Algorithm
 
 ** Step 1: ** Generate a population that matches the original untreated population statistics using EC. Extract invariant properties
 from the solution.
 
 ** Step 2: ** Generate a population with the estimated treatment effect as a constraint while removing the constraint on the outcome and applying the invariant properties as additional constraints.
 
-&nbsp;
 
-Since we do not know what invariants represent the problem we can try different strategies representing assumptions.
-
-&nbsp;
-
-We show those strategies for target sepsis probability of 0.16.
+We do not know what invariants represent the problem, so we can try different strategies representing assumptions. For example, below are strategies for sepsis probability of 0.16.
 
 
 | &nbsp; Step &nbsp; | &nbsp; N &nbsp; | &nbsp; P Sepsis &nbsp; | &nbsp; P Oxygen &nbsp; | &nbsp; P ROP  &nbsp;  | &nbsp; Odds Sep/Oxy  &nbsp; | &nbsp; Odds Sep/ROP &nbsp;  | &nbsp; Odds Oxy/ROP &nbsp;  | &nbsp; Ratio Sep/Oxy  &nbsp; | &nbsp; Ratio Sep/ROP &nbsp;  | &nbsp; Ratio Oxy/ROP &nbsp;  |
@@ -360,13 +372,19 @@ We show those strategies for target sepsis probability of 0.16.
 |  2E  | 617 |    0.16    |    0.75   |     ?     |      2.6     |      2.8     |      3.6     | Step 1 | Step 1 |    ?   |
 |  2H  | 617 |    0.16    |    0.75   |     ?     |      2.6     |      2.8     |      3.6     | Step 1 | Step 1 | Step 1 |
 
-&nbsp;
 
-### We executed all those variations using High Performance Computing (HPC)
+### We execute all those variations using High Performance Computing (HPC)
 
-"""), width=1200, height=400)
+""", width=1200, height=280)
 
-Section0ResultsStep1Text = panel.panel(EnhanceMarkDown("""## Results Step 1
+
+Section0FullSolution = panel.Column(Section0FullSolution1,
+                                    Section0FullSolution2,
+                                    Section0FullSolution3,
+                                    Section0FullSolution4
+                                    )
+
+Section0ResultsStep1Text = panel.panel("""## Results Step 1
             
 The EC algorithm 100 times, each time evolving the best solution. Recall that the solution is a population and we optimized many populations of populations
 
@@ -387,7 +405,7 @@ Step 1 results are summarized as follows:
 
 ### The average solution results were passed as parameters to Step 2 simulations
 
-"""), width=1200, height=300)
+""", width=1200, height=300)
 
 
 Section0ResultsStep1Figure =  ObjectInlineHTML(CommonResourceDir + 'PlotAggregateResults_0.html',Width=1200,Height=6000)
@@ -397,20 +415,20 @@ Section0ResultsStep1 = panel.Column(Section0ResultsStep1Text,Section0ResultsStep
 
 
 
-Section0ResultsStep2Text = panel.panel(EnhanceMarkDown("""## Results Step 2
+Section0ResultsStep2OneStrategy = ObjectInlineHTML(CommonResourceDir + 'PlotAggregateResults_12.html',Width=1200,Height=6000)
+
+Section0ResultsStep2Text = panel.panel("""## Results Step 2
 
 We executed the 8 strategy simulation for 12 different intervention levels, where target sepsis values starting from 0.30 to 0.08 with jumps of 0.02 . 
 
 We show average results of 100 repetitions in a table for the the highest intervention level and the graphic output of all results.
 
-&nbsp;
-
 Results suggest that: When modeling the effect of a hypothetical treatment that drops sepsis from 32% to 8% of the population while keeping odds ratio constraints, 
 different models show a change in ROP from **47%** to the range of **(40.9% - 47.5%)** where the most informed model reached **43%**. 
 
-"""), width=1200, height=150)
+""", width=1200, height=180)
 
-Section0Step2ResultTable = panel.panel(EnhanceMarkDown("""#### Average results for intervention level = 12 where sepsis target = 0.08
+Section0Step2ResultTable = panel.panel("""#### Average results for intervention level = 12 where sepsis target = 0.08
 |Strategy &nbsp;     | &nbsp; P Sepsis &nbsp; | &nbsp; P Oxygen &nbsp; | &nbsp; P ROP  &nbsp;  | &nbsp; Odds Sep/Oxy  &nbsp; | &nbsp; Odds Sep/ROP &nbsp;  | &nbsp; Odds Oxy/ROP &nbsp;  | &nbsp; Ratio Sep/Oxy  &nbsp; | &nbsp; Ratio Sep/ROP &nbsp;  | &nbsp; Ratio Oxy/ROP &nbsp;  |
 |:-------------------|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|
 |Step 1 Ref          | 0.080 | 0.750 | 0.470 | 2.600 | 2.800 | 3.600 | 6.037 | 1.775 | 1.184 |
@@ -422,10 +440,10 @@ Section0Step2ResultTable = panel.panel(EnhanceMarkDown("""#### Average results f
 |F                   | 0.083 | 0.728 | 0.466 | 2.396 | 2.803 | 3.601 | 6.030 | 2.248 | 1.203 |
 |G                   | 0.081 | 0.749 | 0.431 | 2.594 | 2.784 | 3.597 | 7.276 | 1.945 | 1.010 |
 |H                   | 0.084 | 0.715 | 0.430 | 2.553 | 2.795 | 3.600 | 6.010 | 1.939 | 1.050 |
-"""), width=1200, height=200)
+""", width=1200, height=200)
 
 
-Section0Step2ResultDeviationTable = panel.panel(EnhanceMarkDown("""#### Average deviations from step 1 reference for intervention level = 12 where sepsis target = 0.08 
+Section0Step2ResultDeviationTable = panel.panel("""#### Average deviations from step 1 reference for intervention level = 12 where sepsis target = 0.08 
 | Strategy &nbsp; | &nbsp; P Sepsis &nbsp; | &nbsp; P Oxygen &nbsp; | &nbsp; P ROP  &nbsp;  | &nbsp; Odds Sep/Oxy  &nbsp; | &nbsp; Odds Sep/ROP &nbsp;  | &nbsp; Odds Oxy/ROP &nbsp;  | &nbsp; Ratio Sep/Oxy  &nbsp; | &nbsp; Ratio Sep/ROP &nbsp;  | &nbsp; Ratio Oxy/ROP &nbsp;  |
 |:-------------------|:-----:|:------:|:------:|:------:|:------:|:------:|:------:|:-----:|:------:|
 | A                  | 0.001 | 0.000  | 0.000  | -0.008 | -0.001 | -0.010 | 1.291  | 0.527 | 0.014  |
@@ -437,12 +455,13 @@ Section0Step2ResultDeviationTable = panel.panel(EnhanceMarkDown("""#### Average 
 | G                  | 0.001 | -0.001 | -0.039 | -0.006 | -0.016 | -0.003 | 1.240  | 0.170 | -0.174 |
 | H                  | 0.004 | -0.035 | -0.040 | -0.047 | -0.005 | 0.000  | -0.027 | 0.164 | -0.135 |
 
-"""), width=1200, height=200)
+""", width=1200, height=200)
 
 
 Section0ResultsStep2Figure =  ObjectInlineHTML(CommonResourceDir + 'HoloviewsPlot.html',Width=1300,Height=1000)
 
 Section0ResultsStep2SelectionTab = panel.layout.Tabs (
+                                        ('Max Treatment Level Results For One Strategy', Section0ResultsStep2OneStrategy),
                                         ('Average Results Table' , Section0Step2ResultTable),
                                         ('Deviation from Reference Table' , Section0Step2ResultDeviationTable),
                                         ('Graphic output of all results' , Section0ResultsStep2Figure),
@@ -455,7 +474,7 @@ Section0ResultsStep2SelectionTab = panel.layout.Tabs (
 Section0ResultsStep2 = panel.Column(Section0ResultsStep2Text,Section0ResultsStep2SelectionTab)
 
 
-Section0Discussion = panel.panel(EnhanceMarkDown("""## Discussion
+Section0Discussion = panel.panel("""## Discussion
             
 This solution is far from efficient and can be improved easily in multiple ways. 
 However, it is better than what was available before since:
@@ -477,7 +496,7 @@ Following this work, the following recommendations are made:
 
 &nbsp;&nbsp;&nbsp;(3) Epidemiological should provide additional possible explanations that can be added as assumptions
 
-"""), width=1200, height=400)
+""", width=1200, height=400)
 
    
 Section0ReproducibilityText = panel.panel("""### Reproducibility:
@@ -489,27 +508,27 @@ The results for this paper were calculated on:
 
 The numbers used in this paper are taken from [This 2018 paper](https://doi.org/10.5210/ojphi.v10i2.9357)). Those numbers are close to the numbers in [this original 2011 work](https://doi.org/10.1159/000312821), yet are not an exact match, so the analysis in this paper should not be considered for epidemiological use without further exploration into the differences. 
 
-This presentation is generated using Python 2.7.15, panel 0.5.0a3, bokeh 1.1.0dev9 .
+This presentation is generated using Python 2.7.15, panel-0.5.0, bokeh-1.1.0rc1 .
 
 The presentation is accessible through the QR code Below. The presentation code can be accessed [here](https://github.com/Jacob-Barhak/Presentations/tree/master/MODSIM2019).
 
-""", width=1200, height=180)
+""", width=1200, height=240)
 
 Section0Reproducibility = panel.Column(Section0ReproducibilityText, PresentationURL)
 
 Section0References = panel.panel("""### Selected Publications:
 
-[1] [Olaf Dammann, Kenneth Chui, Anselm Blumer, (2018) A Causally Naive and Rigid Population Model of Disease Occurrence Given Two Non-Independent Risk Factors, Online Journal of Public Health Informatics]( https://doi.org/10.5210/ojphi.v10i2.9357)
+[1] [Dammann O, Chui K,  Blumer A, (2018) A Causally Naive and Rigid Population Model of Disease Occurrence Given Two Non-Independent Risk Factors, Online Journal of Public Health Informatics]( https://doi.org/10.5210/ojphi.v10i2.9357)
 
-[2] [Chen M, Citil A, McCabe F, Leicht, Fiascone, Dammann C.E.L., Dammann O., (2011). Infection, oxygen, and immaturity: interacting risk factors for retinopathy of prematurity. Neonatology. 99, 125-32.](https://doi.org/10.1159/000312821)
+[2] [Chen M, Citil A, McCabe F, Leicht KM, Fiascone J, Dammann CEL, Dammann O, (2011). Infection, oxygen, and immaturity: interacting risk factors for retinopathy of prematurity. Neonatology. 99](https://doi.org/10.1159/000312821)
 
 [3] [Inspyred library on GitHub](https://github.com/aarongarrett/inspyred)                                 
 
-[4] [J. Barhak, A. Garrett, Population Generation from Statistics Using Genetic Algorithms with MIST + INSPYRED. MODSIM World 2014, April 15 - 17, Hampton Roads Convention Center in Hampton, VA.](http://sites.google.com/site/jacobbarhak/home/MODSIM2014_MIST_INSPYRED_Paper_Submit_2014_03_10.pdf)'
+[4] [Barhak J, Garrett A, (2014) Population Generation from Statistics Using Genetic Algorithms with MIST + INSPYRED. MODSIM World 2014, April 15 - 17, Hampton, VA.](http://sites.google.com/site/jacobbarhak/home/MODSIM2014_MIST_INSPYRED_Paper_Submit_2014_03_10.pdf)
 
 [5] [Barhak J. (2015). The Reference Model uses Object Oriented Population Generation. SummerSim 2015. Chicago IL, USA.](http://dl.acm.org/citation.cfm?id=2874946)
 
-[6] [MIcro Simulation Tool (MIST](https://github.com/Jacob-Barhak/MIST)
+[6] [MIcro Simulation Tool (MIST)](https://github.com/Jacob-Barhak/MIST)
 
 """, width=1200, height=100)
 
@@ -534,18 +553,14 @@ SlideSelectorTab = panel.layout.Tabs (
                                         ('Results Step 1',Section0ResultsStep1),
                                         ('Results Step 2',Section0ResultsStep2),
                                         ('Discussion',Section0Discussion),
-                                        ('Reproducibility', Section0Reproducibility),
-                                        ('Acknowledgments' , Section0Acknowledgments),
                                         ('References' , Section0References),
+                                        ('Acknowledgments' , Section0Acknowledgments),
+                                        ('Reproducibility', Section0Reproducibility),
                                       )
 
 Section0 = panel.Column(Section0Header, SlideSelectorTab)
 
-DocumentForOutput = Section0._get_root(BokehDocument)
+Section0.save('Presentation_MODSIM_2019.html')
 
-Html = bokeh.embed.file_html(DocumentForOutput, bokeh.resources.CDN, TitleHTML)
 
-OutFile = open('Presentation_MODSIM_2019.html','w')
-OutFile.write(Html)
-OutFile.close()
 

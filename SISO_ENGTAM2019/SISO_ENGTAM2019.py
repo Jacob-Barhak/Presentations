@@ -109,10 +109,10 @@ PresentationVenueFigure = panel.panel(ConstractImageLinkAnchor('https://www.siso
 PresentationHeader = panel.Row ( PresentationTitle,  panel.Column(PresentationVenueFigure, PresentationVenue, margin = (0,0,0,0)), margin = (0,0,0,0) )
 
 
-Section0Title = panel.panel('## Motivation: Computer Automation of Human Reasoning?', width=1000, height=30)
-Section0Author = panel.panel('by: [Jacob Barhak](http://sites.google.com/site/jacobbarhak/)', width=200, height=30)
+Section0Title = panel.panel('## Motivation: Computer Automation of Human Reasoning?', width=1000, height=20)
+Section0Author = panel.panel('by: [Jacob Barhak](http://sites.google.com/site/jacobbarhak/)', width=200, height=40)
 
-Section0Header =  panel.Row(Section0Title, Section0Author)
+Section0Header =  panel.Row(Section0Title, Section0Author, margin = (0,0,0,0))
 
 Section0ChronologyFigure = panel.panel(ConstractImageLinkAnchor('https://en.wikipedia.org/wiki/Computer_chess','ComputerInfluenceDiagram.png','Towards Computer Automation of Human tasks - Main sources Wikipedia Computer Chess and Wikipedia self-driving car',1000), width=1000, height=500)
 
@@ -121,26 +121,22 @@ Section0ChronologyFigure = panel.panel(ConstractImageLinkAnchor('https://en.wiki
 Section0 = panel.Column(Section0Header, Section0ChronologyFigure)
 
 
-Section2Title = panel.panel('## Generating Populations Using Evolutionary Computation', width=1000, height=30)
-Section2Author = panel.panel('by: [Jacob Barhak](http://sites.google.com/site/jacobbarhak/), [Aaron Garret](http://sites.wofford.edu/garrettal/)', width=200, height=30)
+Section2Title = panel.panel('## Generating Populations Using Evolutionary Computation', width=950, height=20)
+Section2Author = panel.panel('by: [Jacob Barhak](http://sites.google.com/site/jacobbarhak/), [Aaron Garret](http://sites.wofford.edu/garrettal/)', width=200, height=40)
 
-Section2Header =  panel.Row(Section2Title, Section2Author)
+Section2Header =  panel.Row(Section2Title, Section2Author, margin = (0,0,0,0))
 
-Section2PopulationGenerationText = panel.panel("""
-## Why Generate Populations?
+Section2PopulationGenerationText = panel.panel("""## Why Generate Populations?
 
 * Clinical trials ** do not expose individual data ** due to privacy restrictions.
- 
 * Instead trials ** publish statistics with inclusion & exclusion criteria ** such as age distribution.
-
-* We create artificial populations that ** mimic these published statistics **.
-
+* We create artificial populations that **mimic these published statistics**.
 * Tools that can help with this are the [MIcro Simulation Tool (MIST)](https://github.com/Jacob-Barhak/MIST) that uses [Inspyred](https://pythonhosted.org/inspyred/)
-""", width=600, height=200)
+""", width=600, height=110)
 
 
 Section2PopulationGenerationVideo1 = panel.panel(VideoInlineHTML(CommonResourceDir+'PopulationGeneration_Small.mp4',600,450), width=600, height=450)
-Section2PopulationGenerationVideo2 = panel.panel(VideoInlineHTML(CommonResourceDir+'InspyredMIST_Small.mp4',600,380), width=600, height=380)
+Section2PopulationGenerationVideo2 = panel.panel(VideoInlineHTML(CommonResourceDir+'InspyredMIST_Small.mp4',600,380), width=600, height=360)
 
 Section2PopulationGeneration = panel.Row(panel.Column(Section2PopulationGenerationText, Section2PopulationGenerationVideo2), Section2PopulationGenerationVideo1)
 
@@ -173,25 +169,24 @@ The EC solution walks through these main stages of a Genetic Algorithm:
 
 """, width=600, height=400)
 
-Section2EvolutionaryComputationVideo = panel.panel(VideoInlineHTML(CommonResourceDir+'EvolutionaryComputation_Small.mp4',600,500), width=600, height=500)
+Section2EvolutionaryComputationVideo = panel.panel(VideoInlineHTML(CommonResourceDir+'EvolutionaryComputation_Small.mp4',600,500), width=600, height=450)
 
-Section2EvolutionaryComputation = panel.Row(Section2EvolutionaryComputationText,Section2EvolutionaryComputationVideo)
-
-Section2ResultsStep2Figure =  ObjectInlineHTML(CommonResourceDir+'HoloviewsPlot.html',Width=1300,Height=1000)
+Section2EvolutionaryComputation = panel.Row(Section2EvolutionaryComputationText,Section2EvolutionaryComputationVideo, margin = (0,0,0,0))
 
 Section2SlideSelectorTab = panel.layout.Tabs (
                                         ('Population Generation', Section2PopulationGeneration),
                                         ('Evolutionary Computation', Section2EvolutionaryComputation),
+										margin = (0,0,0,0),
                                       )
 
-Section2 = panel.Column(Section2Header, Section2SlideSelectorTab)
+Section2 = panel.Column(Section2Header, Section2SlideSelectorTab, margin = (0,0,0,0))
 
 
 # The Reference Model Section
 
-Section3Title = panel.panel('## The Reference Model for Disease Progression', width=1000, height=30)
-Section3Author = panel.panel('by: [Jacob Barhak](http://sites.google.com/site/jacobbarhak/)', width=200, height=30)
-Section3Header = panel.Row(Section3Title,Section3Author)
+Section3Title = panel.panel('## The Reference Model for Disease Progression', width=1000, height=20)
+Section3Author = panel.panel('by: [Jacob Barhak](http://sites.google.com/site/jacobbarhak/)', width=200, height=40)
+Section3Header = panel.Row(Section3Title,Section3Author, margin = (0,0,0,0))
 
 
 Section3KeyPoints = panel.panel("""### Key Points
@@ -239,6 +234,7 @@ The outlier population seen in the plot is most probably a modeling error relate
 Such misinterpretation will be common since clinical trial reports are still not standardized and therefore there is much room for expert interpretation and the data is not yet computer comprehensible. 
 
 Some efforts are planned to improve such modeling capabilities by:
+
 * Incorporating human expert interpretation
 * Importing more data from [ClinicalTrials.Gov](https://clinicaltrials.gov/) - with the fast growth of this database, accumulation of knowledge is easier than ever before. 
 * Standardizing clinical trial data
@@ -258,6 +254,7 @@ Section3SlideSelectorTab = panel.layout.Tabs (
                                         ('Results: Model Mixture', Section3Results1),
                                         ('Results: Cumulative Computational Understanding Gap', Section3Results2),
                                         ('Discussion', Section3Discussion),
+										margin = (0,0,0,0),
                                       )
 
 Section3 = panel.Column(Section3Header, Section3SlideSelectorTab)
@@ -266,10 +263,10 @@ Section3 = panel.Column(Section3Header, Section3SlideSelectorTab)
 
 # Clinical Unit Mapping Section
 
-Section4Title = panel.panel('## Clinical Unit Mapping for Standardization of ClinicalTrials.Gov', width=950, height=30)
+Section4Title = panel.panel('## Clinical Unit Mapping for Standardization of ClinicalTrials.Gov', width=950, height=20)
 
-Section4Author = panel.panel('by: [Jacob Barhak](http://sites.google.com/site/jacobbarhak/) , [Joshua Schertz](https://joshschertz.com/)', width=250, height=30)
-Section4Header = panel.Row(Section4Title,Section4Author)
+Section4Author = panel.panel('by: [Jacob Barhak](http://sites.google.com/site/jacobbarhak/) , [Joshua Schertz](https://joshschertz.com/)', width=250, height=40)
+Section4Header = panel.Row(Section4Title,Section4Author, margin = (0,0,0,0))
 
 
 Section4AbstractText = panel.panel("""### Introduction
@@ -317,7 +314,7 @@ Section4MachineLearningDiagram = (panel.panel(ConstractImageLinkAnchor('https://
 Section4DiagramNLP = panel.panel(ObjectInlineHTML(ExternalResourcesIMAG2019+'UnitProximityHeatMap.html',600,600), width=600, height=600)
 
 Section4WebSiteDevelopmentText = panel.panel("""### Web Site Development
-                                             
+
 The units were stored in a SQLite3 relational database. 
 
 For demonstration purposes, a reduced database was used as a base for the web site.
@@ -385,6 +382,7 @@ Section4SlideSelectorTab = panel.layout.Tabs (
                                         ('Development', Section4Development),
                                         ('ClinicalUnitMapping.com', Section4KeyElements),
                                         ('Discussion',Section4Discussion),
+										margin = (0,0,0,0),
                                       )
 
 
@@ -397,7 +395,7 @@ Section5AdditionalInfo = panel.panel("""
 
 This presentation is accessible [here](https://jacob-barhak.github.io/Presentation_SISO_ENGTAM2019.html). The code that generated the presentation can be accessed [here](https://github.com/Jacob-Barhak/Presentations/tree/master/SISO_ENGTAM2019).
 
-This presentation is generated using Python 2.7.15, panel-0.5.0, bokeh-1.1.0rc1 .
+This presentation is generated using Python 2.7.16, panel-0.5.1, bokeh-1.1.0.
 
 The Reference Model: The plots were created using the script ExploreOptimizationResults_2019_02_24.py on Windows 10 environment with bokeh 1.0.4 holoviews 1.11.2 on Python 2.7.14 64 bit based on simulation results executed on a 64 core compute server with Ubuntu and stored in: MIST_RefModel_2019_02_18_OPTIMIZE.zip
 
@@ -410,7 +408,7 @@ Clinical Unit Mapping : Code and data for this work are archived in the file: An
 * J. Barhak, Clinical Data Modeling with Python, AnacondaCon , Austin, Texas,  April 3-5, 2019. [Video](https://youtu.be/fQIYMf5wKGE) , [Presentation](https://jacob-barhak.github.io/AnacondaCon_2019.html) 
 
 ### Population Generation
-* Inspyred library on [GitHub](https://github.com/aarongarrett/inspyred)                                 
+* Inspyred library on [GitHub](https://github.com/aarongarrett/inspyred)
 * MIcro Simulation Tool (MIST) on [GitHub](https://github.com/Jacob-Barhak/MIST)
 * J. Barhak, A. Garrett, Population Generation from Statistics Using Genetic Algorithms with MIST + INSPYRED. MODSIM World 2014, April 15 - 17, Hampton Roads Convention Center in Hampton, VA. [Paper](http://sites.google.com/site/jacobbarhak/home/MODSIM2014_MIST_INSPYRED_Paper_Submit_2014_03_10.pdf)
 * J. Barhak  (2015). The Reference Model uses Object Oriented Population Generation. SummerSim 2015. Chicago IL, USA. [Paper](http://dl.acm.org/citation.cfm?id=2874946)
@@ -441,6 +439,22 @@ Clinical Unit Mapping : Code and data for this work are archived in the file: An
 * J. Barhak, J. Schertz, Clinical Unit Mapping for Standardization of ClinicalTrials.Gov . MSM/IMAG meeting. IMAG Multiscale Modeling (MSM) Consortium Meeting March 6-7, 2019 @ NIH, Bethesda, MD . [Poster](https://jacob-barhak.github.io/InteractivePoster_MSM_IMAG_2019.html)
 """, width=1200, height=1000)
 
+
+
+Section5TechnologiesText = panel.panel("""## Technologies
+The following technologies and tools were instrumental in this work:
+
+* Micro-Simulation : [MIcro Simulation Tool (MIST)](https://github.com/Jacob-Barhak/MIST) 
+* Evolutionary Computation : [Inspyred](https://pythonhosted.org/inspyred/)
+* High Performance Computing : [Dask](https://dask.org/)
+* Supervised Machine Learning - Optimization with constraints : The Reference Model - Proprietary
+* Unsupervised Machine Learning - Clustering : [scikit-learn](https://scikit-learn.org/stable/)
+* Natural Language Processing : [Python DiffLib](https://docs.python.org/2/library/difflib.html) + [scikit-learn](https://scikit-learn.org/stable/)
+* Interactive Visualization : [Python PyViz Tools](http://pyviz.org/)
+
+""", width=1000, height=500)
+
+
 Section5SummaryText = panel.panel("""## Summary
 
 ### <span style="color:magenta">We are still very far from computers replacing medical expert reasoning.</span>
@@ -469,10 +483,10 @@ Section5SummaryText = panel.panel("""## Summary
 Section5Summary = panel.Row(Section5SummaryText,PresentationURL)
 
 Section5SlideSelectorTab = panel.layout.Tabs (
-
+										('Technologies', Section5TechnologiesText),
                                         ('Additional Information', Section5AdditionalInfo),
                                         ('Summary', Section5Summary),
-                                        
+										margin = (0,0,0,0),
                                         )
 
 Section5 =  Section5SlideSelectorTab
@@ -489,6 +503,7 @@ SectionSelectorTab = panel.layout.Tabs (
                                         ('(2) The Reference Model',Section3),
                                         ('(3) ClinicalUnitMapping.com',Section4),
                                         ('(4) Summary',Section5),
+										margin = (0,0,0,0),
                                         )
    
 

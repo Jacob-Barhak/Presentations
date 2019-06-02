@@ -21,7 +21,7 @@ To install:
 2. Install Anaconda from https://www.anaconda.com/download/
 3. install panel: conda install panel
 
-Dependant libraries are: panel, bokeh, some external html files are made with holoviews.
+Dependant libraries are: panel, bokeh, some external html files are made with PyViz technologies such as holoviews and datashader.
 
 
 
@@ -69,6 +69,7 @@ without their support and development of PyViz visualization tools, this interac
 LICENSE
 -------
 The PyCon Israel logo is used with permission from PyCon Israel organizers and not subject to the GPL license - please contact PyCon Israel for usage terms for the logo. All other files are provided under the GPL license below.
+The quotes provided in the opinions slides are not under GPL license - to reuse those, contact the original authors for permission: Jeff Shrager, Rocky Reston, Olaf Dammann, Bob Armstrong, Richard Boyd. 
 
 Copyright (C) 2019 Jacob Barhak & Joshua Schertz
 

@@ -39,7 +39,7 @@
 # interactive presentation would not be possible.
 
 
-import bokeh
+
 import panel
 import base64
 import os
@@ -82,7 +82,7 @@ def VideoInlineHTML(ExtrnalFileName,Width=1200,Height=700, EmbedVideo = EmbedVid
     return RetStr
 
 
-BokehDocument = bokeh.document.Document()
+TitleHTML = 'PyCon Israel 2019 presentation by Jacob Barhak'
 
 PresentationURL = panel.panel(ConstractImageLinkAnchor('https://jacob-barhak.github.io/Presentation_PyConIsrael2019.html','PyConIsrael2019.png','View this presentation on the web',600), width=600, height=600)
 
@@ -97,7 +97,7 @@ PresentationVenueFigure = panel.panel(ConstractImageLinkAnchor('https://il.pycon
 PresentationHeader = panel.Row ( PresentationTitle,  PresentationVenue, PresentationVenueFigure, margin = (0,0,0,0) )
 
 
-Section0Title = panel.panel('## Motivation: Computer Automation of Human Reasoning?', width=1000, height=20)
+Section0Title = panel.panel('## Motivation: Computer Automation of Human Reasoning', width=1000, height=20)
 Section0Author = panel.panel('by: [Jacob Barhak](http://sites.google.com/site/jacobbarhak/)', width=200, height=40)
 
 Section0Header =  panel.Row(Section0Title, Section0Author, margin = (0,0,0,0))
@@ -107,6 +107,37 @@ Section0ChronologyFigure = panel.panel(ConstractImageLinkAnchor('https://en.wiki
 
 
 Section0 = panel.Column(Section0Header, Section0ChronologyFigure)
+
+
+
+Section0QuestionAndAnswers1 = panel.panel("""# Some Predictions                                                              
+## Q: When will computers automate some human medical decision tasks to allow applications such as a computerized personal doctor?  
+                                                        
+## A: Many tasks of line physicians are already being automated, and that will accelerate. But the "hard" areas of active physical/conversational problem-solving, are far out on the almost unforeseeable horizon at this point.
+### <span style="color:green"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Jeff Shrager, Director of Research, xCures and Adjunct Professor Symbolic Systems Program Stanford University</span>
+                                                                
+## A: I believe this is already happening, though not explicitly. Currently, patients often look up their symptoms on the internet with inconsistent results.  The challenge for us is to make medical knowledge accessible, understandable and accurate. 
+### <span style="color:green"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Rocky Reston, Chief Medical Informatics Officer, Saperi Systems, Inc. </span>
+
+## A: Technically, we could certainly have a prototype in 5-10 years. The main obstacles will be ethical, professional concerns of reliability and accreditation, philosophical challenges, knowledge management.
+### <span style="color:green"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Olaf Dammann, Professor and Vice Chair, Dept. of Public Health & Community Medicine, Tufts University School of Medicine  </span>
+
+Quoted text was extracted from email conversations and was edited to fit this presentation
+                                                              
+""", width=1200, height=250)
+
+
+Section0QuestionAndAnswers2 = panel.panel("""# More Predictions                                                      
+## Q: When will computers automate some human medical decision tasks to allow applications such as a computerized personal doctor?                                                  
+
+## A: Probably in about a decade the technology will be mature. However, changing the culture will make adoption of such technology delay for about 8 more years.
+### <span style="color:green"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Bob Armstrong,  Executive Director of the Sentara Center for Simulation and Immersive Learning at Eastern Virginia Medical School  </span>
+
+## A: By 2030, average income Americans will have some form of tele-medicine to diagnose them. Healthcare interventions will be prescribed by AI Expert systems with a human Doctor signature still required. Policy will trail available technology capabilities by ten years.  
+### <span style="color:green"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Richard Boyd, CEO Tanjo , Co-founder & Chair ultisim   </span>
+                                                                
+Quoted text was extracted from email conversations and was edited to fit this presentation                                                            
+""", width=1200, height=250)
 
 
 
@@ -173,26 +204,38 @@ Section4NLP = panel.panel("""# Natural Language Processing (NLP)
 
 Section4MachineLearningDiagram = (panel.panel(ConstractImageLinkAnchor('https://scikit-learn.org/stable/modules/generated/sklearn.cluster.MiniBatchKMeans.html','MultipleClusters.png','clustering algorithm executed multiple times',1200), width=1200, height=240))
 
-Section4DiagramNLP = panel.panel(ObjectInlineHTML(ExternalResourcesIMAG2019+'UnitProximityHeatMap.html',600,600), width=600, height=600)
-
-Section4MachineLearningText = panel.panel("""# Machine Learning - Clustering
-
-## To improve user experience and allow the user to see similar units bunched together. 
-
-## Unsupervised machine learning was applied using the scikit-learn Python library.
-
-## Clustering was performed multiple times with different similarity measures to create 130 clusters.
-
-""", width=1200, height=250)
+Section4DiagramNLP = panel.panel(ObjectInlineHTML(CommonResourceDir+'UnitProximityHeatMap.html',600,600), width=600, height=600)
 
 Section4DevelopmentNLP = panel.Row(Section4NLP, Section4DiagramNLP)
 
 
-Section4DevelopmentMachineLearning = panel.Column(Section4MachineLearningText, Section4MachineLearningDiagram)
+Section4DevelopmentVisualizingClusteringText = panel.panel("""# Machine Learning
+
+### To allow the user to see similar units together, scikit-learn unsupervised machine learning was used.
+
+### Clustering was performed multiple times with different similarity measures to create 130 clusters.
+                                                           
+### The top images show the proximity matrix before and after clustering at different stages of the algorithm. 
+
+### The green bars show distance from cluster centers. Dark means distant.
+
+### The red bars show the cluster number for each unit.
+
+### The images after clustering visually show the organizing effect of clustering.
+
+### Such interactive visualization is possible through [PyViz technologies](http://pyviz.org/). 
+
+""", width=300, height=600)
+
+Section4DevelopmentVisualizingClusteringDiagram = panel.panel(ObjectInlineHTML(CommonResourceDir + 'UnitClusterImage_max_linear_400.html',900,600), width=900, height=600)
+
+
+Section4DevelopmentVisualizingClustering = panel.Row(Section4DevelopmentVisualizingClusteringText, Section4DevelopmentVisualizingClusteringDiagram)
 
 
 
-Section4KeyPoints = panel.panel("""# Web Site Key Points:
+
+Section4KeyPoints = panel.panel("""# Web Site Key Points
 
 ### A web site was created to allow collaborative unit mapping
 ### The web site is accessible thought [ClinicalUnitMapping.com](https://clinicalunitmapping.com/)
@@ -241,9 +284,9 @@ Section5AdditionalInfo = panel.panel("""
 
 This presentation is accessible [here](https://jacob-barhak.github.io/Presentation_PyConIsrael2019.html). The code that generated the presentation can be accessed [here](https://github.com/Jacob-Barhak/Presentations/tree/master/PyConIsrael2019).
 
-This presentation is generated using Python 2.7.16, panel-0.5.1, bokeh-1.1.0.
+This presentation is generated using Python 2.7.16, panel-0.5.1, bokeh-1.1.0. with the exception of clustering images produced on Python 3.7.3 , numpy 1.16.3, matplotlib 3.0.3, holoviews 1.12.1, bokeh 1.1.0, panel 0.5.1.
 
-Clinical Unit Mapping : Code and data for this work are archived in the file: AnalyzeCT_2019_05_13.zip. Web site database was created using the database PartUnitsDB_2019_05_13.db that was created in a previous version of the code and data archived in the files: AnalyzeCT_Code_2019_05_15.zip , StudiesWithResults_Downloaded_2019_04_12.zip. 
+Clinical Unit Mapping : Code and data for this work are archived in the file: AnalyzeCT_2019_05_13_Sup_2019_05_31.zip. Web site database was created using the database PartUnitsDB_2019_05_13.db ,  StudiesWithResults_Downloaded_2019_04_12.zip. 
 
 BioPortal Unit Ontology downloaded on 2019_04_09, CDISC data downloaded on 2019_03_30 , RTMMS units downloaded on 2019_03_24 .  
 
@@ -268,8 +311,8 @@ Section5SummaryText = panel.panel("""# Summary
 
 ### Acknowledgments: 
 * Many thanks to the PyViz team:
-    - Philipp Rudiger who published useful visualization code. 
     - James Bednar who introduced the PyViz tools.
+    - Philipp Rudiger for great support of PyViz tools. 
     - Jean-Luc Stevens for creating holoviews.
 * Thanks to John Rice for the fruitful discussions regarding standardization. 
 * Thanks to CDISC consortium help
@@ -284,33 +327,23 @@ Section5SummaryText = panel.panel("""# Summary
 
 Section5Summary = panel.Row(Section5SummaryText,PresentationURL)
 
-Section5SlideSelectorTab = panel.layout.Tabs (
-                                        ('Additional Information', Section5AdditionalInfo),
-                                        ('Summary', Section5Summary),
-										margin = (0,0,0,0),
-                                        )
 
-Section5 =  Section5SlideSelectorTab
-
-
-
-
-
-TitleHTML = 'SISO ENGTAM 2019 presentation by Jacob Barhak'
 
 SectionSelectorTab = panel.layout.Tabs (
                                         ('Preface',Section0),
+                                        ('Opinions 1', Section0QuestionAndAnswers1 ),
+                                        ('Opinions 2', Section0QuestionAndAnswers2 ),
                                         ('ClinicalTrials.Gov', Section4AbstractText),
                                         ('Method', Section4Method),
                                         ('NLP', Section4DevelopmentNLP),
-                                        ('Machine Learning', Section4DevelopmentMachineLearning),
+                                        ('Machine Learning', Section4DevelopmentVisualizingClustering),
                                         ('ClinicalUnitMapping.com', Section4KeyElements),
                                         ('Discussion',Section4Discussion),
-                                        ('Additional Information', Section5AdditionalInfo),
+                                        ('References', Section5AdditionalInfo),
                                         ('Summary', Section5Summary),
 										margin = (0,0,0,0),
                                         )
-                                        
+
 Presentation = panel.Column(PresentationHeader, SectionSelectorTab)
-Presentation.save('Presentation_PyConIsrael2019.html')       
+Presentation.save('Presentation_PyConIsrael2019.html', title = TitleHTML)       
 

@@ -1,7 +1,7 @@
 AnacondaCon 2019 Presentation
 =============================
 
-This project generates the presentation for AnacondaCon in html format
+This project generates the presentation for AnacondaCon in html format. This code was updated post presentation to maintain the presentation available on-line and correct a typo.
 
 The presentation is generated using the panel python library
 

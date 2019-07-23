@@ -508,11 +508,11 @@ The results for this paper were calculated on:
 
 The numbers used in this paper are taken from [This 2018 paper](https://doi.org/10.5210/ojphi.v10i2.9357)). Those numbers are close to the numbers in [this original 2011 work](https://doi.org/10.1159/000312821), yet are not an exact match, so the analysis in this paper should not be considered for epidemiological use without further exploration into the differences. 
 
-This presentation is generated using Python 2.7.15, panel-0.5.0, bokeh-1.1.0rc1 .
+This presentation is generated using Python 2.7.15, panel-0.5.0, bokeh-1.1.0rc1 . This file is not the original presentation. The file was regenerated after presentation to solve an issue with a dependent file that was removed. The regeneration used Python 2.7.16, panel-0.5.1, bokeh-1.1.0 . The main change is how this html file is generated so that it can be accessed in the future. Please consult Github repository for exact code changes. 
 
 The presentation is accessible through the QR code Below. The presentation code can be accessed [here](https://github.com/Jacob-Barhak/Presentations/tree/master/MODSIM2019).
 
-""", width=1200, height=240)
+""", width=1200, height=270)
 
 Section0Reproducibility = panel.Column(Section0ReproducibilityText, PresentationURL)
 
@@ -560,7 +560,9 @@ SlideSelectorTab = panel.layout.Tabs (
 
 Section0 = panel.Column(Section0Header, SlideSelectorTab)
 
-Section0.save('Presentation_MODSIM_2019.html')
-
+# The following line was changed in the new version to save resources online
+# Section0.save('Presentation_MODSIM_2019.html')
+from bokeh.resources import INLINE
+Section0.save('Presentation_MODSIM_2019.html', resources=INLINE)
 
 

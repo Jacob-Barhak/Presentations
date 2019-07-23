@@ -208,7 +208,7 @@ Section1Text = panel.panel("""&nbsp; * Machines help humans through Visualizatio
 &nbsp; * Even a single patient for so little time generates large amounts of data that needs help visualizing.  
 
 
-&nbsp; * Usupervised Machine Learning and other techniques were used to Detect outliers:
+&nbsp; * Unsupervised Machine Learning and other techniques were used to Detect outliers:
     
 &nbsp;&nbsp;&nbsp;&nbsp; - Gaussian Process
 
@@ -697,7 +697,9 @@ Section5AdditionalInfo = panel.panel("""
     
 This presentation is accessible [here](https://jacob-barhak.github.io/AnacondaCon_2019.html). The code that generated the presentation can be accessed [here](https://github.com/Jacob-Barhak/Presentations/tree/master/AnacondaCon2019).
 
-This presentation is generated using Python 2.7.15, panel 0.5.0a3, bokeh 1.1.0dev9 .
+This presentation is initially generated using Python 2.7.15, panel 0.5.0a3, bokeh 1.1.0dev9 .
+
+After it was presented, it was regenerated using the libraries listed above reinstalled from development environment and generating an html file that does not need the dependent resources that were removed. The version you are seeing now is not the presentation version - the only difference is a change in the code to save the bokeh resources within the html file to generate visual look similar to the original and one typo correction - The github repository will reflect the code changes. 
 
 Population Disease Occurrence Models: results obtained with:
     
@@ -831,7 +833,11 @@ Presentation = panel.Column(PresentationHeader, SectionSelectorTab)
 
 DocumentForOutput = Presentation._get_root(BokehDocument)
 
-Html = bokeh.embed.file_html(DocumentForOutput, bokeh.resources.CDN, TitleHTML)
+# This line was changed after presentation to include resources inline 
+# since online resources were removed from the development version. 
+#Html = bokeh.embed.file_html(DocumentForOutput, bokeh.resources.CDN, TitleHTML)
+Html = bokeh.embed.file_html(DocumentForOutput, bokeh.resources.INLINE, TitleHTML)
+
 
 OutFile = open('AnacondaCon_2019.html','w')
 OutFile.write(Html)

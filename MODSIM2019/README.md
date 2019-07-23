@@ -2,7 +2,9 @@ MODSIM World 2019 Presentation
 ==============================
 
 This presentation supports the MODSIM paper: 
+Jacob Barhak, Aaron Garrett, Anselm Blumer, Olaf Dammann, "Population Disease Occurrence Models Using Evolutionary Computation". http://www.modsimworld.org/papers/2019/MODSIM_2019_paper_14.pdf
 
+This presentation repository was changed after presentation to allow maintaining access to the presentation. Please consult the repository for changes from original presentation.
 
 USAGE:
 ------

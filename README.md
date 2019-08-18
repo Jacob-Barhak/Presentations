@@ -11,4 +11,5 @@ FILES:
 * MODSIM2019: MODSIM 2019 presentation
 * SISO_ENGTAM2019: Presentation for SISO ENGTAM SIG Webinar
 * PyConIsrael2019: Presentation for PyCon Israel 2019
+* GE_Healthcare2019: Presentation for Ge Healthcare 2019 including a Sepsis model Prototype
 

@@ -19,9 +19,9 @@ INSTALLATION & DEPENDENCIES:
 To install:
 1. Copy the files in this repository to a directory of choice 
 2. Install Anaconda from https://www.anaconda.com/download/
-3. install panel: conda install panel
+3. install panel: conda install panel bokeh holoviews matplotlib
 
-Dependant libraries are: panel, bokeh, some external html files are made with holoviews.
+Dependant libraries are: panel, bokeh, holoviews, matplotlib, some external html files are made with holoviews.
 
 
 

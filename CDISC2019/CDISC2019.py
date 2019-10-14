@@ -107,20 +107,17 @@ PresentationVenueFigure = panel.panel(ConstractImageLinkAnchor('https://www.cdis
 PresentationHeader = panel.Row ( PresentationTitle,  PresentationVenue, PresentationVenueFigure, margin = (0,0,0,0) )
 
 
-#Section0Title = panel.panel('## Motivation: Computer Automation of Human Reasoning?', width=1000, height=20)
-#Section0Author = panel.panel('by: [Jacob Barhak](http://sites.google.com/site/jacobbarhak/)', width=200, height=40)
-#
-#Section0Header =  panel.Row(Section0Title, Section0Author, margin = (0,0,0,0))
+TableCSS = """
+div.special_table + table, th, td {
+  border: 1px solid blue;
+}
+"""
 
-#Section0ChronologyFigure = panel.panel(ConstractImageLinkAnchor('https://en.wikipedia.org/wiki/Computer_chess','ComputerInfluenceDiagram.png','Towards Computer Automation of Human tasks - Main sources Wikipedia Computer Chess and Wikipedia self-driving car',1000), width=1000, height=500)
-
-
-
-#Section0 = panel.Column(Section0Header, Section0ChronologyFigure)
+panel.extension(raw_css=[TableCSS])
 
 
-
-Section1AbstractText = panel.panel("""# About ClinicalTrials.Gov
+Section1AbstractText = panel.panel("""<div class="special_table"></div>
+# About ClinicalTrials.Gov
 ## ClinicalTrials.Gov now accumulates information from over 300K trials with over 10% reporting results.
 ## It is now a [U.S. Law](https://www.gpo.gov/fdsys/pkg/PLAW-110publ85/pdf/PLAW-110publ85.pdf#page=82) to upload clinical trials to this [fast growing database](https://clinicaltrials.gov/ct2/resources/trends). 
 ## Data from this database can be extracted in XML format towards modeling.
@@ -291,12 +288,13 @@ Section4SupervisedMachineLearningOverview = panel.panel("""# Supervised Machine 
 ### The training data mapped 24,548 units to 6,891 mock interpretations that simulate possible future mapping.
 ### Post-processing was applied after training to deduce what is the predicted unit accuracy.
 ### Closest units with a certain distance from prediction were explored for accuracy.
-### Multiple distance metrics were used to deduce closest unit to predicted string.
+### Multiple distance metrics were used to deduce closest unit to predicted a string.
 
 
 
 
 """, width=Width, height=250)
+
 
 
 
@@ -307,7 +305,6 @@ def GeneratePlot(Title):
     holoviews.extension('bokeh')    
     PlotsDict = {}
     
-    DuplicateAndMaskDataInputsLevel = [True,True,True]
     ShowStatisticsForOnlyThisNumberOfFirstItems = 10
     PhaseTexts = ['Training', 'Validation']
     PassTypeTexts = ['Unit & Context','Unit Only','Context Only']
@@ -320,13 +317,12 @@ def GeneratePlot(Title):
                  ('Distance Combined Metric',False),   
                   ]
     PredictionQualities = collections.defaultdict(list)
-    TempFile = open(DataDir+os.sep+'SummaryStats_Last_ClusterBatch_1.pckl','rb')
+    TempFile = open(DataDir+os.sep+'SummaryStats_Last_Batch_1.pckl','rb')
     (PredictionQualities) = pickle.load(TempFile)
     TempFile.close()
         
     for (IsValidationPass, PhaseText) in enumerate(PhaseTexts):
-        for PassTypeNumber in range(sum(DuplicateAndMaskDataInputsLevel)):
-            PassTypeText = PassTypeTexts[PassTypeNumber]
+        for (PassTypeNumber, PassTypeText) in enumerate(PassTypeTexts):
             for (PlotTypeEnum,(PlotTypeName,IsPlotTypeBoolean)) in enumerate(PlotTypes):  
                 if IsPlotTypeBoolean:
                     NumberOfCategories = 2
@@ -348,13 +344,14 @@ def GeneratePlot(Title):
                 HistogramShortTitle = holoviews.Histogram((Edges, FrequencesToUse)).redim.label(x='Quality', Frequency = ['Cumulative Proportion','Proportion'][IsPlotTypeBoolean]).opts( title = PlotTypeName, tools = ['hover'], ylim =(0,1), color = ['Blue','Red'][IsPlotTypeBoolean], height=140 , width=230-100*IsPlotTypeBoolean, toolbar = None, fontsize={'title': 8, 'labels': 8, 'xticks': 6, 'yticks': 6}, xticks=LabelsX)    
                 PlotsDict[(PhaseText,PassTypeText,PlotTypeName)] = HistogramShortTitle
 
-    PlotList = [  (PhaseText + ' ' + PassTypeText  , [ panel.pane.HoloViews(PlotsDict[(PhaseText,PassTypeText,PlotTypeName)]) for (PlotTypeName,IsPlotTypeBoolean) in (PlotTypes)]) for PhaseText in PhaseTexts for PassTypeText in PassTypeTexts[:sum(DuplicateAndMaskDataInputsLevel)] ] 
+    PlotList = [  (PhaseText + ' ' + PassTypeText  , [ panel.pane.HoloViews(PlotsDict[(PhaseText,PassTypeText,PlotTypeName)]) for (PlotTypeName,IsPlotTypeBoolean) in (PlotTypes)]) for PhaseText in PhaseTexts for PassTypeText in PassTypeTexts ] 
     CombinedList = [panel.panel(Title,height=135, margin = (0,0,0,0))]
     for (PlotTitle,PlotRows) in PlotList:
         CombinedList.append(panel.panel('#### '+PlotTitle,height=35, margin = (0,0,0,0)))
         CombinedList.append(panel.Row(*PlotRows, margin = (0,0,0,0)))
     ConstrcutedGrid = panel.Column(*CombinedList, margin = (0,0,0,0), linked_axes=False)
     return ConstrcutedGrid
+
 
 
 
@@ -369,7 +366,7 @@ Rows show scenarios where inputs include unit / context / both unit and context.
 
 Section5SummaryText = panel.panel("""# Summary
 ### <span style="color:magenta">We created tools necessary to merge units of measure standards.</span>
-### <span style="color:magenta">With such tools is will be possible for machines to:</span>
+### <span style="color:magenta">With such tools it will be possible for machines to:</span>
 ### <span style="color:magenta">- Recognize medical units, even if misspelled</span>
 ### <span style="color:magenta">- Comprehend medical units</span>
 ### <span style="color:magenta">- Comprehend numbers associated with units</span>
@@ -395,14 +392,14 @@ Section5AdditionalInfo = panel.panel("""
     - John Garguilo from NIST for information on RTMMS
 * Thanks to Paul Schluter for information about RTMMS and the IEEE unit standard
 * Thanks for Tipton Cole, Rocky Reston, Andrew Simms for useful directions
-* Thanks to Yuval Merchav Uri Goren, Ari Bornstein for NLP advise 
+* Thanks to Becky Ruppel, Yuval Merchav Uri Goren, Ari Bornstein, Ryan Baxley, Bhargav Srinivasa Desikan, Blaize Berry for NLP advise 
 
 ## Reproducibility:
 
-This presentation is accessible [here](https://jacob-barhak.github.io/Poster_CDISC2019.html). The code that generated the presentation can be accessed [here](https://github.com/Jacob-Barhak/Presentations/tree/master/CDISC2019). This presentation is generated using Python 2.7.16, panel-0.5.1, bokeh-1.1.0.
+This presentation is accessible [here](https://jacob-barhak.github.io/Poster_CDISC2019.html). The code that generated the presentation can be accessed [here](https://github.com/Jacob-Barhak/Presentations/tree/master/CDISC2019). This presentation is generated using Python 2.7.16, panel-0.5.1, holoviews 1.12.3, bokeh-1.1.0.
 Code and data for this work are archived in the file: AnalyzeCT_2019_05_13.zip. Web site database was created using the database PartUnitsDB_2019_05_13.db Supplemental code archived in the files: AnalyzeCT_Images_2019_10_10.zip, AnalyzeCT_Code_2019_05_15.zip. 
-Clinical Trials data archived in StudiesWithResults_Downloaded_2019_04_12.zip. Bio Ontology Units downloaded on 2019_04_09, CDISC data downloaded on 2019_03_30 , RTMMS units downloaded on 2019_03_24 .  
-Tensorflow 2.0.0 was used for Neural Network execution in Python 3.7.4 environment . This tensorflow version is unstable, so results presented may not be reproducible. Execution transcript was saved in the file:AnalyzeCT_TF2_LargeMod__Seq2Seq_MinimalWorkingWithContext_2019_10_03.zip
+Clinical Trials data archived in StudiesWithResults_Downloaded_2019_04_12.zip. Bio Ontology Units downloaded on 2019_04_09, CDISC data downloaded on 2019_03_30 , RTMMS units downloaded on 2019_03_24 . Mock database used in training was ModifiedUnitsDB_Remodified.db . 
+Tensorflow 2.0.0 was used for Neural Network execution in Python 3.7.4 environment . This tensorflow version is unstable, so results presented may not be fully reproducible. Execution transcript was saved in the file:AnalyzeCT_TF2_LargeMod_Mixed_LSTM_Unit_LSTM_Context_NewMetric_2019_10_14.zip .  PYTHONHASHSEED was set to 0.
 
 ## Publications:
 

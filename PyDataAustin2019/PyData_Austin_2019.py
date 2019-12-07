@@ -96,12 +96,12 @@ BokehDocument = bokeh.document.Document()
 TitleHTML = 'PyData Austin 2019 poster by Jacob Barhak & Joshua Schertz'
 SavedFileName = 'Presentation_PyData_Austin_2019.html'
 PublishURL = 'https://jacob-barhak.github.io/'+SavedFileName
-CodePublishURL = 'https://github.com/Jacob-Barhak/Presentations/tree/master/MSM_ML_IMAG2019'
+CodePublishURL = 'https://github.com/Jacob-Barhak/Presentations/tree/master/PyDataAustin2019'
 QRCodeFileName = 'PyDataAustin_2019.png'
 
 PresentationURL = panel.panel(ConstractImageLinkAnchor(PublishURL,QRCodeFileName,'View this presentation on the web',480), width=480, height=480)
 
-PresentationTitle = panel.panel('# Visualizing Machine Learning of Units of Measure Using PyViz', width=820, height=55, margin = (0,0,0,0))
+PresentationTitle = panel.panel('# Visualizing Machine Learning of Units of Measure Using PyViz', width=820, height=50, margin = (0,0,0,0))
 PresentationVenueText = panel.panel('Austin 7-8 Dec 2019', width=170, height=20, margin = (0,0,0,0))
 PresentationVenueFigure = panel.panel(ConstractImageLinkAnchor('https://pydata.org/austin2019/','logo.288981a8dfa8.png','PyData Austin 2019',110), width=100, height=30, margin = (0,0,0,0))
 PresentationVenue = panel.Column(PresentationVenueText, PresentationVenueFigure, margin = (0,0,0,0) )
@@ -209,14 +209,7 @@ def GenerateProximityMap():
     PanelOut = panel.pane.HoloViews(UnitHeatMap, width=600, height=600)
     return PanelOut
 
-#def LoadFullMatrixComponent(FileName, Title, ColorMap, PlotHeight, PlotWidth):
-#    "load larger matrix components and build an object with options"
-#    DataFile = open(DataDir+os.sep+FileName,'rb')
-#    HoloviewsObject = pickle.load(DataFile)
-#    DataFile.close()
-#    HoloviewsObject.opts(cmap=ColorMap, title = Title, xaxis=None, yaxis=None,  height=PlotHeight, width=PlotWidth, tools=['hover'], toolbar = None, axiswise=True)
-#    return HoloviewsObject
-#    
+
 def LoadHoloviewsComponent(FileName, Title, ColorMap, PlotHeight, PlotWidth):
     "load larger matrix components and build an object with options"
     DataFile = open(DataDir+os.sep+FileName,'rb')

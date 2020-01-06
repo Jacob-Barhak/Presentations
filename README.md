@@ -15,4 +15,5 @@ FILES:
 * CDISC2019: Poster for 2019 CDISC U.S. Interchange
 * MSM_ML_IMAG2019: Poster for Integrating Machine Learning with Multiscale Modeling for Biomedical, Biological, and Behavioral Systems (2019 ML-MSM)
 * PyDataAustin2019: Presentation + Poster for Pydata Austin
+* Galvanize_2020_01: Presentation for Galvanize January 2020
 

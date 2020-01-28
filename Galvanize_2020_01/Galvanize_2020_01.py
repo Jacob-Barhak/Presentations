@@ -59,6 +59,7 @@ Width = 1100
 
 ImageDir = 'Images'
 DataDir = 'Data'
+ExternalResources = 'https://jacob-barhak.github.io/PosterIMAG2019Resources/'
 
 def CovertFileToData(FileName):
     "Convert file to data that can be used in html"
@@ -130,7 +131,7 @@ The authors created a solution based on machine learning to address this standar
 * Representation of multiple unit standards: CDISC, NIST / RTMMS / IEEE, Unit Ontology / Bio Portal, UCUM 
 * Supervised machine learning of units. 
 
-This publication will focus on visualization of unsupervised and supervised learning employed in this project using the HoloViz libraries while explaining how other python libraries were used in this project.
+This publication will focus on visualization of unsupervised and supervised learning employed in this project using the HoloViz libraries while explaining how other python libraries were used in this project and its potential impact.
 
 """, width=700, height=500)
 
@@ -275,8 +276,7 @@ Section3SupervisedMachineLearningOverview = panel.panel("""<div class="special_t
 - There are too many target units to use ordinary classification
 - Many units map to the same result so the translation is many-to-one rather than one-to-one
 - Data distribution is unbalanced with many examples for some mappings
-- Context of units has a large vocabulary 
-- Training data is limited - although growing in time
+- Context of units has a large vocabulary while training data is limited - although growing in time
 
 ## Multiple Solutions Attempted
 | Solution                                   | Main Layers         | Encoding            | Comments                                                                                                             | References |
@@ -363,7 +363,7 @@ def GeneratePlot(InputFile, Title, Footer):
                     FrequencesToUse = Frequences
                 else:
                     FrequencesToUse = [ sum(Frequences[:(Enum+1)]) for Enum in range(len(Frequences))] 
-                HistogramShortTitle = holoviews.Histogram((Edges, FrequencesToUse)).redim.label(x='Quality', Frequency = ['Cumulative Proportion','Proportion'][IsPlotTypeBoolean]).opts( title = PlotTypeName, tools = ['hover'], ylim =(0,1), color = ['Blue','Red'][IsPlotTypeBoolean], height=135 , width=230-100*IsPlotTypeBoolean, toolbar = None, fontsize={'title': 8, 'labels': 8, 'xticks': 6, 'yticks': 6}, xticks=LabelsX)    
+                HistogramShortTitle = holoviews.Histogram((Edges, FrequencesToUse)).redim.label(x='Quality', Frequency = ['Cumulative Proportion','Proportion'][IsPlotTypeBoolean]).opts( title = PlotTypeName, tools = ['hover'], ylim =(0,1), color = ['Blue','Red'][IsPlotTypeBoolean], height=135 , width=230-100*IsPlotTypeBoolean, toolbar = None, fontsize={'title': 8, 'labels': 8, 'xticks': 6, 'yticks': 6}, xticks=LabelsX, shared_axes=False)    
                 PlotsDict[(PhaseText,PassTypeText,PlotTypeName)] = HistogramShortTitle
 
     PlotList = [  (PhaseText + ' ' + PassTypeText  , [ panel.pane.HoloViews(PlotsDict[(PhaseText,PassTypeText,PlotTypeName)]) for (PlotTypeName,IsPlotTypeBoolean) in (PlotTypes)]) for PhaseText in PhaseTexts for PassTypeText in PassTypeTexts ] 
@@ -372,7 +372,7 @@ def GeneratePlot(InputFile, Title, Footer):
         CombinedList.append(panel.panel('#### '+PlotTitle,height=35, margin = (0,0,0,0)))
         CombinedList.append(panel.Row(*PlotRows, margin = (0,0,0,0)))
     CombinedList.append(panel.panel(Footer,height=10, margin = (0,0,0,0)))
-    ConstrcutedGrid = panel.Column(*CombinedList, margin = (0,0,0,0), linked_axes=False)
+    ConstrcutedGrid = panel.Column(*CombinedList, margin = (0,0,0,0))
     return ConstrcutedGrid
 
 
@@ -403,7 +403,7 @@ Section5Abstract = panel.panel("""# Who Said Machine Learning is a Black Box?
 
 * It is possible to view the weights of a neural network layer change during training
 
-## PytViz Makes the black box transparent!
+## HoloViz Makes the black box transparent!
 """, width=Width, height=220)
 Section5History = LoadHoloviewsComponent('history_History.pckl',None,None, 280,1000)
 Section5Debug1 = LoadHoloviewsComponent('history_Layer_EncoderLSTM_bias_0.pckl',None,PuBu,600,600)
@@ -433,7 +433,6 @@ Section6SummaryText = panel.panel("""# Summary
 
 Section6Summary = panel.Row(Section6SummaryText,PresentationURL, margin = (0,0,0,0))
 
-
 Section6AdditionalInfo = panel.panel("""
 
 ## Reproducibility:
@@ -442,16 +441,14 @@ This presentation is accessible [here](%s). The code that generated the presenta
 Code and data for this work are archived in the file: AnalyzeCT_2019_05_13.zip. Web site database was created using the database PartUnitsDB_2019_05_13.db Supplemental code archived in the files: AnalyzeCT_Images_2019_10_10.zip, AnalyzeCT_Code_2019_05_15.zip. 
 Clinical Trials data archived in StudiesWithResults_Downloaded_2019_04_12.zip. Bio Ontology Units downloaded on 2019_04_09, CDISC data downloaded on 2019_03_30 , RTMMS units downloaded on 2019_03_24 . Mock database used in training was ModifiedUnitsDB_Remodified.db .
 Tensorflow 2.0.0 was used for Neural Network execution in Python 3.7.4 environment . This tensorflow version is unstable, so results presented may not be reproducible. PYTHONHASHSEED was set to 0. Executions archived in: AnalyzeCT_TF2_LargeMod_Mixed_LSTM_Unit_LSTM_Context_NewMetric_2019_10_14.zip , AnalyzeCT_TF2_LargeMod_Seq2Seq_NewMetric_2019_10_15.zip , AnalyzeCT_TF2_LargeMod_Mixed_LSTM_Unit_CNN_Context_NewMetric_2019_10_15.zip , AnalyzeCT_TF2_LargeMod_Mixed_CNN_Unit_CNN_Context_NewMetric_2019_10_15.zip , AnalyzeCT_TF2_Small_Mixed_LSTM_Unit_LSTM_Context_DebugPlots_2019_12_05.zip.
-
+The Reference Model plots were created using the script ExploreOptimizationResults_2019_02_24.py on Windows 10 environment with bokeh 1.0.4 holoviews 1.11.2 on Python 2.7.14 64 bit based on simulation results executed on a 64 core compute server with Ubuntu and stored in: MIST_RefModel_2019_02_18_OPTIMIZE.zip
 
 ## Acknowledgments: 
 * Many thanks to the HoloViz team: Philipp Rudiger, James Bednar, Jean-Luc Stevens.
 * Thanks to John Rice for the fruitful discussions regarding standardization
 * Thanks to Government individuals: Nick Ide (NIH/NLM), Erin E Muhlbradt (NIH/NCI) , John Garguilo (NIST) , Grace Peng (NIH/NIBIB) 
-* Thanks to Paul Schluter for information about RTMMS and the IEEE unit standard
-* Thanks for Tipton Cole, Rocky Reston, Andrew Simms for useful directions
+* Thanks to Paul Schluter, Tipton Cole, Rocky Reston, Andrew Simms for useful tips on units
 * Thanks to Becky Ruppel, Yuval Merchav Uri Goren, Ari Bornstein, Ryan Baxley, Bhargav Srinivasa Desikan, Blaize Berry for NLP advise 
-
 
 ## Publications:
 
@@ -465,25 +462,62 @@ Tensorflow 2.0.0 was used for Neural Network execution in Python 3.7.4 environme
 * J. Barhak, J. Schertz, Clinical Unit Mapping with Multiple Standards . 2019 CDISC U.S. Interchange, [Poster](https://jacob-barhak.github.io/Poster_CDISC2019.html) 
 * J. Barhak, J. Schertz, Supervised Learning of Units of Measure. IMAG ML-MSM/IMAG meeting. Oct 24-25, 2019 @ NIH, Bethesda, MD . [Poster](https://jacob-barhak.github.io/Poster_MSM_ML_IMAG_2019.html)
 * J. Barhak, J. Schertz, Visualizing Machine Learning of Units of Measure using PyViz . PyData Austin 2019 , 6-7 December 2019, Galvanize Austin. [Presentation](https://jacob-barhak.github.io/Presentation_PyData_Austin_2019.html) , [Video](https://youtu.be/KS-sRpUvnD0)
-
 """%(PublishURL,CodePublishURL), width=Width, height=800)
-
 
 
 Section6 =  panel.Column(Section6Summary,Section6AdditionalInfo, margin = (0,0,0,0))
 
 
+Section7TheRefModelDiagram = panel.panel(ConstractImageLinkAnchor('https://simtk.org/projects/therefmodel','TheRefModelDiagram.png','The Reference Model',800), width=800, height=280)
+
+
+Section7Title = panel.panel("""# The Reference Model for Disease Progression""", width=Width, height=50)
+
+Section7KeyPoints = panel.panel("""
+#### The Most Validated Diabetes CVD model known !
+#### Created by Jacob Barhak in 2012
+#### It requires standardized medical data as input
+
+## Key Points:
+
+* Ensemble model 
+* Accumulates knowledge from:
+    * Existing models 
+    * Observed outcomes
+* Focuses on summary data 
+    * Avoids individual data restrictions
+    * Larger merged population base
+* Flexible import from ClinicalTrials.Gov
+    * Reduced the time to add a population from a week to hours
+* Uses High Performance Computing
+* Traceable and reproducible
+* Extendibles and can include more disease processes 
+* Protected by U.S. Patent 9,858,390
+* Can map our cumulative computational understanding gap
+
+""", width=500, height=500)
+
+
+Section7TheRefModelDiagram = panel.panel(ConstractImageLinkAnchor('https://simtk.org/projects/therefmodel','TheRefModelDiagram.png','The Reference Model',600), width=1000, height=400)
+
+Section7TheRefModel = panel.Row(Section7KeyPoints,Section7TheRefModelDiagram)
+
+Section7PopulationPlot = panel.panel(ObjectInlineHTML(ExternalResources+'PopulationPlotActive.html'), width=1200, height=600)
+
+
+Section7 = panel.Column(Section7Title, Section7TheRefModel, Section7PopulationPlot, margin = (0,0,0,0))
 
 
 
 SectionSelectorTab = panel.layout.Tabs (
                                         ('Preface',Section0),
-                                        ('Solution Outline ClinicalUnitMapping.com', Section1),
+                                        ('Solution Outline', Section1),
 
                                         ('Supervised Machine Learning', Section3SupervisedMachineLearningOverview),
                                         ('Preliminary Results', Section4),
                                         ('Looking Inside the Black Box', Section5),
                                         
+                                        ('The Reference Model', Section7),
                                         ('Summary', Section6),
                                         margin = (0,0,0,0), 
                                         )

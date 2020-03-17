@@ -16,4 +16,8 @@ FILES:
 * MSM_ML_IMAG2019: Poster for Integrating Machine Learning with Multiscale Modeling for Biomedical, Biological, and Behavioral Systems (2019 ML-MSM)
 * PyDataAustin2019: Presentation + Poster for Pydata Austin
 * Galvanize_2020_01: Presentation for Galvanize January 2020
+* MSM_IMAG2020: Poster uploaded to Interagency Modeling and Analysis Group - IMAG wiki - MODELS, TOOLS & DATABASES
+* PieAI2020: Pie & AI presentation
+
+
 

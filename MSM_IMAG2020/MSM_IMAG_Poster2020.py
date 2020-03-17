@@ -101,7 +101,7 @@ TitleHTML = 'MSM IMAG 2020 poster by Jacob Barhak'
 SavedFileName = 'Poster_MSM_IMAG_2020.html'
 PublishURL = 'https://jacob-barhak.github.io/'+SavedFileName
 CodePublishURL = 'https://github.com/Jacob-Barhak/Presentations/tree/master/MSM_IMAG2020'
-QRCodeFileName = 'MSM_IMAG_2019_Poster.png'
+QRCodeFileName = 'MSM_IMAG_2020_Poster.png'
 
 PresentationURL = panel.panel(ConstractImageLinkAnchor(PublishURL,QRCodeFileName,'View this presentation on the web',380), width=380, height=380)
 
@@ -240,7 +240,7 @@ def SaveFile(FileName, PlotObject, Title):
 def GenerateHistoryPlots(Width,Height):
     "generate the history plots"
 
-    # Define the custom function fot the hover tool
+    # Define the custom function for the hover tool
     MyCustom = CustomJSHover(code='''
             var value;
             var modified;

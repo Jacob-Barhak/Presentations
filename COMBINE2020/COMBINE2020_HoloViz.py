@@ -1,10 +1,9 @@
 ###############################################################################
-# To the extent possible under law, Jacob Barhak has waived all copyright and 
-# related or neighboring rights to COMBINE 2020 HoloViz Presentation. 
-# This work is published from: United States.
-# The COMBINE logo is not subject to the license - please contact COMBINE 
-# organizers for usage terms for the COMBINE logo. All other files are provided 
-# under the CC0 license.
+# This work is available under 
+# Creative Commons Attribution-ShareAlike 4.0 International license
+# (https://creativecommons.org/licenses/by-sa/4.0/deed.en)
+# A previous version of this work without the COMBINE logo is available 
+# under CC0 in the same github repository. 
 #
 ###############################################################################
 #
@@ -107,14 +106,14 @@ Please follow the tab / links in reading order.
 
 ## HoloViz Overview:
 
-### Topic 1. Introduction to HoloViz technologies and libraries 
-[click here](https://holoviz.org/) to follow the overview
+### Topic 1. Introduction to HoloViz Technologies and Libraries 
+[Click here](https://holoviz.org/) to follow the overview
 
-### Topic 2. Various demos of HoloViz capabilities 
-[click here](https://examples.pyviz.org/) for visit some demos
+### Topic 2. Various Demos of HoloViz Capabilities 
+[Click here](https://examples.pyviz.org/) for visit some demos
 
-### Topic 3. Setup - this will explain what you need to install
-[click here](https://holoviz.org/tutorial/Setup.html) to see the instructions
+### Topic 3. Setup - What You Need to Install
+[Click here](https://holoviz.org/tutorial/Setup.html) to see the instructions
 
 
 """, width=700, height=500)
@@ -131,29 +130,32 @@ section2_left = panel.panel("""# Holoviews
 
 ## 
 
-## Topic 1. HoloViews overview
+## Topic 1. HoloViews Overview
 HoloViews is a high level plotting library.
 
-[click here](http://holoviews.org/) to access its web portal
+[Click here](http://holoviews.org/) to access its web portal
 
 ## Topic 2. HoloViews Gallery
-[click here](http://holoviews.org/reference/) to learn about many types of plots.
+[Click here](http://holoviews.org/reference/) to learn about many types of plots.
 
 
-## Topic 3. The True power of Holoviews - Combining plots
+## Topic 3. The True Power of Holoviews - Combining plots
 Plots can be combined by merging them together into complex plots
 
-[click here](http://holoviews.org/reference/containers/bokeh/Overlay.html#containers-bokeh-gallery-overlay)
+[Click here](http://holoviews.org/reference/containers/bokeh/Overlay.html#containers-bokeh-gallery-overlay)
  to learn about overlays 
 
-[click here](http://holoviews.org/reference/containers/bokeh/Layout.html#containers-bokeh-gallery-layout)
+[Click here](http://holoviews.org/reference/containers/bokeh/Layout.html#containers-bokeh-gallery-layout)
  to learn about layouts 
- 
-## Topic 4. HoloViews plots can be made interactive
-[click here](http://holoviews.org/reference/elements/bokeh/HeatMap.html#elements-bokeh-gallery-heatmap)
- to learn about how to add a hover tool
 
-[click here](http://holoviews.org/reference/containers/bokeh/HoloMap.html#containers-bokeh-gallery-holomap)
+[Click here](http://holoviews.org/user_guide/Composing_Elements.html)
+ to learn more about composing elements
+ 
+## Topic 4. HoloViews Plots are Interactive
+[Click here](http://holoviews.org/reference/elements/bokeh/HeatMap.html#elements-bokeh-gallery-heatmap)
+ to learn about how to add a hover tool and [click here to learn to make a custom hover tool](https://discourse.holoviz.org/t/how-to-create-a-conditional-custom-hover-tool-for-a-holoviews-plot/311)
+
+[Click here](http://holoviews.org/reference/containers/bokeh/HoloMap.html#containers-bokeh-gallery-holomap)
  to learn about how to create interactive multi dimensional plots 
 
 
@@ -179,7 +181,7 @@ section2_right = panel.panel(hmap, width=350, height=350, widget_location='botto
 
 section2 = panel.Row(section2_left, section2_right)
 
-section3_title = panel.panel("""# Using Panel for creating interactive presentations
+section3_title = panel.panel("""# Using Panel for Creating Interactive Presentations
 """, width=700, height=50)
 
 section3_1_top = panel.panel("""# Panel using Markdown
@@ -363,7 +365,7 @@ section3_3 = panel.Column(section3_3_top, panel.Row(section3_3_left, section3_3_
 
 
 
-section3_4_top = panel.panel("""# Using html with Panel
+section3_4_top = panel.panel("""# Using HTML with Panel
 """, width=800, height=30)
 
 
@@ -565,7 +567,7 @@ section3_6_right = panel.panel(tabs, width=600, height=500)
 
 section3_6 = panel.Column(section3_6_top, panel.Row(section3_6_left, section3_6_right) )
 
-section3_7 = panel.panel("""# save presentation as static html
+section3_7 = panel.panel("""# Save presentation as static HTML
 Most Panel objects can be saved to a file. 
 For example we will save the tabs object created in the "Arranging Panels" tab
 
@@ -658,7 +660,7 @@ section4 =  panel.Column(section4_summary, section4_additional_info, margin = (0
 
 section_selector_tab = panel.layout.Tabs (
                                         ('Introduction to HoloViz',section1),
-                                        ('HoloViews for plotting', section2),
+                                        ('HoloViews for Plotting', section2),
                                         ('Panel for Presentations', section3),                                       
                                         ('Summary', section4),
                                         margin = (0,0,0,0), 

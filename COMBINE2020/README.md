@@ -63,6 +63,6 @@ without their support and development of HoloViz visualization tools, this inter
 
 LICENSE
 -------
-The COMBINE logo is not subject to the license - please contact COMBINE organizers for usage terms for the COMBINE logo. All other files are provided under the CC0 license.
-To the extent possible under law, Jacob Barhak has waived all copyright and related or neighboring rights to COMBINE 2020 HoloViz Presentation. This work is published from: United States.
+This work is available under [Creative Commons Attribution-ShareAlike 4.0 International license](https://creativecommons.org/licenses/by-sa/4.0/deed.en)
+A previous version of this work without the COMBINE logo is available under CC0 in the same github repository. 
 

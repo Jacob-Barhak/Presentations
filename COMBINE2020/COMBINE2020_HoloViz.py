@@ -126,7 +126,7 @@ section1_right = panel.panel(   constract_image_link_anchor(
 section1 = panel.Row(section1_left, section1_right)
 
 
-section2_left = panel.panel("""# Holoviews
+section2_left = panel.panel("""# HoloViews
 
 ## 
 

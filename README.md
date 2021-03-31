@@ -19,6 +19,7 @@ FILES:
 * MSM_IMAG2020: Poster uploaded to Interagency Modeling and Analysis Group - IMAG wiki - MODELS, TOOLS & DATABASES
 * PieAI2020: Pie & AI presentation
 * COBINE2020: Presentation for HoloViz Tutorial in COMBINE 2020 - October 2020
+* PyConIsrael2021: Presentation for PyCon Israel 2021 Holoviz Tutorial
 
 
 

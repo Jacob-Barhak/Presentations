@@ -110,12 +110,13 @@ Please follow the tab / links in reading order.
 ### Topic 1. Introduction to HoloViz Technologies and Libraries 
 [Click here](https://holoviz.org/) to follow the overview
 
-### Topic 2. Various Demos of HoloViz Capabilities 
-[Click here](https://examples.pyviz.org/) for visit some demos
+### Topic 2. Getting started with Holoviews
 
-### Topic 3. Setup - What You Need to Install
-[Click here](https://holoviz.org/tutorial/Setup.html) to see the instructions
+[Click here](https://holoviews.org/) to reach holoviews.org
 
+[Click here](https://holoviews.org/getting_started/Introduction.html) for getting started
+
+[Click here](https://holoviews.org/user_guide/Dashboards.html) for dashboards
 
 """, width=700, height=500)
 
@@ -127,60 +128,7 @@ section1_right = panel.panel(   constract_image_link_anchor(
 section1 = panel.Row(section1_left, section1_right)
 
 
-section2_left = panel.panel("""# HoloViews
 
-## 
-
-## Topic 1. HoloViews Overview
-HoloViews is a high level plotting library.
-
-[Click here](http://holoviews.org/) to access its web portal
-
-## Topic 2. HoloViews Gallery
-[Click here](http://holoviews.org/reference/) to learn about many types of plots.
-
-
-## Topic 3. The True Power of Holoviews - Combining Plots
-Plots can be combined by merging them together into complex plots
-
-[Click here](http://holoviews.org/reference/containers/bokeh/Overlay.html#containers-bokeh-gallery-overlay)
- to learn about overlays 
-
-[Click here](http://holoviews.org/reference/containers/bokeh/Layout.html#containers-bokeh-gallery-layout)
- to learn about layouts 
-
-[Click here](http://holoviews.org/user_guide/Composing_Elements.html)
- to learn more about composing elements
- 
-## Topic 4. HoloViews Plots are Interactive
-[Click here](http://holoviews.org/reference/elements/bokeh/HeatMap.html#elements-bokeh-gallery-heatmap)
- to learn about how to add a hover tool and [click here to learn to make a custom hover tool](https://discourse.holoviz.org/t/how-to-create-a-conditional-custom-hover-tool-for-a-holoviews-plot/311)
-
-[Click here](http://holoviews.org/reference/containers/bokeh/HoloMap.html#containers-bokeh-gallery-holomap)
- to learn about how to create interactive multi dimensional plots 
-
-
-
-
-""", width=700, height=500)
-
-def sine_curve(phase, freq, elevation):
-    xvals = [0.1* i for i in range(100)]
-    yvals = [math.sin(phase+freq*x) + elevation for x in xvals]
-    data = {'xvals': xvals, 'yvals': yvals}
-    return holoviews.Points(data, kdims=['xvals','yvals'])
-
-holoviews.extension ('bokeh')
-frequencies = [0.5+i*0.25 for i in range(4)] 
-phases      = [i*math.pi/2 for i in range(4)]
-elevations  = [i*0.1 for i in range(4)]
-curve_dict = {(p,f,v): sine_curve(p,f,v) for p in phases for f in frequencies for v in elevations}
-
-hmap = holoviews.HoloMap(curve_dict, kdims=['phase', 'frequency', 'elevation']).opts(height=150,width=150, toolbar=None, default_tools=[])
-section2_right = panel.panel(hmap, width=350, height=350, widget_location='bottom')
-
-
-section2 = panel.Row(section2_left, section2_right)
 
 section3_title = panel.panel("""# Using Panel for Creating Interactive Presentations
 """, width=700, height=50)
@@ -661,7 +609,6 @@ section4 =  panel.Column(section4_summary, section4_additional_info, margin = (0
 
 section_selector_tab = panel.layout.Tabs (
                                         ('Introduction to HoloViz',section1),
-                                        ('HoloViews for Plotting', section2),
                                         ('Panel for Presentations', section3),                                       
                                         ('Summary', section4),
                                         margin = (0,0,0,0), 

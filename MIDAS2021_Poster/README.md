@@ -30,6 +30,8 @@ FILES:
 * COVID19EnsemblePoster.py : Code that generates the presentation.
 * Images : a directory containing images used to generate the presentation.
 * Resource : a directory containing other resources combined into the presentation.
+* Announce.odt : an announcement file in odt format
+* Announce.pdf : an announcement file in pdf format
 * Poster_COVID19_Ensemble_2021.html : The presentation file.
 
 

@@ -11,8 +11,8 @@ FILES:
 ------
 * MIDAS_Annual_Tutorial_MIST.odp : The LibraOffice Impress presentation file
 * MIST_Tutorial_Example1.zip : Example 1 MIST model
-* MIST_Tutorial_Example1.zip : Example 1 MIST model
-* MIST_Tutorial_Example1.zip : Example 1 MIST model
+* MIST_Tutorial_Example2.zip : Example 2 MIST model
+* MIST_Tutorial_Example3.zip : Example 3 MIST model
 
 
 DEVELOPER CONTACT INFO:

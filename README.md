@@ -22,6 +22,7 @@ FILES:
 * MIDAS2021_MIST: Presentation for MIDAS 2021 annual meeting MIST Tutorial
 * MIDAS2021_Poster: Interactive Poster for MIDAS 2021 annual meeting of COVID-19 Ensemble
 * PyConIsrael2021: Presentation for PyCon Israel 2021 Holoviz Tutorial
+* MIDAS_Webinar: Presentation for MIDAS May Webinar on COVID-19 Ensemble
 
 
 

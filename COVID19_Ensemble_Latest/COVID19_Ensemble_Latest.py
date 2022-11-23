@@ -149,8 +149,6 @@ PresentationURL = panel.panel(ConstractImageLinkAnchor(PublishURL,QRCodeFileName
 PresentationTitle = panel.panel('# The Reference Model for COVID-19 attempts to explain USA data', width=Width, height=40, margin = (0,0,0,0))
 PresentationVenue = panel.panel('[CHRONIC DISEASES & INFECTIOUS DISEASES 24-NOV-2022, Paris, France](https://www.chronicdiseases.scientexconference.com/)', width=500, height=40, margin = (0,0,0,0))
 
-#PresentationVenue = panel.panel('[Orlando Machine Learning and Data Science Meetup - 18 June 2022](https://www.meetup.com/orlando-mlds/events/286278255/)', width=450, height=40, margin = (0,0,0,0))
-
 PresentationAuthors = panel.panel("By: ***[Jacob Barhak](https://sites.google.com/view/jacob-barhak/home)***", width=600, height=40, margin = (0,0,0,0))
 
 PresentationHeader = panel.Column( PresentationTitle,  panel.Row (PresentationAuthors , PresentationVenue, margin = (0,0,0,0)), margin = (0,0,0,0))
@@ -246,6 +244,11 @@ ReferencesText = """### References
 
 45. Lucas Bottcher, Mingtao Xia, Tom Chou. Why case fatality ratios can be misleading: individual- and population-based mortality estimates and factors influencing them. Physical Biology, Volume 17, Number 6. <https://doi.org/10.1088/1478-3975/ab9e59>
 
+46. NOAA - Climate at a glance <https://www.ncdc.noaa.gov/cag/statewide/mapping/110/tavg/202004/1/value>
+
+47. Eric Forgoston, Michael A.S. Thorne. Strategies for Controlling the Spread of COVID-19, medRxiv 2020.06.24.20139014; <https://doi.org/10.1101/2020.06.24.20139014>
+
+
 """
 
 RefDict = ExtractReferencesDict(ReferencesText)
@@ -304,11 +307,12 @@ The ensemble model structure is presented above . The transition probabilities b
 The Reference Model combines these models and matches their results to results from The COVID Tracking project [1] every 10 days for 60 days to extract the best ensemble.
 
 ### Initialization
-Populations for 51 US states and territories were generated from data of multiple sources: 
+Populations for US states and territories were generated from data of multiple sources: 
 
 * The Covid Tracking project [1] at the first day of simulation April 1st 2020. 
 * Age and state/territory statistics from US Census [21],[22]. 
 * Number of Interaction per individual according to [42],[43].
+* Temperature in US states extracted from NOAA [46].
 
 Evolutionary computation is used to optimize the randomly generated individuals to match the target statistics.
 
@@ -372,13 +376,13 @@ Section4 = panel.panel(FixReferences(RefDict,"""### Response Models
 Response models represent behavior of different individuals in response to the pandemic:
 
 <div class="special_table"></div>
-| Response Model | Model Description                                                                                                                                                           |
-|:---------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 1              | Apple mobility interpolates level of interactions beyond family size. 10% infected people randomly reduce their number of interactions daily until family size is reached.  |
-| 2              | Apple mobility interpolates level of interactions beyond family size.  20% infected people randomly reduce their number of interactions daily until family size is reached. |
-| 3              | Healthy individuals do not change behavior. Infected persons drop to interaction with family only.                                                                          |
-| 4              | 0.5 compliance to state closures considering start of stay-at-home order, schools, bars & restaurants, non-essential shops                                                  |
-| 5              | 0.9 compliance to state closures considering start of stay-at-home order, schools, bars & restaurants, non-essential shops                                                  |
+| Response Model | Model Description                                                                                                                                                                |
+|:---------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 1              | Apple mobility [34] interpolates level of interactions beyond family size. 10% infected people randomly reduce their number of interactions daily until family size is reached.  |
+| 2              | Apple mobility [34] interpolates level of interactions beyond family size.  20% infected people randomly reduce their number of interactions daily until family size is reached. |
+| 3              | Healthy individuals do not change behavior. Infected persons drop to interaction with family only.                                                                               |
+| 4              | 0.5 compliance to state closures considering start of stay-at-home order, schools, bars & restaurants, non-essential shops. Adapted and extended from [47]                       |
+| 5              | 0.9 compliance to state closures considering start of stay-at-home order, schools, bars & restaurants, non-essential shops. Adapted and extended from [47]                       |
 
 """), width=Width, height=None)
 
@@ -411,13 +415,13 @@ Observation models represent how an observer see the true umbers reported by the
 
 
 <div class="special_table"></div>
-| Observation Model | Infections Multiplier | Mortality Multiplier | Comments                                                                                        |
-|:------------------|:----------------------|:---------------------|:------------------------------------------------------------------------------------------------|
-| 1                 | 1 for all states      | 1 for all states     | This observer believes that observed numbers are true                                           |
-| 2                 | 5 for all states      | 1 for all states     | This observer believes infections are under reported                                            |
-| 3                 | 20 for all states     | 1 for all states     | This observer believes infections are highly under reported                                     |
-| 4                 | 7.15 for all states   | Varies per state     | This observer believes infections are under reported and death accuracy varies per state        |
-| 5                 | Varies per state      | 1 for all states     | This observer attempts to correct infection numbers to match results from previous simulations  |
+| Observation Model | Infections Multiplier | Mortality Multiplier | Comments                                                                                                                               |
+|:------------------|:----------------------|:---------------------|:---------------------------------------------------------------------------------------------------------------------------------------|
+| 1                 | 1 for all states      | 1 for all states     | This observer believes that observed numbers are true                                                                                  |
+| 2                 | 5 for all states      | 1 for all states     | This observer believes infections are under reported                                                                                   |
+| 3                 | 20 for all states     | 1 for all states     | This observer believes infections are highly under reported                                                                            |
+| 4                 | 7.15 for all states   | Varies per state     | This observer believes infections are under reported and death accuracy varies per state. This model was adapted from analysis in [45] |
+| 5                 | Varies per state      | 1 for all states     | This observer attempts to correct infection numbers to match results from previous simulations                                         |
 
 """), width=Width, height=None)
 
@@ -428,7 +432,7 @@ The results presented here was executed on 64 core server for almost 3 weeks - t
 
 * ***Population Plot - Top Left*** - This plot shows difference between model and observed data - fitness. The fitness score is displayed for each state population. A viewer hovering with the mouse over the circle will see information about the population at that time including number of infections and deaths. The numbers are presented as model projection / observed numbers by the COVID tracking project. The numbers are scaled to cohort batch size of ***100,000 individuals in this simulation***. The fitness score in this paper is a norm of the mortality difference and infections difference.
        
-* ***Model Mixture Plot - Top Right*** -  This plot shows the influence of each model on the ensemble. Models from the same group that compete with each other are presented in the same color and their combined influence will be 1. Initially all models in a group have the same influence so in iteration 1 - the plot shows many bars in the same height. When dragging the iteration slider and increasing the iteration, it is possible to see that some models gain influence while others lose it. In one case a transmission model is fully rejected. 
+* ***Model Mixture Plot - Top Right*** -  This plot shows the influence of each model on the ensemble. Models from the same group that compete with each other are presented in the same color and their combined influence will be 1. Initially all models in a group have the same influence so in iteration 1 - the plot shows many bars in the same height. When dragging the iteration slider and increasing the iteration, it is possible to see that some models gain influence while others lose it. It is possible for a model to be fully rejected. 
        
 * ***Convergence Plot - Bottom*** - This plot shows the weighted average fitness for the US states and territories used for each iteration. The blue vertical line shows the current iteration, while the large yellow circle shows the fitness for the unperturbed simulation that is the base of the optimization algorithm. The small circles show the results for the perturbed simulations, those help determine sensitivity and are used in optimization. The red horizontal lines represent the average fitness considering all the simulations in an iteration. This plot clearly shows some models are outliers in some iterations by seeing a spread far away from the unperturbed solution. 
 
@@ -549,7 +553,6 @@ SectionSelectorTab = panel.layout.Tabs (
                                         ('Conclusions', Section10),
                                         margin = (0,0,0,0), 
                                         )
-#Section6References = panel.panel(ReferencesText, width=Width, height=None)
 
                                        
 Presentation = panel.Column(PresentationHeader, SectionSelectorTab)

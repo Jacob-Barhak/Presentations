@@ -25,6 +25,7 @@ FILES:
 * MIDAS_Webinar: Presentation for MIDAS May Webinar on COVID-19 Ensemble
 * COVID19_Ensemble_Latest - latest presentation of the COVID-19 ensemble model
 * Unit_Mapping_Latest: - latest presentation of the unit mapping project
+* Penguin2023: - Open Source, Sustainability, and CC0
 
 
 

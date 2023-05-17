@@ -63,6 +63,6 @@ Also thanks to Filippo Castiglione, Robin Thompson, William Hart, Alan Perelson,
 
 LICENSE
 -------
-
-Copyright (C) 2021-2022 Jacob Barhak 
+Logos of Anaconda, Holoviz, MIDAS, SciPod, United Solutions are properties of these organizations and used with permission. 
+Copyright (C) 2021-2023 Jacob Barhak 
 

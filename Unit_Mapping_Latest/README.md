@@ -65,5 +65,5 @@ without their support and development of HoloViz visualization tools, this inter
 
 LICENSE
 -------
-
-Copyright (C) 2019,2020,2022 Jacob Barhak
+Logos of DataHeroes, Anaconda, Holoviz are properties of these organizations and used with permission.
+Copyright (C) 2019, 2020, 2022, 2023 Jacob Barhak

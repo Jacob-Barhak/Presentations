@@ -283,7 +283,7 @@ Previous published versions of this presentation are archived and can be downloa
 
 """), width=Width, height=None)
 
-Section0Video = panel.pane.Video(ResourceDir+os.sep+'COVID_19_Intro_libx265_crf28.mp4', width=1080, height=590, loop=True, name = 'press play to watch the introduction video')
+Section0Video = panel.pane.Video(ResourceDir+os.sep+'COVID_19_Intro_libx264_crf28.mp4', width=1080, height=590, loop=True, name = 'press play to watch the introduction video')
 
 Section0 = panel.Column(Section0Video, Section0Abstract, margin = (0,0,0,0))
 
@@ -523,7 +523,7 @@ The following researchers provided models. Here is some information on their wor
 * [Lucas Boettcher](http://lucas-boettcher.info/) - provided an infectiousness model and an observation model
     - [A statistical model of COVID-19 testing in populations: effects of sampling bias and testing errors](https://doi.org/10.1098/rsta.2021.0121)
     - [Using excess deaths and testing statistics to determine COVID-19 mortalities](https://doi.org/10.1007/s10654-021-00748-2)
-    - [On the accuracy of short-term COVID-19 fatality forecasts1](https://doi.org/10.1186/s12879-022-07205-9)
+    - [On the accuracy of short-term COVID-19 fatality forecasts](https://doi.org/10.1186/s12879-022-07205-9)
 
 * [Robin Thompson](https://robin-thompson.co.uk/) and William Hart - provided an infectiousness model
     - [Generation time of the alpha and delta SARS-CoV-2 variants: an epidemiological analysis](https://doi.org/10.1016/S1473-3099(22)00001-9)

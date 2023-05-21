@@ -212,7 +212,7 @@ Section1MethodText = panel.panel(FixReferences(RefDict,"""# Proposed Solution
 
 ### - [CDISC](https://www.cdisc.org/) - Clinical Data Interchange Standards Consortium.
 ### - [RTMMS / IEEE](https://rtmms.nist.gov/rtmms/) - affiliated with NIST / IEEE 11073-10101.
-### - [Unit Onthology](https://bioportal.bioontology.org/) from BioPortal (BIOUO).
+### - [Unit Ontology](https://bioportal.bioontology.org/) from BioPortal (BIOUO).
 ### - [UCUM](https://unitsofmeasure.org/) - The Unified Code for Units of Measure (RTMMS / CDISC).
 
 ## 3. Use python tools to:

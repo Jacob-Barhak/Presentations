@@ -136,7 +136,7 @@ QRCodeFileName = 'Unit_Mapping_Latest.png'
 PresentationURL = panel.panel(ConstractImageLinkAnchor(PublishURL,QRCodeFileName,'View this presentation on the web',480), width=480, height=480)
 
 PresentationTitle = panel.panel('# ClinicalUnitMapping.Com Takes a Small Step Towards Machine Comprehension of Clinical Trial Data', width=700, height=80, margin = (0,0,0,0))
-PresentationVenue = panel.panel('[22-23 May 2023 </br> MODSIM WORLD </br> Norfolk, VA](https://modsimworld.org/)', width=300, height=80, margin = (0,0,0,0))
+PresentationVenue = panel.panel('[28-29 June 2023 </br> 2023 MSM Consortium Meeting - Past2Future, NIH Campus, Natcher Conference Center, Bethesda MD](https://www.imagwiki.nibib.nih.gov/index.php/imag-events/2023-MSM-Meeting)', width=300, height=80, margin = (0,0,0,0))
 PresentationAuthors = panel.panel("By: [Jacob Barhak](http://sites.google.com/site/jacobbarhak/) </br> & [Joshua Schertz](https://joshschertz.com/)", width=120, height=80, margin = (0,0,0,0))
 PresentationHeader = panel.Row ( PresentationTitle,  PresentationAuthors , PresentationVenue, margin = (0,0,0,0))
 
@@ -186,7 +186,8 @@ The intention is to unify unit standards and machine learning tools that will be
 
 Previous published versions of this presentation are archived and can be downloaded below: 
 
-* Keynote at [CHRONIC DISEASES & INFECTIOUS DISEASES 24-NOV-2022, Paris, France](https://github.com/Jacob-Barhak/Presentations/blob/174bd55bfc0cc1eee4af06404353a9af5a3824f7/COVID19_Ensemble_Latest/COVID19_Ensemble_Latest.html)
+* [22-23 May 2023 MODSIM WORLD Norfolk, VA](https://modsimworld.org/)  - [repository link](https://github.com/Jacob-Barhak/Presentations/blob/29f8327681785c15b60d0b0013cdb614510105b1/Unit_Mapping_Latest/Unit_Mapping_Latest.html)
+* Keynote at [CHRONIC DISEASES & INFECTIOUS DISEASES 24-NOV-2022, Paris, France](https://www.chronicdiseases.scientexconference.com/)   - [repository link](https://github.com/Jacob-Barhak/Presentations/blob/174bd55bfc0cc1eee4af06404353a9af5a3824f7/COVID19_Ensemble_Latest/COVID19_Ensemble_Latest.html)
 
 
 """), width=1100, height=600)
@@ -409,7 +410,7 @@ Section4 = panel.Column(Section4SupervisedMachineLearningHeader,Section4Supervis
 
 
 Section5ShowTheSite = panel.panel(FixReferences(RefDict,"""
-# Try the AI
+# Explore the AI on the Website
 <object width="1150" height="400" data="https://clinicalunitmapping.com/">Warning: web site could not be included!</object>
 
 """), width=Width, height=250)
@@ -466,7 +467,7 @@ Section11_1  = panel.panel(FixReferences(RefDict,"""
 * *** IEEE 11073-10101 - Adapted and reprinted with permission from IEEE. </br>Copyright IEEE 2019. All rights reserved.***
 
 * Thanks to Government individuals for useful information: 
-    - Nick Ide (NIH/NLM)
+    - Nick Ide (Formerly NIH/NLM)
     - Erin E Muhlbradt (NIH/NCI) 
     - John Garguilo (NIST)
     - Grace Peng (NIH/NIBIB) 
@@ -525,7 +526,7 @@ SectionSelectorTab = panel.layout.Tabs (
 
                                         ('Supervised Machine Learning', Section3SupervisedMachineLearningOverview),
                                         ('Training', Section4),
-                                        ('Try the AI', Section5),
+                                        ('Explore the AI', Section5),
                                         
                                         ('Summary', Section6),
                                         ('Acknowledgments', Section11),

@@ -145,9 +145,9 @@ QRCodeFileName = 'COVID19_Ensemble_Latest.png'
 PresentationURL = panel.panel(ConstractImageLinkAnchor(PublishURL,QRCodeFileName,'View this publication on the web',380), width=380, height=380)
 
 PresentationTitle = panel.panel('# The Reference Model for COVID-19 attempts to explain USA data', width=Width, height=40, margin = (0,0,0,0))
-PresentationVenue = panel.panel('[22-23 May 2023, MODSIM WORLD, Norfolk, VA](https://modsimworld.org/)', width=500, height=40, margin = (0,0,0,0))
+PresentationVenue = panel.panel('[28-29 June 2023, 2023 MSM Consortium Meeting - Past2Future, NIH Campus, Natcher Conference Center, Bethesda MD](https://www.imagwiki.nibib.nih.gov/index.php/imag-events/2023-MSM-Meeting)', width=740, height=40, margin = (0,0,0,0))
 
-PresentationAuthors = panel.panel("By: ***[Jacob Barhak](https://sites.google.com/view/jacob-barhak/home)***", width=600, height=40, margin = (0,0,0,0))
+PresentationAuthors = panel.panel("By: ***[Jacob Barhak](https://sites.google.com/view/jacob-barhak/home)***", width=280, height=40, margin = (0,0,0,0))
 
 PresentationHeader = panel.Column( PresentationTitle,  panel.Row (PresentationAuthors , PresentationVenue, margin = (0,0,0,0)), margin = (0,0,0,0))
 
@@ -275,11 +275,11 @@ The Reference Model has therefore reached the achievement of being the first kno
 
 Previous published versions of this presentation are archived and can be downloaded below: 
 
+* [MODSIM WORLD, Norfolk, VA 22-23 May 2023](https://modsimworld.org/) - [repository link](https://github.com/Jacob-Barhak/Presentations/blob/25fd75da5c7bd2ea187dfad05a6b210f47172cd9/COVID19_Ensemble_Latest/COVID19_Ensemble_Latest.html) 
 * [San Diego Python Users Group Monthly Meetup 27-April-2023](https://www.meetup.com/pythonsd/events/292436501/) - [repository link](https://github.com/Jacob-Barhak/Presentations/blob/fca94ff82a89860b12eb4398ec48920654ced28c/COVID19_Ensemble_Latest/COVID19_Ensemble_Latest.html) - [video](https://www.youtube.com/live/U9jSxbyJU0I?feature=share&t=1773) 
 * [PyData Chicago on 15-Dec-2022](https://www.meetup.com/pydatachi/events/289899473/) - [repository link](https://github.com/Jacob-Barhak/Presentations/blob/fca94ff82a89860b12eb4398ec48920654ced28c/COVID19_Ensemble_Latest/COVID19_Ensemble_Latest.html) - [video](https://youtu.be/1M645o5gWrc)
 * Keynote at [CHRONIC DISEASES & INFECTIOUS DISEASES 24-NOV-2022, Paris, France](https://www.chronicdiseases.scientexconference.com/) - [repository link](https://github.com/Jacob-Barhak/Presentations/blob/fca94ff82a89860b12eb4398ec48920654ced28c/COVID19_Ensemble_Latest/COVID19_Ensemble_Latest.html)
 * [Orlando Machine Learning and Data Science Meetup - 18 June 2022](https://www.meetup.com/orlando-mlds/events/286278255/) - [repository link](https://github.com/Jacob-Barhak/Presentations/blob/9559aa6529400741e2c71fa7b2312ea04f7acfbe/COVID19_Ensemble_Latest/COVID19_Ensemble_Latest.html)
-
 
 """), width=Width, height=None)
 

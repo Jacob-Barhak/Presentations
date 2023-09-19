@@ -136,7 +136,7 @@ QRCodeFileName = 'Unit_Mapping_Latest.png'
 PresentationURL = panel.panel(ConstractImageLinkAnchor(PublishURL,QRCodeFileName,'View this presentation on the web',480), width=480, height=480)
 
 PresentationTitle = panel.panel('# ClinicalUnitMapping.Com Takes a Small Step Towards Machine Comprehension of Clinical Trial Data', width=700, height=80, margin = (0,0,0,0))
-PresentationVenue = panel.panel('[28-29 June 2023 </br> 2023 MSM Consortium Meeting - Past2Future, NIH Campus, Natcher Conference Center, Bethesda MD](https://www.imagwiki.nibib.nih.gov/index.php/imag-events/2023-MSM-Meeting)', width=300, height=80, margin = (0,0,0,0))
+PresentationVenue = panel.panel('[Sep 19-20, 2023 </br> 2023 SISO (Virtual) SIMposium](https://www.sisostds.org/2023SISOSIMposium.aspx)', width=300, height=80, margin = (0,0,0,0))
 PresentationAuthors = panel.panel("By: [Jacob Barhak](http://sites.google.com/site/jacobbarhak/) </br> & [Joshua Schertz](https://joshschertz.com/)", width=120, height=80, margin = (0,0,0,0))
 PresentationHeader = panel.Row ( PresentationTitle,  PresentationAuthors , PresentationVenue, margin = (0,0,0,0))
 
@@ -186,6 +186,7 @@ The intention is to unify unit standards and machine learning tools that will be
 
 Previous published versions of this presentation are archived and can be downloaded below: 
 
+* [2023 MSM Consortium Meeting - Past2Future, NIH Campus, Bethesda MD, 28-29 June 2023](https://www.imagwiki.nibib.nih.gov/imag-events/2023-MSM-Meeting) - [repository link](https://github.com/Jacob-Barhak/Presentations/blob/1efb29ee47bf776c2f966d2540f3202dcddb0089/Unit_Mapping_Latest/Unit_Mapping_Latest.html)
 * [22-23 May 2023 MODSIM WORLD Norfolk, VA](https://modsimworld.org/)  - [repository link](https://github.com/Jacob-Barhak/Presentations/blob/29f8327681785c15b60d0b0013cdb614510105b1/Unit_Mapping_Latest/Unit_Mapping_Latest.html)
 * Keynote at [CHRONIC DISEASES & INFECTIOUS DISEASES 24-NOV-2022, Paris, France](https://www.chronicdiseases.scientexconference.com/)   - [repository link](https://github.com/Jacob-Barhak/Presentations/blob/174bd55bfc0cc1eee4af06404353a9af5a3824f7/COVID19_Ensemble_Latest/COVID19_Ensemble_Latest.html)
 
@@ -216,7 +217,7 @@ Section1MethodText = panel.panel(FixReferences(RefDict,"""# Proposed Solution
 ### - [Unit Ontology](https://bioportal.bioontology.org/) from BioPortal (BIOUO).
 ### - [UCUM](https://unitsofmeasure.org/) - The Unified Code for Units of Measure (RTMMS / CDISC).
 
-## 3. Use python tools to:
+## 3. Use python and Machine Learning tools to:
 ### - Find unit proximity using unsupervised Machine Learning (ML) and Natural Language Processing (NLP).
 ### - Create a web site for crowd mapping of the unit corpus.
 ### - Create supervised learning ML technique to comprehend units.
@@ -237,7 +238,8 @@ Section1WebKeyPoints = panel.panel(FixReferences(RefDict,"""# Collaborative Unit
 ### - Unit context and statistics displayed.
 ### - User can map units using user or machine suggested units.
 ### - Highlighted auxiliary units: RTMMS / CDISC / UCUM / BIOUO.
-### - This beta version includes basic ML inference.
+### - Supervised machine learning can infer units
+
 """), width=500, height=500)
 
 
@@ -311,7 +313,7 @@ Section3SupervisedMachineLearningOverview = panel.panel(FixReferences(RefDict,""
 | Feature Classification               | LSTM / CNN        | NA                  | Can be simple and fast yet requires mapping and is sensitive.                                                     |[3]                         |
 | Sequence to Sequence Preset Length   | LSTM / CNN        | 38.5% - 61.0%       | Relatively simple flexible and reliable, training reasonable, fast inference. Correction can be applied.          |[4], [5]                    |
 | Sequence to Sequence Encoder/Decoder | LSTM              | 53.6% - 56.2%       | Works well for short sequences, non trivial implementation. Slow inference. Correction can be applied.            |[5], [7], [8], [9], [10]    |
-| Transformers                         | Attention         | 87.1% - 87.7%       | Generative NLP Technology using encoder decoder with attention layers - generates text rather than classifies.    |[16]                          |
+| Transformers                         | Attention         | 86.9% - 87.5%       | Generative NLP Technology using encoder decoder with attention layers - generates text rather than classifies.    |[16]                          |
 
 
 ## Labeling
@@ -329,12 +331,13 @@ Section3SupervisedMachineLearningOverview = panel.panel(FixReferences(RefDict,""
 ## Training Numbers
 
 - 41795 total unique units used in data base.
+- 369290 non units out of 370101 potential candidates used to contrast
 - 36752 used in ClinicalTrials.Gov .
 - 5043 units appeared in other standards and auto mapped.
 - 679 core-set units. 
 - 17203 unites were labeled overall and used in training.
-- 3246 target labels identified.
-- 15449 / 1754 units in train / validate split.
+- 3246 target labels identified for units + 1 for non units.
+- 378708 / 42191 records in train / validate split.
 
 # Inference
 
@@ -355,7 +358,7 @@ def GeneratePlot(InputFile, Title, Footer):
     
     ShowStatisticsForOnlyThisNumberOfFirstItems = 50
     PhaseTexts = [u'train', u'validate']
-    PassTypeTexts = [u'Unit & Context',u'Unit only',u'Context only']
+    PassTypeTexts = [u'Unit & Context',u'Unit only',u'Context only', u'Non units']
     
     PlotTypes = [('Infer Exact',True), 
                  ('Infer Close',True),  
@@ -386,7 +389,7 @@ def GeneratePlot(InputFile, Title, Footer):
                     FrequencesToUse = Frequences
                 else:
                     FrequencesToUse = [ sum(Frequences[:(Enum+1)]) for Enum in range(len(Frequences))] 
-                HistogramShortTitle = holoviews.Histogram((Edges, FrequencesToUse)).redim.label(x='Quality', Frequency = ['Cumulative Proportion','Proportion'][IsPlotTypeBoolean]).opts( title = PlotTypeName, tools = ['hover'], ylim =(0,1), xlim=( Bins[0], Bins[-1]) , color = ['Blue','Red'][IsPlotTypeBoolean], height=130 , width=650-520*IsPlotTypeBoolean, toolbar = None, fontsize={'title': 8, 'labels': 8, 'xticks': 6, 'yticks': 6}, xticks=LabelsX, shared_axes=False)
+                HistogramShortTitle = holoviews.Histogram((Edges, FrequencesToUse)).redim.label(x='Quality', Frequency = ['Cumulative Proportion','Proportion'][IsPlotTypeBoolean]).opts( title = PlotTypeName, tools = ['hover'], ylim =(0,1), xlim=( Bins[0], Bins[-1]) , color = ['Blue','Red'][IsPlotTypeBoolean], height=130 , width=650-520*IsPlotTypeBoolean, toolbar = None, default_tools = [], fontsize={'title': 8, 'labels': 8, 'xticks': 6, 'yticks': 6}, xticks=LabelsX, shared_axes=False)
                 PlotsDict[(PhaseText,PassTypeText,PlotTypeName)] = HistogramShortTitle
 
     PlotList = [  (PhaseText + ' ' + PassTypeText  , [ panel.pane.HoloViews(PlotsDict[(PhaseText,PassTypeText,PlotTypeName)]) for (PlotTypeName,IsPlotTypeBoolean) in (PlotTypes)]) for PhaseText in PhaseTexts for PassTypeText in PassTypeTexts ] 
@@ -445,7 +448,7 @@ Section6AdditionalInfo = panel.panel("""
 ## Reproducibility:
 
 This presentation is accessible [here](%s). The code that generated the presentation can be accessed [here](%s). This presentation is generated using Python 2.7.16, panel-0.8.0, holoviews 1.12.7, bokeh-1.4.0.
-Code for ingestion and clustering are archived in the file: AnalyzeCT_2022_11_19.zip. AI and web site database were created using the code in AnalyzeCT_Full_2023_05_07.zip. 
+Code for ingestion and clustering are archived in the file: AnalyzeCT_2022_11_19.zip. AI and web site database were created using the code in AnalyzeCT_Full_2023_08_16.zip and inference in AnalyzeCT_Full_2023_08_18.zip. 
 Clinical Trials data archived in AllPublicXML_2022_08_26.zip. Bio Ontology Units downloaded on 2019_04_09, CDISC data downloaded on 2019_03_30 , RTMMS units downloaded on 2019_03_24 . 
 Tensorflow 2.10 and transformers 4.26.1 was used for Neural Network execution in Python 3.10.9 environment. DataHeroes 0.2 was used for core-set calculations
 

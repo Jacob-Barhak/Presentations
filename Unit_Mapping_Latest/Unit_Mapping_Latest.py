@@ -128,15 +128,15 @@ BokehDocument = bokeh.document.Document()
 
 TitleHTML = 'ClinicalUnitMapping.Com Takes a Small Step Towards Machine Comprehension of Clinical Trial Data'
 SavedFileName = 'Unit_Mapping_Latest.html'
-PublishURL = 'https://jacob-barhak.github.io/'+SavedFileName
+PublishURL = 'https://www.clinicalunitmapping.com/show/'+SavedFileName
 CodePublishURL = 'https://github.com/Jacob-Barhak/Presentations/tree/master/Unit_Mapping_Latest'
-QRCodeFileName = 'Unit_Mapping_Latest.png'
+QRCodeFileName = 'New_Unit_Mapping_Latest.png'
 
 
 PresentationURL = panel.panel(ConstractImageLinkAnchor(PublishURL,QRCodeFileName,'View this presentation on the web',480), width=480, height=480)
 
 PresentationTitle = panel.panel('# ClinicalUnitMapping.Com Takes a Small Step Towards Machine Comprehension of Clinical Trial Data', width=700, height=80, margin = (0,0,0,0))
-PresentationVenue = panel.panel('[Sep 19-20, 2023 </br> 2023 SISO (Virtual) SIMposium](https://www.sisostds.org/2023SISOSIMposium.aspx)', width=300, height=80, margin = (0,0,0,0))
+PresentationVenue = panel.panel('[CAFCW23</br>Computational Approaches for Cancer Workshop</br>November 12, 2023](https://ncihub.cancer.gov/groups/cafcw/cafcw23/cafcw23_program)', width=300, height=80, margin = (0,0,0,0))
 PresentationAuthors = panel.panel("By: [Jacob Barhak](http://sites.google.com/site/jacobbarhak/) </br> & [Joshua Schertz](https://joshschertz.com/)", width=120, height=80, margin = (0,0,0,0))
 PresentationHeader = panel.Row ( PresentationTitle,  PresentationAuthors , PresentationVenue, margin = (0,0,0,0))
 
@@ -178,7 +178,7 @@ ClinicalTrials.Gov is the database storing data from clinical trials. Many clini
 
 This presentation will discuss how python tools are used to: 1) Process and index the data, 2) Find similar units using NLP and machine learning, 3) Create a web interface to support user mapping of those units, 4) Use advanced machine learning tools such as transformers for Natural Language Processing (NLP) to drive inference and core-sets to speed up labeling and quickly setup an inference engine. 
 
-This project is ongoing and this presentation is constantly updated for each venue. This presentation will focus on improvement of supervised learning using transformers and accelerated labeling using core-sets. The latest interactive presentation with results is accessible through: [https://jacob-barhak.github.io/Unit_Mapping_Latest.html](https://jacob-barhak.github.io/Unit_Mapping_Latest.html)
+This project is ongoing and this presentation is constantly updated for each venue. This presentation will focus on improvement of supervised learning using transformers and accelerated labeling using core-sets. The latest interactive presentation with results is accessible through: [https://www.clinicalunitmapping.com/show/Unit_Mapping_Latest.html](https://www.clinicalunitmapping.com/show/Unit_Mapping_Latest.html)
 
 The intention is to unify unit standards and machine learning tools that will be able to map all units reported by clinical trials. With such capabilities, the data in this important clinical trials database would become machine comprehensible.
 
@@ -186,6 +186,7 @@ The intention is to unify unit standards and machine learning tools that will be
 
 Previous published versions of this presentation are archived and can be downloaded below: 
 
+* [2023 SISO (Virtual) SIMposium, Sep 19-20, 2023](https://www.sisostds.org/2023SISOSIMposium.aspx) - [repository link](https://github.com/Jacob-Barhak/Presentations/blob/235208b5254f9ec63e0f30b031bdfe9956adfd2b/Unit_Mapping_Latest/Unit_Mapping_Latest.html)
 * [2023 MSM Consortium Meeting - Past2Future, NIH Campus, Bethesda MD, 28-29 June 2023](https://www.imagwiki.nibib.nih.gov/imag-events/2023-MSM-Meeting) - [repository link](https://github.com/Jacob-Barhak/Presentations/blob/1efb29ee47bf776c2f966d2540f3202dcddb0089/Unit_Mapping_Latest/Unit_Mapping_Latest.html)
 * [22-23 May 2023 MODSIM WORLD Norfolk, VA](https://modsimworld.org/)  - [repository link](https://github.com/Jacob-Barhak/Presentations/blob/29f8327681785c15b60d0b0013cdb614510105b1/Unit_Mapping_Latest/Unit_Mapping_Latest.html)
 * Keynote at [CHRONIC DISEASES & INFECTIOUS DISEASES 24-NOV-2022, Paris, France](https://www.chronicdiseases.scientexconference.com/)   - [repository link](https://github.com/Jacob-Barhak/Presentations/blob/174bd55bfc0cc1eee4af06404353a9af5a3824f7/COVID19_Ensemble_Latest/COVID19_Ensemble_Latest.html)
@@ -311,7 +312,7 @@ Section3SupervisedMachineLearningOverview = panel.panel(FixReferences(RefDict,""
 | Simple Classification                | Dense             | NA                  | Simple solution, yet this problem has many classes and therefore not practical.                                   |[1], [2]                    |
 | Learning to Rank - Pairwise          | CNN & Dense-Twin  | NA                  | High complexity O(N^2) difficult inference due to pairwise nature.                                                |[11], [12], [13], [14], [15]|
 | Feature Classification               | LSTM / CNN        | NA                  | Can be simple and fast yet requires mapping and is sensitive.                                                     |[3]                         |
-| Sequence to Sequence Preset Length   | LSTM / CNN        | 38.5% - 61.0%       | Relatively simple flexible and reliable, training reasonable, fast inference. Correction can be applied.          |[4], [5]                    |
+| Sequence to Sequence Preset Length   | LSTM / CNN        | 38.5% - 61.0%       | Relatively simple flexible and reliable, training reasonable, fast inference. Correction can be applied.          |[4], [6]                    |
 | Sequence to Sequence Encoder/Decoder | LSTM              | 53.6% - 56.2%       | Works well for short sequences, non trivial implementation. Slow inference. Correction can be applied.            |[5], [7], [8], [9], [10]    |
 | Transformers                         | Attention         | 86.9% - 87.5%       | Generative NLP Technology using encoder decoder with attention layers - generates text rather than classifies.    |[16]                          |
 
@@ -330,14 +331,15 @@ Section3SupervisedMachineLearningOverview = panel.panel(FixReferences(RefDict,""
 </br>
 ## Training Numbers
 
-- 41795 total unique units used in data base.
-- 369290 non units out of 370101 potential candidates used to contrast
+- 41795 total unique units used in the data base.
 - 36752 used in ClinicalTrials.Gov .
 - 5043 units appeared in other standards and auto mapped.
-- 679 core-set units. 
-- 17203 unites were labeled overall and used in training.
-- 3246 target labels identified for units + 1 for non units.
-- 378708 / 42191 records in train / validate split.
+- 406857 non units used to contrast units.
+- 679 core-set units.
+- 17203 units were labeled overall and used in training.
+- 3247 target labels identified.
+- 412518 / 45948 records in train / validate split.
+
 
 # Inference
 
@@ -407,6 +409,8 @@ Section4SupervisedMachineLearningFooter = 'Rows show input scenarios: unit / con
 
 Section4SupervisedMachineLearningResults1 = GeneratePlot('Summary_stats_new_train.pckl', 'Transformers were trained with inputs of units only, contexts only, and both.',Section4SupervisedMachineLearningFooter)
 
+# uncomment to save only the histograms
+# Section4SupervisedMachineLearningResults1.save('histograms.html)
 
 Section4 = panel.Column(Section4SupervisedMachineLearningHeader,Section4SupervisedMachineLearningResults1, margin = (0,0,0,0))
 
@@ -414,9 +418,9 @@ Section4 = panel.Column(Section4SupervisedMachineLearningHeader,Section4Supervis
 
 Section5ShowTheSite = panel.panel(FixReferences(RefDict,"""
 # Explore the AI on the Website
-<object width="1150" height="400" data="https://clinicalunitmapping.com/">Warning: web site could not be included!</object>
+<object width="1150" height="650" data="https://clinicalunitmapping.com/">Warning: web site could not be included!</object>
 
-"""), width=Width, height=250)
+"""), width=Width, height=500)
 
 
 Section5 = Section5ShowTheSite
@@ -448,16 +452,17 @@ Section6AdditionalInfo = panel.panel("""
 ## Reproducibility:
 
 This presentation is accessible [here](%s). The code that generated the presentation can be accessed [here](%s). This presentation is generated using Python 2.7.16, panel-0.8.0, holoviews 1.12.7, bokeh-1.4.0.
-Code for ingestion and clustering are archived in the file: AnalyzeCT_2022_11_19.zip. AI and web site database were created using the code in AnalyzeCT_Full_2023_08_16.zip and inference in AnalyzeCT_Full_2023_08_18.zip. 
+Code for ingestion and clustering are archived in the file: AnalyzeCT_2022_11_19.zip. AI and web site database were created using the code in AnalyzeCT_Full_2023_10_01.zip. 
 Clinical Trials data archived in AllPublicXML_2022_08_26.zip. Bio Ontology Units downloaded on 2019_04_09, CDISC data downloaded on 2019_03_30 , RTMMS units downloaded on 2019_03_24 . 
 Tensorflow 2.10 and transformers 4.26.1 was used for Neural Network execution in Python 3.10.9 environment. DataHeroes 0.2 was used for core-set calculations
 
 
 
 ### Conflict of Interest Statement:
-Payment/services info: Dr. Barhak reports non-financial support and other from Rescale, and MIDAS Network, other from Amazon AWS, Microsoft Azure, MIDAS network, other from The COVID tracking project at the Atlantic, other from John Rice and Jered Hodges, 
-Financial relationships: Jacob Barhak declare(s) employment from MacroFab, United Solutions, B. Well Connected health. The author had a contract with U.S. Bank / Apexon, MacroFab, United Solutions, and B. Well during the work. However, none of these companies had influence on the modeling work reported in the paper. Jacob Barhak declare(s) employment and technical support from Anaconda. The author contracted with Anaconda in the past and uses their free open source software tools. Also the author received free support from Anaconda Holoviz team and Dask teams. Intellectual property info: Dr. Barhak has a patent US Patent 9,858,390 - Reference model for disease progression issued to Jacob Barhak, and a patent US patent Utility application #15466535 - Analysis and Verification of Models Derived from Clinical Trials Data Extracted from a Database. Other relationships: During the conduct of the study; personal fees from United Solutions, personal fees from B. Well Connected health, personal fees and non-financial support from Anaconda, outside the submitted work; In addition, Dr. Barhak has a patent US Patent 9,858,390 - Reference model for disease progression issued to Jacob Barhak, and a US patent Number 10,923,234 - Analysis and Verification of Models Derived from Clinical Trials Data Extracted from a Database pending to Jacob Barhak and The author was engaged with a temporary team formed for a duration of the Pandemic Response Hackathon. The team consisted of Christine Mary, Doreen Darsh, Lisbeth Garassino . They supported work during the Hackathon in initial stages of this work. Many others have expressed their support in this project. This has been publicly reported here: https://devpost.com/software/improved-disease-modeling-tools-for-populations . However, despite all support, Dr. Barhak is solely responsible for decisions made for this publication and is responsible for its contents.
-"""%(PublishURL,CodePublishURL), width=Width, height=800)
+Payment/services info: Dr. Barhak reports non-financial support and other from Rescale, and MIDAS Network, other from Amazon AWS, Microsoft Azure, MIDAS network, other from The COVID tracking project at the Atlantic, other from John Rice and Jered Hodges. 
+Financial relationships: Jacob Barhak declare(s) employment from MacroFab, United Solutions, B. Well Connected health. The author had a contract with U.S. Bank / Apexon, MacroFab, United Solutions, and B. Well during the work. However, none of these companies had influence on the modeling work reported in the paper. Jacob Barhak declare(s) employment and technical support from Anaconda. The author contracted with Anaconda in the past and uses their free open source software tools. Also the author received free support from Anaconda Holoviz team and Dask teams. Intellectual property info: Dr. Barhak has a patent US Patent 9,858,390 - Reference model for disease progression issued to Jacob Barhak, and US patent 10,923,234 - Analysis and Verification of Models Derived from Clinical Trials Data Extracted from a Database.. Other relationships: During the conduct of the study; personal fees from United Solutions, personal fees from B. Well Connected health, personal fees and non-financial support from Anaconda, outside the submitted work.  . However, despite all support, Dr. Barhak is solely responsible for decisions made for this publication and is responsible for its contents.
+"""%
+(PublishURL,CodePublishURL), width=Width, height=800)
 
 
 Section6 =  panel.Column(Section6Summary,Section6AdditionalInfo, margin = (0,0,0,0))

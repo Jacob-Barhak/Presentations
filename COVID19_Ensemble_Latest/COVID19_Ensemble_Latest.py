@@ -138,14 +138,14 @@ BokehDocument = bokeh.document.Document()
 
 TitleHTML = 'The Reference Model for COVID-19 attempts to explain USA data'
 SavedFileName = 'COVID19_Ensemble_Latest.html'
-PublishURL = 'https://jacob-barhak.github.io/'+SavedFileName
+PublishURL = 'https://www.clinicalunitmapping.com/show/'+SavedFileName
 CodePublishURL = 'https://github.com/Jacob-Barhak/Presentations/tree/master/COVID19_Ensemble_Latest'
-QRCodeFileName = 'COVID19_Ensemble_Latest.png'
+QRCodeFileName = 'New_COVID19_Ensemble_Latest.png'
  
 PresentationURL = panel.panel(ConstractImageLinkAnchor(PublishURL,QRCodeFileName,'View this publication on the web',380), width=380, height=380)
 
 PresentationTitle = panel.panel('# The Reference Model for COVID-19 attempts to explain USA data', width=Width, height=40, margin = (0,0,0,0))
-PresentationVenue = panel.panel('[28-29 June 2023, 2023 MSM Consortium Meeting - Past2Future, NIH Campus, Natcher Conference Center, Bethesda MD](https://www.imagwiki.nibib.nih.gov/index.php/imag-events/2023-MSM-Meeting)', width=740, height=40, margin = (0,0,0,0))
+PresentationVenue = panel.panel('[CAFCW23 Computational Approaches for Cancer Workshop, November 12, 2023](https://ncihub.cancer.gov/groups/cafcw/cafcw23/cafcw23_program)', width=740, height=40, margin = (0,0,0,0))
 
 PresentationAuthors = panel.panel("By: ***[Jacob Barhak](https://sites.google.com/view/jacob-barhak/home)***", width=280, height=40, margin = (0,0,0,0))
 
@@ -268,13 +268,14 @@ The model performs simulation at the individual level while modeling entire popu
 
 The Reference Model technology was transformed to model COVID-19 near the start of the epidemic. The model is now composed of multiple models from multiple contributors that represent different phenomena: It includes infectiousness models, transmission models, human response / behavior models, mortality models, and observation models. Some of those models were calculated at different scales including cell scale, organ scale, individual scale, and population scale.
 
-The Reference Model has therefore reached the achievement of being the first known multi-scale ensemble model for COVID-19. This project is ongoing and this presentation is constantly updated for each venue. To access the most recent publication please use this link [https://jacob-barhak.github.io/COVID19_Ensemble_Latest.html](https://jacob-barhak.github.io/COVID19_Ensemble_Latest.html)
+The Reference Model has therefore reached the achievement of being the first known multi-scale ensemble model for COVID-19. This project is ongoing and this presentation is constantly updated for each venue. To access the most recent publication please use this link [https://www.clinicalunitmapping.com/show/COVID19_Ensemble_Latest.html](https://www.clinicalunitmapping.com/show/COVID19_Ensemble_Latest.html)
 
 
 *** This is an interactive presentation - please explore the tabs above and interact with the figures - they have sliders and widgets and hover information that will allow interaction. Following the tabs in order from left to right will tell the story ***
 
 Previous published versions of this presentation are archived and can be downloaded below: 
 
+* [2023 MSM Consortium Meeting - Past2Future, NIH Campus, Natcher Conference Center, Bethesda MD, 28-29 June 2023](https://www.imagwiki.nibib.nih.gov/index.php/imag-events/2023-MSM-Meeting)  - [repository link](https://github.com/Jacob-Barhak/Presentations/blob/1efb29ee47bf776c2f966d2540f3202dcddb0089/COVID19_Ensemble_Latest/COVID19_Ensemble_Latest.html) 
 * [MODSIM WORLD, Norfolk, VA 22-23 May 2023](https://modsimworld.org/) - [repository link](https://github.com/Jacob-Barhak/Presentations/blob/25fd75da5c7bd2ea187dfad05a6b210f47172cd9/COVID19_Ensemble_Latest/COVID19_Ensemble_Latest.html) 
 * [San Diego Python Users Group Monthly Meetup 27-April-2023](https://www.meetup.com/pythonsd/events/292436501/) - [repository link](https://github.com/Jacob-Barhak/Presentations/blob/fca94ff82a89860b12eb4398ec48920654ced28c/COVID19_Ensemble_Latest/COVID19_Ensemble_Latest.html) - [video](https://www.youtube.com/live/U9jSxbyJU0I?feature=share&t=1773) 
 * [PyData Chicago on 15-Dec-2022](https://www.meetup.com/pydatachi/events/289899473/) - [repository link](https://github.com/Jacob-Barhak/Presentations/blob/fca94ff82a89860b12eb4398ec48920654ced28c/COVID19_Ensemble_Latest/COVID19_Ensemble_Latest.html) - [video](https://youtu.be/1M645o5gWrc)
@@ -447,8 +448,8 @@ In this work, simple multipliers are used:
 
 
 Section7_1 = panel.panel(FixReferences(RefDict,"""### Results
-The results presented here was executed on a server with 64 logical CPUs for about 1 week - this means roughly 1 year of computation on a single CPU core. The Interactive plots below summarize the results:
-
+The results presented here was executed on a server with 16 logical CPUs for about 2 months - this means roughly 3 year of computation on a single CPU core. The Interactive plots below summarize the results:
+This simulation has 4 cohorts for each state starting at days 0,15,30,45. Each simulation runs for 21 days and repeated 10 times. Simulation was stopped after 30 iterations.
 
 * ***Population Plot - Top Left*** - This plot shows difference between model and observed data - fitness. The fitness score is displayed for each state population starting at different times. ***Each different start time is considered as a different cohort of the population***. A viewer hovering with the mouse over the circle will see information about the population cohort at that time including number of infections and deaths. The numbers are presented as model projection / observed numbers by the COVID tracking project. The numbers are scaled to cohort batch size of ***10,000 individuals*** in this simulation. The fitness score in this work is a norm of the observed mortality difference and observed infections difference.
 
@@ -459,11 +460,11 @@ The results presented here was executed on a server with 64 logical CPUs for abo
 
 ## The interesting element in this simulation:
 
-* Near elimination of the high infectiousness profile that was dominant in the past. 
+* Preference of infectiousness profiles that peak around day 5. 
 * The transmission model where warm weather reduces transmission becomes dominant.
 * Preference of the Castiglione mortality model based on cell and organ failure that deals with mortality time.
-* No strong preference of behavioral models.
-* Observer models with extreme multipliers of 1 and 20 reduce their influence to other observer models that are considered mainstream.
+* behavioral models based of mobility data are less influential than those based on state closure regulations.
+* The observer models with extreme multiplier of 20 is eliminated and is replaced by other observer models that are considered mainstream.
 
 """), width=Width, height=600)
 
@@ -484,15 +485,22 @@ Section10_1 = panel.panel(FixReferences(RefDict,"""### Conclusions
 
 * This model can be used to answer questions the government seeks answers for in a future pandemic.
 
-* It is still unclear if it is possible to explain the phenomena like COVID-19 impact in a population in a period of 3 weeks using only initial conditions and mechanistic models. 
+* The technique used is a form of Explainable Artificial Intelligence that relies on computing power.
 
-* To reach conclusions, more than a few weeks of data are required to balance for errors.
+* If difficult to explain the phenomena like COVID-19 impact in a population using data collected for 3 weeks using mechanistic models.
+
+* To reach conclusions, more than a few weeks of data are required to balance for errors and data has to be reused.
+
+* Some models that seem dominant in short simulations are eliminated when computation is repeated. 
+
+* Peak average infectiousness is around day 5 from infection.
 
 * Transmission rate seems to be around 2 percent per encounter.
 
-* A near ideal observer model is not dominant - possibly since the phenomenon is not linear.
+* Warm weather seems to reduce transmission.
 
-* Future work includes further exploration of different time periods.
+* Future work includes further exploration by adding more cohorts and models. 
+
 
 
 
@@ -503,14 +511,14 @@ Section10_1 = panel.panel(FixReferences(RefDict,"""### Conclusions
 Section10SummaryText = panel.panel(FixReferences(RefDict,"""
 
 ### Reproducibility:
-Results presented in this work are archived in the file MIST_Ref_COVID19_Prelim_2023_04_30.zip for reproducibility purposes. MIST version 0.99.7.8 and python 2.7.18 with the Anaconda distribution were used for executing the simulation.
-Visualization processing is archived in: ExplorationCOVID19_2023_04_30_10K_01Apr_15Dx3_21Dx10x48_present.zip .
+Results presented in this work are archived in the file MIST_Ref_COVID19_Prelim_2023_10_13.zip for reproducibility purposes. MIST version 0.99.7.8 and python 2.7.18 with the Anaconda distribution were used for executing the simulation.
+Visualization processing is archived in: ExplorationCOVID19_2023_10_13_10K_01Apr_15Dx3_21Dx30x48.zip .
 This presentation is accessible [here](%s). The code that generated the presentation can be accessed [here](%s). This presentation is generated using Python 2.7.16, panel-0.8.0, holoviews 1.12.7, bokeh-1.4.0.
 Published versions of this presentation are archived [here](https://github.com/Jacob-Barhak/Presentations/commits/master/COVID19_Ensemble_Latest)
 
 ### Conflict of Interest Statement:
-Payment/services info: Dr. Barhak reports non-financial support and other from Rescale, and MIDAS Network, other from Amazon AWS, Microsoft Azure, MIDAS network, other from The COVID tracking project at the Atlantic,  other from John Rice and Jered Hodges, 
-Financial relationships: Jacob Barhak declare(s) employment from MacroFab, United Solutions, B. Well Connected health. The author had a contract with U.S. Bank / Apexon, MacroFab, United Solutions, and B. Well during the work. However, none of these companies had influence on the modeling work reported in the paper. Jacob Barhak declare(s) employment and technical support from Anaconda. The author contracted with Anaconda in the past and uses their free open source software tools. Also the author received free support from Anaconda Holoviz team and Dask teams. Intellectual property info: Dr. Barhak has a patent US Patent 9,858,390 - Reference model for disease progression issued to Jacob Barhak, and a patent US patent Utility application #15466535 - Analysis and Verification of Models Derived from Clinical Trials Data Extracted from a Database. Other relationships: During the conduct of the study; personal fees from United Solutions, personal fees from B. Well Connected health, personal fees and non-financial support from Anaconda, outside the submitted work; In addition, Dr. Barhak has a patent US Patent 9,858,390 - Reference model for disease progression issued to Jacob Barhak, and a US patent Number 10,923,234 - Analysis and Verification of Models Derived from Clinical Trials Data Extracted from a Database and The author was engaged with a temporary team formed for a duration of the Pandemic Response Hackathon. The team consisted of Christine Mary, Doreen Darsh, Lisbeth Garassino . They supported work during the Hackathon in initial stages of this work. Many others have expressed their support in this project. This has been publicly reported here: https://devpost.com/software/improved-disease-modeling-tools-for-populations . However, despite all support, Dr. Barhak is solely responsible for modeling decisions made for this publication and is responsible for its contents.
+Payment/services info: Dr. Barhak reports non-financial support and other from Rescale, and MIDAS Network, other from Amazon AWS, Microsoft Azure, MIDAS network, other from The COVID tracking project at the Atlantic, other from John Rice and Jered Hodges. 
+Financial relationships: Jacob Barhak declare(s) employment from MacroFab, United Solutions, B. Well Connected health. The author had a contract with U.S. Bank / Apexon, MacroFab, United Solutions, and B. Well during the work. However, none of these companies had influence on the modeling work reported in the paper. Jacob Barhak declare(s) employment and technical support from Anaconda. The author contracted with Anaconda in the past and uses their free open source software tools. Also the author received free support from Anaconda Holoviz team and Dask teams. Intellectual property info: Dr. Barhak has a patent US Patent 9,858,390 - Reference model for disease progression issued to Jacob Barhak, and US patent 10,923,234 - Analysis and Verification of Models Derived from Clinical Trials Data Extracted from a Database.. Other relationships: During the conduct of the study; personal fees from United Solutions, personal fees from B. Well Connected health, personal fees and non-financial support from Anaconda, outside the submitted work.  . However, despite all support, Dr. Barhak is solely responsible for decisions made for this publication and is responsible for its contents.
 
 """%(PublishURL,CodePublishURL)), width=Width, height=None)
 

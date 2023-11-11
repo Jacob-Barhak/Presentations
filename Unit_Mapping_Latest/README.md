@@ -29,7 +29,8 @@ FILES:
 * Images : a directory containing images used to generate the presentation.
 * Data : A directory containing data for plots
 * Unit_Mapping_Latest.html : The presentation file.
-* License.txt : the license file
+* Redirect_Unit_Mapping_Latest.html - redirection to new web site
+
 
 
 DEVELOPER CONTACT INFO:

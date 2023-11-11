@@ -30,6 +30,7 @@ FILES:
 * Images : a directory containing images used to generate the presentation.
 * Resource : a directory containing other resources combined into the presentation.
 * COVID19_Ensemble_Latest.html : The presentation file.
+* Redirect_COVID19_Ensemble_Latest.html - redirection to new web site
 
 
 DEVELOPER CONTACT INFO:

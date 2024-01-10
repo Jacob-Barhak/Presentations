@@ -136,7 +136,7 @@ QRCodeFileName = 'New_Unit_Mapping_Latest.png'
 PresentationURL = panel.panel(ConstractImageLinkAnchor(PublishURL,QRCodeFileName,'View this presentation on the web',480), width=480, height=480)
 
 PresentationTitle = panel.panel('# ClinicalUnitMapping.Com Takes a Small Step Towards Machine Comprehension of Clinical Trial Data', width=700, height=80, margin = (0,0,0,0))
-PresentationVenue = panel.panel('[CAFCW23</br>Computational Approaches for Cancer Workshop</br>November 12, 2023](https://ncihub.cancer.gov/groups/cafcw/cafcw23/cafcw23_program)', width=300, height=80, margin = (0,0,0,0))
+PresentationVenue = panel.panel('[Austin Python meetup</br>January 10, 2024](https://www.meetup.com/austinpython/events/297392368/)', width=300, height=80, margin = (0,0,0,0))
 PresentationAuthors = panel.panel("By: [Jacob Barhak](http://sites.google.com/site/jacobbarhak/) </br> & [Joshua Schertz](https://joshschertz.com/)", width=120, height=80, margin = (0,0,0,0))
 PresentationHeader = panel.Row ( PresentationTitle,  PresentationAuthors , PresentationVenue, margin = (0,0,0,0))
 
@@ -186,6 +186,8 @@ The intention is to unify unit standards and machine learning tools that will be
 
 Previous published versions of this presentation are archived and can be downloaded below: 
 
+
+* [CAFCW23 - Computational Approaches for Cancer Workshop, November 12, 2023](https://ncihub.cancer.gov/groups/cafcw/cafcw23/cafcw23_program) - [presentation link](https://clinicalunitmapping.com/show/Unit_Mapping_2023_10_29.html)
 * [2023 SISO (Virtual) SIMposium, Sep 19-20, 2023](https://www.sisostds.org/2023SISOSIMposium.aspx) - [repository link](https://github.com/Jacob-Barhak/Presentations/blob/235208b5254f9ec63e0f30b031bdfe9956adfd2b/Unit_Mapping_Latest/Unit_Mapping_Latest.html)
 * [2023 MSM Consortium Meeting - Past2Future, NIH Campus, Bethesda MD, 28-29 June 2023](https://www.imagwiki.nibib.nih.gov/imag-events/2023-MSM-Meeting) - [repository link](https://github.com/Jacob-Barhak/Presentations/blob/1efb29ee47bf776c2f966d2540f3202dcddb0089/Unit_Mapping_Latest/Unit_Mapping_Latest.html)
 * [22-23 May 2023 MODSIM WORLD Norfolk, VA](https://modsimworld.org/)  - [repository link](https://github.com/Jacob-Barhak/Presentations/blob/29f8327681785c15b60d0b0013cdb614510105b1/Unit_Mapping_Latest/Unit_Mapping_Latest.html)
@@ -215,7 +217,7 @@ Section1MethodText = panel.panel(FixReferences(RefDict,"""# Proposed Solution
 
 ### - [CDISC](https://www.cdisc.org/) - Clinical Data Interchange Standards Consortium.
 ### - [RTMMS / IEEE](https://rtmms.nist.gov/rtmms/) - affiliated with NIST / IEEE 11073-10101.
-### - [Unit Ontology](https://bioportal.bioontology.org/) from BioPortal (BIOUO).
+### - [Unit Ontology](https://bioportal.bioontology.org/) - from BioPortal (BIOUO).
 ### - [UCUM](https://unitsofmeasure.org/) - The Unified Code for Units of Measure (RTMMS / CDISC).
 
 ## 3. Use python and Machine Learning tools to:

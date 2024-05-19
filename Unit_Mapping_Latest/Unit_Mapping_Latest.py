@@ -37,6 +37,7 @@ import pickle
 from bokeh.resources import INLINE
 from matplotlib.cm import  PuBu, PuRd, Greens
 import re
+from string import Template
 
 EmbedVideo = False
 if len(sys.argv)>1:
@@ -136,7 +137,7 @@ QRCodeFileName = 'New_Unit_Mapping_Latest.png'
 PresentationURL = panel.panel(ConstractImageLinkAnchor(PublishURL,QRCodeFileName,'View this presentation on the web',480), width=480, height=480)
 
 PresentationTitle = panel.panel('# ClinicalUnitMapping.Com Takes a Small Step Towards Machine Comprehension of Clinical Trial Data', width=700, height=80, margin = (0,0,0,0))
-PresentationVenue = panel.panel('[Austin Python meetup</br>January 10, 2024](https://www.meetup.com/austinpython/events/297392368/)', width=300, height=80, margin = (0,0,0,0))
+PresentationVenue = panel.panel('[MODSIM WORLD, Norfolk, VA 20-22 May 2024](https://modsimworld.org/)', width=300, height=80, margin = (0,0,0,0))
 PresentationAuthors = panel.panel("By: [Jacob Barhak](http://sites.google.com/site/jacobbarhak/) </br> & [Joshua Schertz](https://joshschertz.com/)", width=120, height=80, margin = (0,0,0,0))
 PresentationHeader = panel.Row ( PresentationTitle,  PresentationAuthors , PresentationVenue, margin = (0,0,0,0))
 
@@ -182,17 +183,15 @@ This project is ongoing and this presentation is constantly updated for each ven
 
 The intention is to unify unit standards and machine learning tools that will be able to map all units reported by clinical trials. With such capabilities, the data in this important clinical trials database would become machine comprehensible.
 
-*** This is an interactive presentation - please explore the tabs above and interact with the figures - they have sliders and widgets and hover information that will allow interaction. Following the tabs in order from left to right will tell the story ***
+*** This is an interactive presentation - please explore the tabs above and interact with the figures - they have sliders and widgets and hover information that will allow interaction. Following the tabs in order from left to right will tell the story. Different versions of this presentation can be accessed below: ***
 
-Previous published versions of this presentation are archived and can be downloaded below: 
-
-
-* [CAFCW23 - Computational Approaches for Cancer Workshop, November 12, 2023](https://ncihub.cancer.gov/groups/cafcw/cafcw23/cafcw23_program) - [presentation link](https://clinicalunitmapping.com/show/Unit_Mapping_2023_10_29.html)
-* [2023 SISO (Virtual) SIMposium, Sep 19-20, 2023](https://www.sisostds.org/2023SISOSIMposium.aspx) - [repository link](https://github.com/Jacob-Barhak/Presentations/blob/235208b5254f9ec63e0f30b031bdfe9956adfd2b/Unit_Mapping_Latest/Unit_Mapping_Latest.html)
-* [2023 MSM Consortium Meeting - Past2Future, NIH Campus, Bethesda MD, 28-29 June 2023](https://www.imagwiki.nibib.nih.gov/imag-events/2023-MSM-Meeting) - [repository link](https://github.com/Jacob-Barhak/Presentations/blob/1efb29ee47bf776c2f966d2540f3202dcddb0089/Unit_Mapping_Latest/Unit_Mapping_Latest.html)
-* [22-23 May 2023 MODSIM WORLD Norfolk, VA](https://modsimworld.org/)  - [repository link](https://github.com/Jacob-Barhak/Presentations/blob/29f8327681785c15b60d0b0013cdb614510105b1/Unit_Mapping_Latest/Unit_Mapping_Latest.html)
-* Keynote at [CHRONIC DISEASES & INFECTIOUS DISEASES 24-NOV-2022, Paris, France](https://www.chronicdiseases.scientexconference.com/)   - [repository link](https://github.com/Jacob-Barhak/Presentations/blob/174bd55bfc0cc1eee4af06404353a9af5a3824f7/COVID19_Ensemble_Latest/COVID19_Ensemble_Latest.html)
-
+* [MODSIM WORLD Norfolk, VA, 20-22 May 2024](https://modsimworld.org/)  - [view presentation](https://clinicalunitmapping.com/show/Unit_Mapping_MODSIM_2024_05_19.html) , [download presentation](https://clinicalunitmapping.com/download/Unit_Mapping_MODSIM_2024_05_19.html)
+* [Austin Python meetup, January 10, 2024](https://www.meetup.com/austinpython/events/297392368/) [view presentation](https://www.clinicalunitmapping.com/show/Unit_Mapping_AustinMeetup_2024_01_10.html) , [download presentation](https://www.clinicalunitmapping.com/download/Unit_Mapping_AustinMeetup_2024_01_10.html) , [view video](https://youtu.be/d4qB9xaPU-U?si=MkPfADDtJuyK4T90)
+* [CAFCW23 - Computational Approaches for Cancer Workshop, November 12, 2023](https://ncihub.cancer.gov/groups/cafcw/cafcw23/cafcw23_program) - [view presentation](https://clinicalunitmapping.com/show/Unit_Mapping_CAFCW_2023_10_29.html) , [download presentation](https://clinicalunitmapping.com/download/Unit_Mapping_CAFCW_2023_10_29.html)
+* [2023 SISO (Virtual) SIMposium, Sep 19-20, 2023](https://www.sisostds.org/2023SISOSIMposium.aspx) - [view presentation](https://clinicalunitmapping.com/show/Unit_Mapping_SISO_2023_09_19.html) , [download presentation](https://clinicalunitmapping.com/download/Unit_Mapping_SISO_2023_09_19.html)
+* [2023 MSM Consortium Meeting - Past2Future, NIH Campus, Bethesda MD, 28-29 June 2023](https://www.imagwiki.nibib.nih.gov/imag-events/2023-MSM-Meeting) - [view presentation](https://clinicalunitmapping.com/show/Unit_Mapping_MSM_IMAG_2023_06_28.html) , [download presentation](https://clinicalunitmapping.com/download/Unit_Mapping_MSM_IMAG_2023_06_28.html)
+* [MODSIM WORLD Norfolk, VA, 22-23 May 2023](https://modsimworld.org/)  - [view presentation](https://clinicalunitmapping.com/show/Unit_Mapping_MODSIM_2023_05_22.html) , [download presentation](https://clinicalunitmapping.com/download/Unit_Mapping_MODSIM_2023_05_22.html)
+* Keynote at [CHRONIC DISEASES & INFECTIOUS DISEASES 24-NOV-2022, Paris, France](https://www.chronicdiseases.scientexconference.com/) - [view presentation](https://clinicalunitmapping.com/show/Unit_Mapping_KeynoteParis_2022_11_24.html) , [download presentation](https://clinicalunitmapping.com/download/Unit_Mapping_KeynoteParis_2022_11_24.html)
 
 """), width=1100, height=600)
 
@@ -316,7 +315,7 @@ Section3SupervisedMachineLearningOverview = panel.panel(FixReferences(RefDict,""
 | Feature Classification               | LSTM / CNN        | NA                  | Can be simple and fast yet requires mapping and is sensitive.                                                     |[3]                         |
 | Sequence to Sequence Preset Length   | LSTM / CNN        | 38.5% - 61.0%       | Relatively simple flexible and reliable, training reasonable, fast inference. Correction can be applied.          |[4], [6]                    |
 | Sequence to Sequence Encoder/Decoder | LSTM              | 53.6% - 56.2%       | Works well for short sequences, non trivial implementation. Slow inference. Correction can be applied.            |[5], [7], [8], [9], [10]    |
-| Transformers                         | Attention         | 86.9% - 87.5%       | Generative NLP Technology using encoder decoder with attention layers - generates text rather than classifies.    |[16]                          |
+| Transformers                         | Attention         | 81.4% - 99.8%       | Generative NLP Technology using encoder decoder with attention layers - generates text rather than classifies.    |[16]                          |
 
 
 ## Labeling
@@ -327,7 +326,7 @@ Section3SupervisedMachineLearningOverview = panel.panel(FixReferences(RefDict,""
 - [ClinicalUnitMapping.com](https://clinicalunitmapping.com/) AI suggestions were used to further accelerate the manual tedious work.
 - Units that belonged to standards were automatically labeled according to standards synonyms.
 - Labeling and AI training were iterated.
-- Unit context was considered during labeling and training.
+- Unit context and target standard was considered during labeling and training.
 
 </br>
 </br>
@@ -338,15 +337,20 @@ Section3SupervisedMachineLearningOverview = panel.panel(FixReferences(RefDict,""
 - 5043 units appeared in other standards and auto mapped.
 - 406857 non units used to contrast units.
 - 679 core-set units.
-- 17203 units were labeled overall and used in training.
-- 3247 target labels identified.
-- 412518 / 45948 records in train / validate split.
+- 17203 units were labeled overall and used in training - from clusters 0-11. 
+- 3249 unique target labels identified so far
+- 2,757,866 / 689,467 unit and context records in train / validate split of 80%/20%.
+- 6,320,238 records/epoch trained for 5 epochs to allow IEEE and CDISC standardization. 
 
 
 # Inference
 
 - After the AI was trained Inference was performed using transformers.
-- Those NLP tools attempt to comprehend the text and have behavior somewhat comparable to humans.
+- Inference for the IEEE/CDISC standards were conducted as well to build a database. 
+- The NLP tools attempt to comprehend the text and have behavior somewhat comparable to humans.
+- Despite high accuracy of validation set. recall that roughly 10% of clusters have been mapped. Accuracy will drop for unmapped clusters.
+- **Actual inference accuracy will be established when manual mapping will finish for all clusters**
+- **The inference engine is still experimental and limited - it is still a prototype.**
 
 
 """), width=Width, height=1100)
@@ -354,15 +358,13 @@ Section3SupervisedMachineLearningOverview = panel.panel(FixReferences(RefDict,""
 
 
 
-def GeneratePlot(InputFile, Title, Footer):
+def GeneratePlot(InputFile, PhaseTexts, PassTypeTexts, Title, Footer, TitleFunc = None):
     "Generate a plot for clusters processed"
 
     holoviews.extension('bokeh')    
     PlotsDict = {}
     
     ShowStatisticsForOnlyThisNumberOfFirstItems = 50
-    PhaseTexts = [u'train', u'validate']
-    PassTypeTexts = [u'Unit & Context',u'Unit only',u'Context only', u'Non units']
     
     PlotTypes = [('Infer Exact',True), 
                  ('Infer Close',True),  
@@ -372,6 +374,7 @@ def GeneratePlot(InputFile, Title, Footer):
     TempFile = open(DataDir+os.sep+InputFile,'rb')
     (PredictionQualities) = pickle.load(TempFile)
     TempFile.close()
+    PlotTitleTemplate = Template(TitleFunc)
         
     for (IsValidationPass, PhaseText) in enumerate(PhaseTexts):
         for (PassTypeNumber, PassTypeText) in enumerate(PassTypeTexts):
@@ -396,12 +399,15 @@ def GeneratePlot(InputFile, Title, Footer):
                 HistogramShortTitle = holoviews.Histogram((Edges, FrequencesToUse)).redim.label(x='Quality', Frequency = ['Cumulative Proportion','Proportion'][IsPlotTypeBoolean]).opts( title = PlotTypeName, tools = ['hover'], ylim =(0,1), xlim=( Bins[0], Bins[-1]) , color = ['Blue','Red'][IsPlotTypeBoolean], height=130 , width=650-520*IsPlotTypeBoolean, toolbar = None, default_tools = [], fontsize={'title': 8, 'labels': 8, 'xticks': 6, 'yticks': 6}, xticks=LabelsX, shared_axes=False)
                 PlotsDict[(PhaseText,PassTypeText,PlotTypeName)] = HistogramShortTitle
 
-    PlotList = [  (PhaseText + ' ' + PassTypeText  , [ panel.pane.HoloViews(PlotsDict[(PhaseText,PassTypeText,PlotTypeName)]) for (PlotTypeName,IsPlotTypeBoolean) in (PlotTypes)]) for PhaseText in PhaseTexts for PassTypeText in PassTypeTexts ] 
-    CombinedList = [panel.panel(Title,height=50, margin = (0,0,0,0))]
+    PlotList = [ (PlotTitleTemplate.safe_substitute({'PhaseText': PhaseText, 'PassTypeText': PassTypeText}) , [ panel.pane.HoloViews(PlotsDict[(PhaseText,PassTypeText,PlotTypeName)]) for (PlotTypeName,IsPlotTypeBoolean) in (PlotTypes)]) for PhaseText in PhaseTexts for PassTypeText in PassTypeTexts ] 
+    CombinedList = []
+    if Title:
+        CombinedList = [panel.panel(Title,height=25, margin = (0,0,0,0))]
     for (PlotTitle,PlotRows) in PlotList:
         CombinedList.append(panel.panel('#### '+PlotTitle,height=30, margin = (0,0,0,0)))
         CombinedList.append(panel.Row(*PlotRows, margin = (0,0,0,0)))
-    CombinedList.append(panel.panel(Footer,height=10, margin = (0,0,0,0)))
+    if Footer:
+        CombinedList.append(panel.panel(Footer,height=10, margin = (0,0,0,0)))
     ConstrcutedGrid = panel.Column(*CombinedList, margin = (0,0,0,0))
     return ConstrcutedGrid
 
@@ -409,12 +415,33 @@ def GeneratePlot(InputFile, Title, Footer):
 Section4SupervisedMachineLearningHeader = panel.panel("#Transformers Neural Network Training and Validation Results", width=Width, height=55)
 Section4SupervisedMachineLearningFooter = 'Rows show input scenarios: unit / context / both for training and validation. </br>Columns show different accuracy metrics. </br><span style="color:red">Red = initial inference accuracy</span>.  </br><span style="color:Blue">Blue = accuracy after correction of inference while looking up multiple close units. </span>'
 
-Section4SupervisedMachineLearningResults1 = GeneratePlot('Summary_stats_new_train.pckl', 'Transformers were trained with inputs of units only, contexts only, and both.',Section4SupervisedMachineLearningFooter)
+Section4SupervisedMachineLearningResults1 = GeneratePlot('Summary_stats_new_train.pckl', [u'train', u'validate'], [u'Unit & Context',u'Unit only',u'Context only', u'Non units'], 'Transformers were trained on units only, contexts only, and both, for every standard terminology - appearance frequency as in original train/test data.',Section4SupervisedMachineLearningFooter, "$PhaseText $PassTypeText")
+Section4SupervisedMachineLearningResults2 = GeneratePlot('Summary_stats_infer_only_units.pckl', [u'validate'], ['Unit only'], 'Test accuracy considering all data excluding CDISC / IEEE terminology - appearance frequency as in original train and test data.', None, "All data $PassTypeText")
+Section4SupervisedMachineLearningResults3 = GeneratePlot('Summary_stats_infer_only_unit_context.pckl', [u'validate'], [u'Unit & Context'], '', None, "All data $PassTypeText")
+Section4SupervisedMachineLearningResults4 = GeneratePlot('Summary_stats_infer_only_context.pckl', [u'validate'], [u'Context only'], '', Section4SupervisedMachineLearningFooter, "All data $PassTypeText")
+
+Section4SupervisedMachineLearningResults1Unique = GeneratePlot('Summary_stats_new_train.pckl', [u'train', u'validate'], [u'Unit & Context first unique',u'Unit only first unique',u'Context only first unique', u'Non units first unique'], 'Considering training data within mapped clusters with only unique inputs without repetition.',Section4SupervisedMachineLearningFooter, "$PhaseText $PassTypeText")
+Section4SupervisedMachineLearningResults2Unique = GeneratePlot('Summary_stats_infer_only_units.pckl', [u'validate'], ['Unit only first unique'], 'Test accuracy considering all data within mapped clusters excluding CDISC / IEEE terminology - considering only unique inputs without repetition.', None, "All data $PassTypeText")
+Section4SupervisedMachineLearningResults3Unique = GeneratePlot('Summary_stats_infer_only_unit_context.pckl', [u'validate'], [u'Unit & Context first unique'], '', None, "All data $PassTypeText")
+Section4SupervisedMachineLearningResults4Unique = GeneratePlot('Summary_stats_infer_only_context.pckl', [u'validate'], [u'Context only first unique'], '', Section4SupervisedMachineLearningFooter, "All data $PassTypeText")
+
+
+Section4SupervisedMachineLearningValidation = panel.Column(Section4SupervisedMachineLearningResults2, Section4SupervisedMachineLearningResults3, Section4SupervisedMachineLearningResults4, margin = (0,0,0,0))
+Section4SupervisedMachineLearningValidationUnique = panel.Column(Section4SupervisedMachineLearningResults2Unique, Section4SupervisedMachineLearningResults3Unique, Section4SupervisedMachineLearningResults4Unique, margin = (0,0,0,0))
+
+Section4SelectorTab = panel.layout.Tabs (
+                                        ('Natural Frequency', Section4SupervisedMachineLearningResults1),
+                                        ('Unique', Section4SupervisedMachineLearningResults1Unique),
+                                        ('Excluding IEEE / CDISC terminology Natural Frequency', Section4SupervisedMachineLearningValidation),
+                                        ('Excluding IEEE / CDISC terminology Unique', Section4SupervisedMachineLearningValidationUnique),
+                                        margin = (0,0,0,0), 
+                                        )
+
 
 # uncomment to save only the histograms
 # Section4SupervisedMachineLearningResults1.save('histograms.html)
 
-Section4 = panel.Column(Section4SupervisedMachineLearningHeader,Section4SupervisedMachineLearningResults1, margin = (0,0,0,0))
+Section4 = panel.Column(Section4SupervisedMachineLearningHeader,Section4SelectorTab, margin = (0,0,0,0))
 
 
 
@@ -431,17 +458,19 @@ Section5 = Section5ShowTheSite
 Section6SummaryText = panel.panel(FixReferences(RefDict,"""# Summary
 We created AI and web tools that support standardizing units of measure.
 
+* Work is still ongoing to finalize mapping with the aid of the AI.
 * The methodology can be used for other standardization tasks.
 
 With such tools it will be possible for machines to:
 
 * Recognize medical units, even if misspelled.
+* Translate units among different standards.
 * Comprehend medical units.
 * Comprehend quantities and numbers associated with units.
 
 Such AI will replace many tedious human tasks.
 
-Future work will focus on improving supervised learning.
+Future work will focus on finalizing mapping, improving the tool, and adapting it for other use cases.
 
 Publications available at: [ClinicalUnitMapping.com/about](https://clinicalunitmapping.com/about) .
 
@@ -454,15 +483,15 @@ Section6AdditionalInfo = panel.panel("""
 ## Reproducibility:
 
 This presentation is accessible [here](%s). The code that generated the presentation can be accessed [here](%s). This presentation is generated using Python 2.7.16, panel-0.8.0, holoviews 1.12.7, bokeh-1.4.0.
-Code for ingestion and clustering are archived in the file: AnalyzeCT_2022_11_19.zip. AI and web site database were created using the code in AnalyzeCT_Full_2023_10_01.zip. 
+Code for ingestion and clustering are archived in the file: AnalyzeCT_2022_11_19.zip. AI and web site database were created using the code in AnalyzeCT_full_2024_04_22.zip. Accuracy analysis was archived in AnalyzeCT_full_2024_05_04.zip
 Clinical Trials data archived in AllPublicXML_2022_08_26.zip. Bio Ontology Units downloaded on 2019_04_09, CDISC data downloaded on 2019_03_30 , RTMMS units downloaded on 2019_03_24 . 
-Tensorflow 2.10 and transformers 4.26.1 was used for Neural Network execution in Python 3.10.9 environment. DataHeroes 0.2 was used for core-set calculations
+Tensorflow 2.10 and transformers 4.26.1 was used for Neural Network execution in Python 3.10.9 environment. DataHeroes 0.2 was used for core-set calculations.
 
 
 
 ### Conflict of Interest Statement:
 Payment/services info: Dr. Barhak reports non-financial support and other from Rescale, and MIDAS Network, other from Amazon AWS, Microsoft Azure, MIDAS network, other from The COVID tracking project at the Atlantic, other from John Rice and Jered Hodges. 
-Financial relationships: Jacob Barhak declare(s) employment from MacroFab, United Solutions, B. Well Connected health. The author had a contract with U.S. Bank / Apexon, MacroFab, United Solutions, and B. Well during the work. However, none of these companies had influence on the modeling work reported in the paper. Jacob Barhak declare(s) employment and technical support from Anaconda. The author contracted with Anaconda in the past and uses their free open source software tools. Also the author received free support from Anaconda Holoviz team and Dask teams. Intellectual property info: Dr. Barhak has a patent US Patent 9,858,390 - Reference model for disease progression issued to Jacob Barhak, and US patent 10,923,234 - Analysis and Verification of Models Derived from Clinical Trials Data Extracted from a Database.. Other relationships: During the conduct of the study; personal fees from United Solutions, personal fees from B. Well Connected health, personal fees and non-financial support from Anaconda, outside the submitted work.  . However, despite all support, Dr. Barhak is solely responsible for decisions made for this publication and is responsible for its contents.
+Financial relationships: Jacob Barhak declare(s) employment from MacroFab, United Solutions, B. Well Connected health. The author had a contract with U.S. Bank / Apexon, MacroFab, United Solutions, and B. Well during the work. However, none of these companies had influence on the modeling work reported in the paper. Jacob Barhak declare(s) employment and technical support from Anaconda. The author contracted with Anaconda in the past and uses their free open source software tools. Also the author received free support from Anaconda Holoviz team and Dask teams. Intellectual property info: Dr. Barhak has a patent US Patent 9,858,390 - Reference model for disease progression issued to Jacob Barhak, and US patent 10,923,234 - Analysis and Verification of Models Derived from Clinical Trials Data Extracted from a Database. Other relationships: During the conduct of the study; personal fees from United Solutions, personal fees from B. Well Connected health, personal fees and non-financial support from Anaconda, outside the submitted work. However, despite all support, Dr. Barhak is solely responsible for decisions made for this publication and is responsible for its contents.
 """%
 (PublishURL,CodePublishURL), width=Width, height=800)
 

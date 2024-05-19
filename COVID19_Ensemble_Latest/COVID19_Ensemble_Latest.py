@@ -1,6 +1,6 @@
 ###############################################################################
 # The Reference Model for COVID-19 - The First Multi-Scale Ensemble Disease Model
-# Copyright (C) 2021-2022 Jacob Barhak 
+# Copyright (C) 2021-2024 Jacob Barhak 
 # The work reported is protected by 2 US. Patents:
 # 
 # * J. Barhak, Reference model for disease progression - United States Patent 9,858,390, January 2, 2018
@@ -46,7 +46,9 @@ panel.extension(safe_embed=True)
 
 EmbedVideo = False
 LocalFiles = True
+YouTubeVideo = False
 if len(sys.argv)>1:
+    YouTubeVideo = 'YouTubeVideo' in sys.argv[1:]
     EmbedVideo = 'EmbedVideo' in sys.argv[1:]
     LocalFiles = 'LocalFiles' in sys.argv[1:]
     
@@ -95,6 +97,12 @@ def VideoInlineHTML(ExtrnalFileName,Width=Width,Height=700, EmbedVideo = EmbedVi
         RetStr = '<Video width="%i" height="%i" controls>   <source src="%s" type="video/mp4">  Warning:%s could not be included! </Video>'%(Width, Height, ExtrnalFileName,ExtrnalFileName)
     return RetStr
 
+def YouTubeVideoEmbed( URL, Width=Width,Height=500):
+    RetStr = '<iframe width="%i" height="%i" src="%s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>'%(Width, Height, URL)
+    return RetStr
+
+
+
 def ExtractReferencesDict(ReferenceText):
     "Create Reference Dictionary from Text"
     Lines = ReferenceText.split("\n")
@@ -142,14 +150,15 @@ PublishURL = 'https://www.clinicalunitmapping.com/show/'+SavedFileName
 CodePublishURL = 'https://github.com/Jacob-Barhak/Presentations/tree/master/COVID19_Ensemble_Latest'
 QRCodeFileName = 'New_COVID19_Ensemble_Latest.png'
  
+
 PresentationURL = panel.panel(ConstractImageLinkAnchor(PublishURL,QRCodeFileName,'View this publication on the web',380), width=380, height=380)
 
 PresentationTitle = panel.panel('# The Reference Model for COVID-19 attempts to explain USA data', width=Width, height=40, margin = (0,0,0,0))
-PresentationVenue = panel.panel('[CAFCW23 Computational Approaches for Cancer Workshop, November 12, 2023](https://ncihub.cancer.gov/groups/cafcw/cafcw23/cafcw23_program)', width=740, height=40, margin = (0,0,0,0))
+PresentationVenue = panel.panel('[MODSIM WORLD, Norfolk, VA 20-22 May 2024](https://modsimworld.org/)', width=740, height=40, margin = (0,0,0,0))
 
 PresentationAuthors = panel.panel("By: ***[Jacob Barhak](https://sites.google.com/view/jacob-barhak/home)***", width=280, height=40, margin = (0,0,0,0))
 
-PresentationHeader = panel.Column( PresentationTitle,  panel.Row (PresentationAuthors , PresentationVenue, margin = (0,0,0,0)), margin = (0,0,0,0))
+PresentationHeader = panel.Column( PresentationTitle, panel.Row (PresentationAuthors , PresentationVenue, margin = (0,0,0,0)), margin = (0,0,0,0))
 
 
 ReferencesText = """### References
@@ -250,7 +259,9 @@ ReferencesText = """### References
 
 49. Jacob Barhak, The Reference Model for COVID-19 attempts to explain USA data. Keynote, CHRONIC DISEASES & INFECTIOUS DISEASES 24-NOV-2022, Paris, France. The talk was repeated at PyData Chicago on 15-Dec-2022. Link :  https://www.meetup.com/pydatachi/events/289899473/ Presentation: <https://jacob-barhak.github.io/COVID19_Ensemble_Latest.html>   Video: https://youtu.be/1M645o5gWrc
 
+50. Jacob Barhak Github - COVID-19 Hospitalization model by Kayode Isaac Oshinubi <https://github.com/Jacob-Barhak/COVID19Models/tree/main/COVID19_Hospitalization_Oshinubi>
 
+51. Eric Forgoston Github - Stay-at-home-orders-by-state-for-COVID-19 <https://github.com/eric-forgoston/Stay-at-home-orders-by-state-for-COVID-19>
 
 """
 
@@ -273,18 +284,35 @@ The Reference Model has therefore reached the achievement of being the first kno
 
 *** This is an interactive presentation - please explore the tabs above and interact with the figures - they have sliders and widgets and hover information that will allow interaction. Following the tabs in order from left to right will tell the story ***
 
-Previous published versions of this presentation are archived and can be downloaded below: 
+Different versions of this presentation can be accessed below: 
 
-* [2023 MSM Consortium Meeting - Past2Future, NIH Campus, Natcher Conference Center, Bethesda MD, 28-29 June 2023](https://www.imagwiki.nibib.nih.gov/index.php/imag-events/2023-MSM-Meeting)  - [repository link](https://github.com/Jacob-Barhak/Presentations/blob/1efb29ee47bf776c2f966d2540f3202dcddb0089/COVID19_Ensemble_Latest/COVID19_Ensemble_Latest.html) 
-* [MODSIM WORLD, Norfolk, VA 22-23 May 2023](https://modsimworld.org/) - [repository link](https://github.com/Jacob-Barhak/Presentations/blob/25fd75da5c7bd2ea187dfad05a6b210f47172cd9/COVID19_Ensemble_Latest/COVID19_Ensemble_Latest.html) 
-* [San Diego Python Users Group Monthly Meetup 27-April-2023](https://www.meetup.com/pythonsd/events/292436501/) - [repository link](https://github.com/Jacob-Barhak/Presentations/blob/fca94ff82a89860b12eb4398ec48920654ced28c/COVID19_Ensemble_Latest/COVID19_Ensemble_Latest.html) - [video](https://www.youtube.com/live/U9jSxbyJU0I?feature=share&t=1773) 
-* [PyData Chicago on 15-Dec-2022](https://www.meetup.com/pydatachi/events/289899473/) - [repository link](https://github.com/Jacob-Barhak/Presentations/blob/fca94ff82a89860b12eb4398ec48920654ced28c/COVID19_Ensemble_Latest/COVID19_Ensemble_Latest.html) - [video](https://youtu.be/1M645o5gWrc)
-* Keynote at [CHRONIC DISEASES & INFECTIOUS DISEASES 24-NOV-2022, Paris, France](https://www.chronicdiseases.scientexconference.com/) - [repository link](https://github.com/Jacob-Barhak/Presentations/blob/fca94ff82a89860b12eb4398ec48920654ced28c/COVID19_Ensemble_Latest/COVID19_Ensemble_Latest.html)
-* [Orlando Machine Learning and Data Science Meetup - 18 June 2022](https://www.meetup.com/orlando-mlds/events/286278255/) - [repository link](https://github.com/Jacob-Barhak/Presentations/blob/9559aa6529400741e2c71fa7b2312ea04f7acfbe/COVID19_Ensemble_Latest/COVID19_Ensemble_Latest.html)
+* [MODSIM WORLD, Norfolk, VA 20-22 May 2024](https://modsimworld.org/) - [view presentation](https://www.clinicalunitmapping.com/show/COVID19_Ensemble_MODSIM_2024_05_19.html) , [download presentation](https://www.clinicalunitmapping.com/download/COVID19_Ensemble_MODSIM_2024_05_19.html)
+* [CAFCW23 Computational Approaches for Cancer Workshop, November 12, 2023](https://ncihub.cancer.gov/groups/cafcw/cafcw23/cafcw23_program) - [view presentation](https://www.clinicalunitmapping.com/show/COVID19_Ensemble_CAFCW_2023_11_12.html) , [download presentation](https://www.clinicalunitmapping.com/download/COVID19_Ensemble_CAFCW_2023_11_12.html)
+* [2023 MSM Consortium Meeting - Past2Future, NIH Campus, Natcher Conference Center, Bethesda MD, 28-29 June 2023](https://www.imagwiki.nibib.nih.gov/index.php/imag-events/2023-MSM-Meeting)  - [view presentation](https://www.clinicalunitmapping.com/show/COVID19_Ensemble_MSM_IMAG_2023_06_28.html) , [download presentation](https://www.clinicalunitmapping.com/download/COVID19_Ensemble_MSM_IMAG_2023_06_28.html)
+* [MODSIM WORLD, Norfolk, VA 22-23 May 2023](https://modsimworld.org/) - [view presentation](https://www.clinicalunitmapping.com/show/COVID19_Ensemble_MODSIM_2023_05_22.html) , [download presentation](https://www.clinicalunitmapping.com/download/COVID19_Ensemble_MODSIM_2023_05_22.html)
+* [San Diego Python Users Group Monthly Meetup 27-April-2023](https://www.meetup.com/pythonsd/events/292436501/) - [view presentation](https://www.clinicalunitmapping.com/show/COVID19_Ensemble_SanDiegoPythonUserGroup_2023_04_27.html) , [download presentation](https://www.clinicalunitmapping.com/download/COVID19_Ensemble_SanDiegoPythonUserGroup_2023_04_27.html) - [video](https://www.youtube.com/live/U9jSxbyJU0I?feature=share&t=1773) 
+* [PyData Chicago on 15-Dec-2022](https://www.meetup.com/pydatachi/events/289899473/) - [view presentation](https://www.clinicalunitmapping.com/show/COVID19_Ensemble_PyDataChicago_2022_12_15.html) , [download presentation](https://www.clinicalunitmapping.com/download/COVID19_Ensemble_PyDataChicago_2022_12_15.html) - [video](https://youtu.be/1M645o5gWrc)
+* Keynote at [CHRONIC DISEASES & INFECTIOUS DISEASES 24-NOV-2022, Paris, France](https://www.chronicdiseases.scientexconference.com/) - [view presentation](https://www.clinicalunitmapping.com/show/COVID19_Ensemble_KeynoteParis_2022_11_24.html) , [download presentation](https://www.clinicalunitmapping.com/download/COVID19_Ensemble_KeynoteParis_2022_11_24.html)
+* [Orlando Machine Learning and Data Science Meetup - 18 June 2022](https://www.meetup.com/orlando-mlds/events/286278255/) - [view presentation](https://www.clinicalunitmapping.com/show/COVID19_Ensemble_OrlandoMeetup_2022_06_18.html) , [download presentation](https://www.clinicalunitmapping.com/download/COVID19_Ensemble_OrlandoMeetup_2022_06_18.html)
 
 """), width=Width, height=None)
 
-Section0Video = panel.pane.Video(ResourceDir+os.sep+'COVID_19_Intro_libx264_crf28.mp4', width=1080, height=590, loop=True, name = 'press play to watch the introduction video')
+SavedFileName = 'COVID19_Ensemble_Latest.html'
+PublishURL = 'https://www.clinicalunitmapping.com/show/'+SavedFileName
+CodePublishURL = 'https://github.com/Jacob-Barhak/Presentations/tree/master/COVID19_Ensemble_Latest'
+QRCodeFileName = 'New_COVID19_Ensemble_Latest.png'
+ 
+PresentationURL = panel.panel(ConstractImageLinkAnchor(PublishURL,QRCodeFileName,'View this publication on the web',380), width=380, height=380)
+
+PresentationTitle = panel.panel('# The Reference Model for COVID-19 attempts to explain USA data', width=Width, height=40, margin = (0,0,0,0))
+PresentationVenue = panel.panel('[CAFCW23 Computational Approaches for Cancer Workshop, November 12, 2023](https://ncihub.cancer.gov/groups/cafcw/cafcw23/cafcw23_program)', width=740, height=40, margin = (0,0,0,0))
+
+
+
+if YouTubeVideo:
+    Section0Video = panel.panel(YouTubeVideoEmbed('https://www.youtube.com/embed/s9L-qFF84Ew?si=V5yd2kTC3fW5Mtmc', Width=Width,Height=590))
+else:
+    Section0Video = panel.pane.Video(ResourceDir+os.sep+'COVID_19_Intro_libx264_crf28.mp4', width=1080, height=590, loop=True, name = 'press play to watch the introduction video')
 
 Section0 = panel.Column(Section0Video, Section0Abstract, margin = (0,0,0,0))
 
@@ -304,6 +332,7 @@ The ensemble model structure is presented above. The transition probabilities be
 * ***Infectiousness Models***: Indicating the level of infectiousness of each individual from time of infection. 
 * ***Transmission Models***: Indicating the probability of contracting the disease considering encounters with infected individuals.
 * ***Response models***: The behavior choice of each individual that affects the number of interactions in response to the pandemic. 
+* ***Hospitalization models***: Indicating the probability and time of hospitalization of infected individuals.
 * ***Mortality Models***: A variety of models defining mortality of infected individuals 
     * ***Mortality rate models***: Mortality tables indicating the probability of dying from COVID-19 by age.
     * ***Mortality time***: Models attempting to estimate the time of death in days since infection
@@ -399,10 +428,50 @@ Response models represent behavior of different individuals in response to the p
 | 1              | Apple mobility [34] interpolates level of interactions beyond family size. 10% infected people randomly reduce their number of interactions daily until family size is reached.  |
 | 2              | Apple mobility [34] interpolates level of interactions beyond family size.  20% infected people randomly reduce their number of interactions daily until family size is reached. |
 | 3              | Healthy individuals do not change behavior. Infected persons drop to interaction with family only.                                                                               |
-| 4              | 0.5 compliance to state closures considering start of stay-at-home order, schools, bars & restaurants, non-essential shops. Adapted and extended from [47].                      |
-| 5              | 0.9 compliance to state closures considering start of stay-at-home order, schools, bars & restaurants, non-essential shops. Adapted and extended from [47].                      |
+| 4              | 0.5 compliance to state closures considering start of stay-at-home order, schools, bars & restaurants, non-essential shops. Adapted and extended from [51]***.                   |
+| 5              | 0.9 compliance to state closures considering start of stay-at-home order, schools, bars & restaurants, non-essential shops. Adapted and extended from [51]***.                   |
+
+</br>
+
+*** There are several versions of the state closures in [51]. The start of this work is in [47]. The version used in the ensemble differs slightly from the first published version in [51] that was corrected. For the sake of reproducibility the difference from the published version are: 
+
+- Restaurants were partially closed in NE and not closed in SD.
+- Non essential shops were partially closed in VA and not closed in NE, SD, WY. 
 
 """), width=Width, height=None)
+
+
+
+Section4A_1 = panel.panel(FixReferences(RefDict,"""### Hospitalization Models
+Hospitalization models define probability of hospitalization if infected and time of hospitalization since infection:
+Those models were provided by Kayode Isaac Oshinubi [50].
+####Hospitalization Probability Models:
+"""), width=Width, height=80)
+
+Figure_4A_1 = ObjectInlineHTML(ResourceDir + '/COVID19_Hospitalization_Prob.html', Width=1150, Height=200)
+
+Section4A_2 = panel.panel(FixReferences(RefDict,"""####Hospitalization Time Models:
+"""), width=Width, height=10)
+
+Figure_4A_2 = ObjectInlineHTML(ResourceDir + '/COVID19_Hospitalization_Time.html', Width=1150, Height=200)
+
+Section4A_3 = panel.panel(FixReferences(RefDict,"""
+</br>
+</br>
+</br>
+
+### Combined Hospitalization
+
+After optimization the best fitting hospitalization probability and best fitting hospitalization time can be determined.
+
+Such information would have been helpful for policy makers during the pandemic.
+"""), width=Width, height=None)
+
+
+Figure_4A_3 = ObjectInlineHTML(ResourceDir + '/EnsembleHospitalization.html', Width=1150, Height=300)
+
+
+Section4A = panel.Column( Section4A_1, Figure_4A_1, Section4A_2, Figure_4A_2, Section4A_3, Figure_4A_3, margin = (0,0,0,0))
 
 
 
@@ -448,12 +517,12 @@ In this work, simple multipliers are used:
 
 
 Section7_1 = panel.panel(FixReferences(RefDict,"""### Results
-The results presented here was executed on a server with 16 logical CPUs for about 2 months - this means roughly 3 year of computation on a single CPU core. The Interactive plots below summarize the results:
-This simulation has 4 cohorts for each state starting at days 0,15,30,45. Each simulation runs for 21 days and repeated 10 times. Simulation was stopped after 30 iterations.
+The results presented here was executed on a server with 24 CPU cores for about 6 weeks - this means roughly 3 year of computation on a single CPU core. The Interactive plots below summarize the results:
+This simulation has 4 cohorts for each state starting at days 0,15,30,45. Each simulation runs for 21 days and repeated 10 times. Simulation was stopped after 40 iterations.
 
 * ***Population Plot - Top Left*** - This plot shows difference between model and observed data - fitness. The fitness score is displayed for each state population starting at different times. ***Each different start time is considered as a different cohort of the population***. A viewer hovering with the mouse over the circle will see information about the population cohort at that time including number of infections and deaths. The numbers are presented as model projection / observed numbers by the COVID tracking project. The numbers are scaled to cohort batch size of ***10,000 individuals*** in this simulation. The fitness score in this work is a norm of the observed mortality difference and observed infections difference.
 
-* ***Model Mixture Plot - Top Right*** -  This plot shows the influence of each model on the ensemble. Models from the same group that compete with each other are presented in the same color and their combined influence will be 1. Initially all models in a group have the same influence so in iteration 1 - the plot shows many bars in the same height. When dragging the iteration slider to increase the iteration, it is possible to see that some models gain influence while others lose it. It is possible for a model to be fully rejected. 
+* ***Model Mixture Plot - Top Right*** -  This plot shows the influence of each model on the ensemble. Models from the same group that compete with each other are presented in the same color and their combined influence will be 1. Initially all models in a group have the same influence so in iteration 1 the plot shows many bars in the same height. When dragging the iteration slider to increase the iteration, it is possible to see that some models gain influence while others lose it. It is possible for a model to be fully rejected. 
 
 * ***Convergence Plot - Bottom*** - This plot shows the weighted average fitness for the US states and territories used for each iteration. The blue vertical line shows the current iteration, while the large yellow circle shows the fitness for the unperturbed simulation that is the base of the optimization algorithm. The small circles show the results for the perturbed simulations, those help determine sensitivity and are used in optimization. The red horizontal lines represent the average fitness considering all the simulations in an iteration. This plot clearly shows some models are outliers in some iterations by seeing a spread far away from the unperturbed solution. 
 
@@ -463,7 +532,7 @@ This simulation has 4 cohorts for each state starting at days 0,15,30,45. Each s
 * Preference of infectiousness profiles that peak around day 5. 
 * The transmission model where warm weather reduces transmission becomes dominant.
 * Preference of the Castiglione mortality model based on cell and organ failure that deals with mortality time.
-* behavioral models based of mobility data are less influential than those based on state closure regulations.
+* Behavioral response models based of mobility data are less influential than those based on state closure regulations.
 * The observer models with extreme multiplier of 20 is eliminated and is replaced by other observer models that are considered mainstream.
 
 """), width=Width, height=600)
@@ -477,21 +546,17 @@ Section7 = panel.Column(Section7_1, Figure_4, margin = (0,0,0,0))
 
 
 
-
-
-
-
 Section10_1 = panel.panel(FixReferences(RefDict,"""### Conclusions
 
 * This model can be used to answer questions the government seeks answers for in a future pandemic.
 
 * The technique used is a form of Explainable Artificial Intelligence that relies on computing power.
 
-* If difficult to explain the phenomena like COVID-19 impact in a population using data collected for 3 weeks using mechanistic models.
+* It is difficult to explain the phenomena like COVID-19 impact in a population using data collected for 3 weeks using mechanistic models.
 
-* To reach conclusions, more than a few weeks of data are required to balance for errors and data has to be reused.
+    * To reach conclusions, more than a few weeks of data are required to balance for errors and data has to be reused.
 
-* Some models that seem dominant in short simulations are eliminated when computation is repeated. 
+    * Some models that seem dominant in short simulations are eliminated when computation is repeated. 
 
 * Peak average infectiousness is around day 5 from infection.
 
@@ -511,14 +576,14 @@ Section10_1 = panel.panel(FixReferences(RefDict,"""### Conclusions
 Section10SummaryText = panel.panel(FixReferences(RefDict,"""
 
 ### Reproducibility:
-Results presented in this work are archived in the file MIST_Ref_COVID19_Prelim_2023_10_13.zip for reproducibility purposes. MIST version 0.99.7.8 and python 2.7.18 with the Anaconda distribution were used for executing the simulation.
-Visualization processing is archived in: ExplorationCOVID19_2023_10_13_10K_01Apr_15Dx3_21Dx30x48.zip .
+Results presented in this work are archived in the file MIST_Ref_COVID19_Prelim_2024_03_06.zip for reproducibility purposes. MIST version 0.99.7.8 and python 2.7.18 with the Anaconda distribution were used for executing the simulation.
+Visualization processing is archived in: ExplorationCOVID19_2024_03_06_10K_01Apr_15Dx3_21Dx40x48.zip .
 This presentation is accessible [here](%s). The code that generated the presentation can be accessed [here](%s). This presentation is generated using Python 2.7.16, panel-0.8.0, holoviews 1.12.7, bokeh-1.4.0.
 Published versions of this presentation are archived [here](https://github.com/Jacob-Barhak/Presentations/commits/master/COVID19_Ensemble_Latest)
 
 ### Conflict of Interest Statement:
 Payment/services info: Dr. Barhak reports non-financial support and other from Rescale, and MIDAS Network, other from Amazon AWS, Microsoft Azure, MIDAS network, other from The COVID tracking project at the Atlantic, other from John Rice and Jered Hodges. 
-Financial relationships: Jacob Barhak declare(s) employment from MacroFab, United Solutions, B. Well Connected health. The author had a contract with U.S. Bank / Apexon, MacroFab, United Solutions, and B. Well during the work. However, none of these companies had influence on the modeling work reported in the paper. Jacob Barhak declare(s) employment and technical support from Anaconda. The author contracted with Anaconda in the past and uses their free open source software tools. Also the author received free support from Anaconda Holoviz team and Dask teams. Intellectual property info: Dr. Barhak has a patent US Patent 9,858,390 - Reference model for disease progression issued to Jacob Barhak, and US patent 10,923,234 - Analysis and Verification of Models Derived from Clinical Trials Data Extracted from a Database.. Other relationships: During the conduct of the study; personal fees from United Solutions, personal fees from B. Well Connected health, personal fees and non-financial support from Anaconda, outside the submitted work.  . However, despite all support, Dr. Barhak is solely responsible for decisions made for this publication and is responsible for its contents.
+Financial relationships: Jacob Barhak declare(s) employment from MacroFab, United Solutions, B. Well Connected health. The author had a contract with U.S. Bank / Apexon, MacroFab, United Solutions, and B. Well during the work. However, none of these companies had influence on the modeling work reported in the paper. Jacob Barhak declare(s) employment and technical support from Anaconda. The author contracted with Anaconda in the past and uses their free open source software tools. Also the author received free support from Anaconda Holoviz team and Dask teams. Intellectual property info: Dr. Barhak has a patent US Patent 9,858,390 - Reference model for disease progression issued to Jacob Barhak, and US patent 10,923,234 - Analysis and Verification of Models Derived from Clinical Trials Data Extracted from a Database. Other relationships: During the conduct of the study; personal fees from United Solutions, personal fees from B. Well Connected health, personal fees and non-financial support from Anaconda, outside the submitted work. However, despite all support, Dr. Barhak is solely responsible for decisions made for this publication and is responsible for its contents.
 
 """%(PublishURL,CodePublishURL)), width=Width, height=None)
 
@@ -531,22 +596,22 @@ The following researchers provided models. Here is some information on their wor
 * [Lucas Boettcher](http://lucas-boettcher.info/) - provided an infectiousness model and an observation model
     - [A statistical model of COVID-19 testing in populations: effects of sampling bias and testing errors](https://doi.org/10.1098/rsta.2021.0121)
     - [Using excess deaths and testing statistics to determine COVID-19 mortalities](https://doi.org/10.1007/s10654-021-00748-2)
-    - [On the accuracy of short-term COVID-19 fatality forecasts](https://doi.org/10.1186/s12879-022-07205-9)
 
 * [Robin Thompson](https://robin-thompson.co.uk/) and William Hart - provided an infectiousness model
     - [Generation time of the alpha and delta SARS-CoV-2 variants: an epidemiological analysis](https://doi.org/10.1016/S1473-3099(22)00001-9)
     - [High infectiousness immediately before COVID-19 symptom onset highlights the importance of continued contact tracing](https://doi.org/10.7554/eLife.65534)
-    - [Inference of the SARS-CoV-2 generation time using UK household data](https://doi.org/10.7554/eLife.70767)
 
 * [Filippo Castiglione](https://wwwold.iac.cnr.it/~filippo/about-me.html) - provided a mortality model
     - [Emulating complex simulations by machine learning methods](https://doi.org/10.1186/s12859-021-04354-7)
     - [From infection to immunity: understanding the response to SARS-CoV2 through in-silico modeling](https://doi.org/10.3389/fimmu.2021.646972)
-    - [Mechanistic Modeling and Multiscale Applications for Precision Medicine](https://doi.org/10.1089/nsm.2020.0002)
     
 * [Eric Forgoston](https://eric-forgoston.github.io) - provided data for response models
     - [Knowledge-based learning of nonlinear dynamics and chaos](https://doi.org/10.1063/5.0065617)
     - [Characterizing outbreak vulnerability in a stochastic SIS model with an external disease reservoir](https://doi.org/10.1098/rsif.2022.0253)
-    - [Learning Ocean Circulation Models with Reservoir Computing](https://doi.org/10.1063/5.0119061)
+
+* [Kayode Isaac Oshinubi](https://kayodeoshinubi.github.io/)
+    - [A model for the lifespan loss due to a viral disease: example of the COVID-19 outbreaks](https://doi.org/10.3390/idr14030038)
+    - [Functional data analysis: transition from daily observation of COVID-19 prevalence in France to functional curves](https://doi.org/10.3934/math.2022298)
 
 Additional thanks to these modelers who provided data for models:
 
@@ -616,6 +681,7 @@ SectionSelectorTab = panel.layout.Tabs (
                                         ('Infectiousness', Section2),
                                         ('Transmission', Section3),
                                         ('Response Models', Section4),
+                                        ('Hospitalization Models', Section4A),
                                         ('Mortality Models', Section5),
                                         ('Observation Models', Section6),
                                         ('Results', Section7),

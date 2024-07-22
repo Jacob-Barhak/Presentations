@@ -137,7 +137,7 @@ QRCodeFileName = 'New_Unit_Mapping_Latest.png'
 PresentationURL = panel.panel(ConstractImageLinkAnchor(PublishURL,QRCodeFileName,'View this presentation on the web',480), width=480, height=480)
 
 PresentationTitle = panel.panel('# ClinicalUnitMapping.Com Takes a Small Step Towards Machine Comprehension of Clinical Trial Data', width=700, height=80, margin = (0,0,0,0))
-PresentationVenue = panel.panel('[MODSIM WORLD, Norfolk, VA 20-22 May 2024](https://modsimworld.org/)', width=300, height=80, margin = (0,0,0,0))
+PresentationVenue = panel.panel('[2nd Global Congress on</br>Healthcare & Patient Safety</br> Berlin, July 29 - 30, 2024](https://healthcareconference.pagicle.com/)', width=280, height=80, margin = (0,0,0,0))
 PresentationAuthors = panel.panel("By: [Jacob Barhak](http://sites.google.com/site/jacobbarhak/) </br> & [Joshua Schertz](https://joshschertz.com/)", width=120, height=80, margin = (0,0,0,0))
 PresentationHeader = panel.Row ( PresentationTitle,  PresentationAuthors , PresentationVenue, margin = (0,0,0,0))
 
@@ -179,12 +179,13 @@ ClinicalTrials.Gov is the database storing data from clinical trials. Many clini
 
 This presentation will discuss how python tools are used to: 1) Process and index the data, 2) Find similar units using NLP and machine learning, 3) Create a web interface to support user mapping of those units, 4) Use advanced machine learning tools such as transformers for Natural Language Processing (NLP) to drive inference and core-sets to speed up labeling and quickly setup an inference engine. 
 
-This project is ongoing and this presentation is constantly updated for each venue. This presentation will focus on improvement of supervised learning using transformers and accelerated labeling using core-sets. The latest interactive presentation with results is accessible through: [https://www.clinicalunitmapping.com/show/Unit_Mapping_Latest.html](https://www.clinicalunitmapping.com/show/Unit_Mapping_Latest.html)
+This project is ongoing and this presentation is constantly updated for each venue. This presentation will focus on latest improvements of supervised learning using transformers and accelerated labeling and unit inference. The latest interactive presentation with results is accessible through: [https://www.clinicalunitmapping.com/show/Unit_Mapping_Latest.html](https://www.clinicalunitmapping.com/show/Unit_Mapping_Latest.html)
 
 The intention is to unify unit standards and machine learning tools that will be able to map all units reported by clinical trials. With such capabilities, the data in this important clinical trials database would become machine comprehensible.
 
-*** This is an interactive presentation - please explore the tabs above and interact with the figures - they have sliders and widgets and hover information that will allow interaction. Following the tabs in order from left to right will tell the story. Different versions of this presentation can be accessed below: ***
+*** This is an interactive presentation. Follow the tabs in from left to right. Different versions can be accessed below: ***
 
+* [2nd Global Congress on Healthcare & Patient Safety, Berlin, July 29 - 30, 2024](https://healthcareconference.pagicle.com/) - [view presentation](https://clinicalunitmapping.com/show/Unit_Mapping_Berlin_2024_07_22.html) , [download presentation](https://clinicalunitmapping.com/download/Unit_Mapping_Berlin_2024_07_22.html)
 * [MODSIM WORLD Norfolk, VA, 20-22 May 2024](https://modsimworld.org/)  - [view presentation](https://clinicalunitmapping.com/show/Unit_Mapping_MODSIM_2024_05_19.html) , [download presentation](https://clinicalunitmapping.com/download/Unit_Mapping_MODSIM_2024_05_19.html)
 * [Austin Python meetup, January 10, 2024](https://www.meetup.com/austinpython/events/297392368/) [view presentation](https://www.clinicalunitmapping.com/show/Unit_Mapping_AustinMeetup_2024_01_10.html) , [download presentation](https://www.clinicalunitmapping.com/download/Unit_Mapping_AustinMeetup_2024_01_10.html) , [view video](https://youtu.be/d4qB9xaPU-U?si=MkPfADDtJuyK4T90)
 * [CAFCW23 - Computational Approaches for Cancer Workshop, November 12, 2023](https://ncihub.cancer.gov/groups/cafcw/cafcw23/cafcw23_program) - [view presentation](https://clinicalunitmapping.com/show/Unit_Mapping_CAFCW_2023_10_29.html) , [download presentation](https://clinicalunitmapping.com/download/Unit_Mapping_CAFCW_2023_10_29.html)
@@ -332,15 +333,15 @@ Section3SupervisedMachineLearningOverview = panel.panel(FixReferences(RefDict,""
 </br>
 ## Training Numbers
 
-- 41795 total unique units used in the data base.
-- 36752 used in ClinicalTrials.Gov .
-- 5043 units appeared in other standards and auto mapped.
-- 406857 non units used to contrast units.
+- 41,795 total unique units used in the data base.
+- 36,752 used in ClinicalTrials.Gov .
+- 5,043 units appeared in other standards and auto mapped.
+- 406,857 non units used to contrast units.
 - 679 core-set units.
-- 17203 units were labeled overall and used in training - from clusters 0-11. 
-- 3249 unique target labels identified so far
-- 2,757,866 / 689,467 unit and context records in train / validate split of 80%/20%.
-- 6,320,238 records/epoch trained for 5 epochs to allow IEEE and CDISC standardization. 
+- 21,121 units were labeled overall and used in training - from clusters 0-18. 
+- 4029 unique target labels identified so far
+- 2,774,780 / 693,695  unit and context records in train / validate split of 80%/20%.
+- 6,370,898 records/epoch trained for 5 epochs to allow IEEE and CDISC standardization. 
 
 
 # Inference
@@ -348,7 +349,7 @@ Section3SupervisedMachineLearningOverview = panel.panel(FixReferences(RefDict,""
 - After the AI was trained Inference was performed using transformers.
 - Inference for the IEEE/CDISC standards were conducted as well to build a database. 
 - The NLP tools attempt to comprehend the text and have behavior somewhat comparable to humans.
-- Despite high accuracy of validation set. recall that roughly 10% of clusters have been mapped. Accuracy will drop for unmapped clusters.
+- Despite high accuracy of validation set. recall that less than 20% of clusters have been mapped. Accuracy will drop for unmapped clusters.
 - **Actual inference accuracy will be established when manual mapping will finish for all clusters**
 - **The inference engine is still experimental and limited - it is still a prototype.**
 
@@ -449,6 +450,7 @@ Section5ShowTheSite = panel.panel(FixReferences(RefDict,"""
 # Explore the AI on the Website
 <object width="1150" height="650" data="https://clinicalunitmapping.com/">Warning: web site could not be included!</object>
 
+Please access the website through [ClinicalUnitMapping.com](https://clinicalunitmapping.com/) to get full functionality.
 """), width=Width, height=500)
 
 
@@ -466,7 +468,7 @@ With such tools it will be possible for machines to:
 * Recognize medical units, even if misspelled.
 * Translate units among different standards.
 * Comprehend medical units.
-* Comprehend quantities and numbers associated with units.
+* Comprehend quantities if numbers are associated with the units.
 
 Such AI will replace many tedious human tasks.
 
@@ -482,8 +484,8 @@ Section6AdditionalInfo = panel.panel("""
 
 ## Reproducibility:
 
-This presentation is accessible [here](%s). The code that generated the presentation can be accessed [here](%s). This presentation is generated using Python 2.7.16, panel-0.8.0, holoviews 1.12.7, bokeh-1.4.0.
-Code for ingestion and clustering are archived in the file: AnalyzeCT_2022_11_19.zip. AI and web site database were created using the code in AnalyzeCT_full_2024_04_22.zip. Accuracy analysis was archived in AnalyzeCT_full_2024_05_04.zip
+This presentation is accessible [here](%s). The code that generated the presentation can be accessed [here](%s) without some data. This presentation is generated using Python 2.7.16, panel-0.8.0, holoviews 1.12.7, bokeh-1.4.0.
+Code for ingestion and clustering are archived in the file: AnalyzeCT_2022_11_19.zip. AI model, accuracy analysis, and web site database were created using the code in AnalyzeCT_full_2024_07_06.zip.
 Clinical Trials data archived in AllPublicXML_2022_08_26.zip. Bio Ontology Units downloaded on 2019_04_09, CDISC data downloaded on 2019_03_30 , RTMMS units downloaded on 2019_03_24 . 
 Tensorflow 2.10 and transformers 4.26.1 was used for Neural Network execution in Python 3.10.9 environment. DataHeroes 0.2 was used for core-set calculations.
 
@@ -541,7 +543,7 @@ Thanks to those who hosted me / my computing equipment:
 
 * John Rice
 * Jeff Pape
-* Boris and Halina Barhak (my parents)
+* Halina, Boris, and Michael Barhak (my family)
 
 
 """), width=int(Width * 0.5), height=None)

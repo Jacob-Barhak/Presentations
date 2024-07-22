@@ -154,9 +154,9 @@ QRCodeFileName = 'New_COVID19_Ensemble_Latest.png'
 PresentationURL = panel.panel(ConstractImageLinkAnchor(PublishURL,QRCodeFileName,'View this publication on the web',380), width=380, height=380)
 
 PresentationTitle = panel.panel('# The Reference Model for COVID-19 attempts to explain USA data', width=Width, height=40, margin = (0,0,0,0))
-PresentationVenue = panel.panel('[MODSIM WORLD, Norfolk, VA 20-22 May 2024](https://modsimworld.org/)', width=740, height=40, margin = (0,0,0,0))
+PresentationVenue = panel.panel('[2nd Global Congress on Healthcare & Patient Safety, Berlin, July 29 - 30, 2024](https://healthcareconference.pagicle.com/)', width=750, height=40, margin = (0,0,0,0))
 
-PresentationAuthors = panel.panel("By: ***[Jacob Barhak](https://sites.google.com/view/jacob-barhak/home)***", width=280, height=40, margin = (0,0,0,0))
+PresentationAuthors = panel.panel("By: ***[Jacob Barhak](https://sites.google.com/view/jacob-barhak/home)***", width=350, height=40, margin = (0,0,0,0))
 
 PresentationHeader = panel.Column( PresentationTitle, panel.Row (PresentationAuthors , PresentationVenue, margin = (0,0,0,0)), margin = (0,0,0,0))
 
@@ -277,7 +277,7 @@ The Reference Model for disease progression was initially a diabetes model. It u
 
 The model performs simulation at the individual level while modeling entire populations using the MIcro-Simulation Tool (MIST), employing High Performance Computing (HPC), and using machine learning techniques to combine models.
 
-The Reference Model technology was transformed to model COVID-19 near the start of the epidemic. The model is now composed of multiple models from multiple contributors that represent different phenomena: It includes infectiousness models, transmission models, human response / behavior models, mortality models, and observation models. Some of those models were calculated at different scales including cell scale, organ scale, individual scale, and population scale.
+The Reference Model technology was transformed to model COVID-19 near the start of the epidemic. The model is now composed of multiple models from multiple contributors that represent different phenomena: It includes infectiousness models, transmission models, human response / behavior models, hospitalization models, mortality models, and observation models. Some of those models were calculated at different scales including cell scale, organ scale, individual scale, and population scale.
 
 The Reference Model has therefore reached the achievement of being the first known multi-scale ensemble model for COVID-19. This project is ongoing and this presentation is constantly updated for each venue. To access the most recent publication please use this link [https://www.clinicalunitmapping.com/show/COVID19_Ensemble_Latest.html](https://www.clinicalunitmapping.com/show/COVID19_Ensemble_Latest.html)
 
@@ -286,6 +286,9 @@ The Reference Model has therefore reached the achievement of being the first kno
 
 Different versions of this presentation can be accessed below: 
 
+
+
+* [2nd Global Congress on Healthcare & Patient Safety, Berlin, July 29 - 30, 2024](https://healthcareconference.pagicle.com/) - [view presentation](https://www.clinicalunitmapping.com/show/COVID19_Ensemble_Berlin_2024_07_22.html) , [download presentation](https://www.clinicalunitmapping.com/download/COVID19_Ensemble_Berlin_2024_07_22.html)
 * [MODSIM WORLD, Norfolk, VA 20-22 May 2024](https://modsimworld.org/) - [view presentation](https://www.clinicalunitmapping.com/show/COVID19_Ensemble_MODSIM_2024_05_19.html) , [download presentation](https://www.clinicalunitmapping.com/download/COVID19_Ensemble_MODSIM_2024_05_19.html)
 * [CAFCW23 Computational Approaches for Cancer Workshop, November 12, 2023](https://ncihub.cancer.gov/groups/cafcw/cafcw23/cafcw23_program) - [view presentation](https://www.clinicalunitmapping.com/show/COVID19_Ensemble_CAFCW_2023_11_12.html) , [download presentation](https://www.clinicalunitmapping.com/download/COVID19_Ensemble_CAFCW_2023_11_12.html)
 * [2023 MSM Consortium Meeting - Past2Future, NIH Campus, Natcher Conference Center, Bethesda MD, 28-29 June 2023](https://www.imagwiki.nibib.nih.gov/index.php/imag-events/2023-MSM-Meeting)  - [view presentation](https://www.clinicalunitmapping.com/show/COVID19_Ensemble_MSM_IMAG_2023_06_28.html) , [download presentation](https://www.clinicalunitmapping.com/download/COVID19_Ensemble_MSM_IMAG_2023_06_28.html)
@@ -302,12 +305,6 @@ PublishURL = 'https://www.clinicalunitmapping.com/show/'+SavedFileName
 CodePublishURL = 'https://github.com/Jacob-Barhak/Presentations/tree/master/COVID19_Ensemble_Latest'
 QRCodeFileName = 'New_COVID19_Ensemble_Latest.png'
  
-PresentationURL = panel.panel(ConstractImageLinkAnchor(PublishURL,QRCodeFileName,'View this publication on the web',380), width=380, height=380)
-
-PresentationTitle = panel.panel('# The Reference Model for COVID-19 attempts to explain USA data', width=Width, height=40, margin = (0,0,0,0))
-PresentationVenue = panel.panel('[CAFCW23 Computational Approaches for Cancer Workshop, November 12, 2023](https://ncihub.cancer.gov/groups/cafcw/cafcw23/cafcw23_program)', width=740, height=40, margin = (0,0,0,0))
-
-
 
 if YouTubeVideo:
     Section0Video = panel.panel(YouTubeVideoEmbed('https://www.youtube.com/embed/s9L-qFF84Ew?si=V5yd2kTC3fW5Mtmc', Width=Width,Height=590))
@@ -329,16 +326,17 @@ Section1_1_2 = panel.panel(FixReferences(RefDict,"""
 
 The ensemble model structure is presented above. The transition probabilities between states is controlled by multiple models:
 
-* ***Infectiousness Models***: Indicating the level of infectiousness of each individual from time of infection. 
-* ***Transmission Models***: Indicating the probability of contracting the disease considering encounters with infected individuals.
+* ***Infectiousness models***: Indicating the level of infectiousness of each individual from time of infection. 
+* ***Transmission models***: Indicating the probability of contracting the disease considering encounters with infected individuals.
 * ***Response models***: The behavior choice of each individual that affects the number of interactions in response to the pandemic. 
 * ***Hospitalization models***: Indicating the probability and time of hospitalization of infected individuals.
-* ***Mortality Models***: A variety of models defining mortality of infected individuals 
+* ***Mortality models***: A variety of models defining mortality of infected individuals 
     * ***Mortality rate models***: Mortality tables indicating the probability of dying from COVID-19 by age.
     * ***Mortality time***: Models attempting to estimate the time of death in days since infection
     * ***Mortality distribution***: A model that indicates the daily probability of mortality by age group since infection. 
 * ***Recovery model***: defines condition of recovery as a combination of infectiousness, mortality probability, mortality time, and time since infection. 
-* ***Observation Models***: defines how an observer sees the numbers - recall that numbers reported are not always accurate. The observer model corrects this.
+* ***Observation models***: defines how an observer sees the numbers - recall that numbers reported are not always accurate. The observer model corrects this.
+
 The Reference Model combines these models and matches their results to results from The COVID Tracking project [1].
 
 ### Initialization
@@ -377,7 +375,7 @@ Section2_2 = panel.panel(FixReferences(RefDict,"""### Combined Infectiousness Mo
 
 The relative infectiousness per day since infection will be assembled by the ensemble.
 
-If such information was available in May 2022, the DHS could have had infectiousness information at hand.
+If such information was available in May 2020, the DHS could have had infectiousness information at hand.
 """), width=Width, height=None)
 
 Figure_5 = ObjectInlineHTML(ResourceDir + '/EnsembleInfectiousness.html', Width=1150, Height=320)
@@ -520,7 +518,7 @@ Section7_1 = panel.panel(FixReferences(RefDict,"""### Results
 The results presented here was executed on a server with 24 CPU cores for about 6 weeks - this means roughly 3 year of computation on a single CPU core. The Interactive plots below summarize the results:
 This simulation has 4 cohorts for each state starting at days 0,15,30,45. Each simulation runs for 21 days and repeated 10 times. Simulation was stopped after 40 iterations.
 
-* ***Population Plot - Top Left*** - This plot shows difference between model and observed data - fitness. The fitness score is displayed for each state population starting at different times. ***Each different start time is considered as a different cohort of the population***. A viewer hovering with the mouse over the circle will see information about the population cohort at that time including number of infections and deaths. The numbers are presented as model projection / observed numbers by the COVID tracking project. The numbers are scaled to cohort batch size of ***10,000 individuals*** in this simulation. The fitness score in this work is a norm of the observed mortality difference and observed infections difference.
+* ***Population Plot - Top Left*** - This plot shows difference between model and observed data - fitness. The fitness score is displayed for each state population starting at different times. ***Each different start time is considered as a different cohort of the population***. A viewer hovering with the mouse over the circle will see information about the population cohort at that time including number of infections and deaths. The numbers are presented as model projection / observed numbers by the COVID tracking project. The numbers are scaled to cohort batch size of ***10,000 individuals***. The fitness score is a norm of the model to observed differences in mortality, infections, and hospitalization normalized.
 
 * ***Model Mixture Plot - Top Right*** -  This plot shows the influence of each model on the ensemble. Models from the same group that compete with each other are presented in the same color and their combined influence will be 1. Initially all models in a group have the same influence so in iteration 1 the plot shows many bars in the same height. When dragging the iteration slider to increase the iteration, it is possible to see that some models gain influence while others lose it. It is possible for a model to be fully rejected. 
 
@@ -529,11 +527,11 @@ This simulation has 4 cohorts for each state starting at days 0,15,30,45. Each s
 
 ## The interesting element in this simulation:
 
-* Preference of infectiousness profiles that peak around day 5. 
+* Preference of longer infectiousness profiles. 
 * The transmission model where warm weather reduces transmission becomes dominant.
 * Preference of the Castiglione mortality model based on cell and organ failure that deals with mortality time.
 * Behavioral response models based of mobility data are less influential than those based on state closure regulations.
-* The observer models with extreme multiplier of 20 is eliminated and is replaced by other observer models that are considered mainstream.
+* The observer models with extreme infectiousness multiplier of 20 is eliminated and is replaced by a blend of observer models with multipliers of 1, 5, and 7.5.
 
 """), width=Width, height=600)
 
@@ -552,11 +550,11 @@ Section10_1 = panel.panel(FixReferences(RefDict,"""### Conclusions
 
 * The technique used is a form of Explainable Artificial Intelligence that relies on computing power.
 
-* It is difficult to explain the phenomena like COVID-19 impact in a population using data collected for 3 weeks using mechanistic models.
+* It is difficult to explain the phenomena like COVID-19 impact in a population using data collected for only 3 weeks using mechanistic models.
 
     * To reach conclusions, more than a few weeks of data are required to balance for errors and data has to be reused.
 
-    * Some models that seem dominant in short simulations are eliminated when computation is repeated. 
+    * Model mixture changes when computation was repeated for many cohorts over a longer period. 
 
 * Peak average infectiousness is around day 5 from infection.
 
@@ -578,8 +576,8 @@ Section10SummaryText = panel.panel(FixReferences(RefDict,"""
 ### Reproducibility:
 Results presented in this work are archived in the file MIST_Ref_COVID19_Prelim_2024_03_06.zip for reproducibility purposes. MIST version 0.99.7.8 and python 2.7.18 with the Anaconda distribution were used for executing the simulation.
 Visualization processing is archived in: ExplorationCOVID19_2024_03_06_10K_01Apr_15Dx3_21Dx40x48.zip .
-This presentation is accessible [here](%s). The code that generated the presentation can be accessed [here](%s). This presentation is generated using Python 2.7.16, panel-0.8.0, holoviews 1.12.7, bokeh-1.4.0.
-Published versions of this presentation are archived [here](https://github.com/Jacob-Barhak/Presentations/commits/master/COVID19_Ensemble_Latest)
+This presentation is accessible [here](%s). The code that generated the presentation can be accessed [here](%s) without the large resource files. This presentation is generated using Python 2.7.16, panel-0.8.0, holoviews 1.12.7, bokeh-1.4.0.
+Published versions of this presentation are provided at the first tab.
 
 ### Conflict of Interest Statement:
 Payment/services info: Dr. Barhak reports non-financial support and other from Rescale, and MIDAS Network, other from Amazon AWS, Microsoft Azure, MIDAS network, other from The COVID tracking project at the Atlantic, other from John Rice and Jered Hodges. 
@@ -646,13 +644,13 @@ Thanks to these organizations for providing cloud computing power:
 
 Thanks to SciPod for good video production services.
 
-Thanks to those who hosted me / my compute server:
+Thanks to those who hosted and helped with my compute server:
 
 * John Rice
 * Jered Hodges
 * United Solutions
 * Jeff Pape
-* Boris and Halina Barhak (my parents)
+* Halina, Boris, and Michael Barhak (my family)
 * Ronen Ozer
 
 Additional thanks for those helping locate and interpret Temperature data:

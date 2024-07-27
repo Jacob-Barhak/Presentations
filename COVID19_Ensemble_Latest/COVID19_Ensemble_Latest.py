@@ -288,10 +288,10 @@ Different versions of this presentation can be accessed below:
 
 
 
-* [2nd Global Congress on Healthcare & Patient Safety, Berlin, July 29 - 30, 2024](https://healthcareconference.pagicle.com/) - [view presentation](https://www.clinicalunitmapping.com/show/COVID19_Ensemble_Berlin_2024_07_22.html) , [download presentation](https://www.clinicalunitmapping.com/download/COVID19_Ensemble_Berlin_2024_07_22.html)
+* [2nd Global Congress on Healthcare & Patient Safety, Berlin, July 29 - 30, 2024](https://healthcareconference.pagicle.com/) - [view presentation](https://www.clinicalunitmapping.com/show/COVID19_Ensemble_Berlin_2024_07_27.html) , [download presentation](https://www.clinicalunitmapping.com/download/COVID19_Ensemble_Berlin_2024_07_27.html)
 * [MODSIM WORLD, Norfolk, VA 20-22 May 2024](https://modsimworld.org/) - [view presentation](https://www.clinicalunitmapping.com/show/COVID19_Ensemble_MODSIM_2024_05_19.html) , [download presentation](https://www.clinicalunitmapping.com/download/COVID19_Ensemble_MODSIM_2024_05_19.html)
 * [CAFCW23 Computational Approaches for Cancer Workshop, November 12, 2023](https://ncihub.cancer.gov/groups/cafcw/cafcw23/cafcw23_program) - [view presentation](https://www.clinicalunitmapping.com/show/COVID19_Ensemble_CAFCW_2023_11_12.html) , [download presentation](https://www.clinicalunitmapping.com/download/COVID19_Ensemble_CAFCW_2023_11_12.html)
-* [2023 MSM Consortium Meeting - Past2Future, NIH Campus, Natcher Conference Center, Bethesda MD, 28-29 June 2023](https://www.imagwiki.nibib.nih.gov/index.php/imag-events/2023-MSM-Meeting)  - [view presentation](https://www.clinicalunitmapping.com/show/COVID19_Ensemble_MSM_IMAG_2023_06_28.html) , [download presentation](https://www.clinicalunitmapping.com/download/COVID19_Ensemble_MSM_IMAG_2023_06_28.html)
+* [2023 MSM Consortium Meeting - Past2Future, NIH Campus, Natcher Conference Center, Bethesda MD, 28-29 June 2023](https://www.imagwiki.nibib.nih.gov/index.php/imag-events/2023-MSM-Meeting) - [view presentation](https://www.clinicalunitmapping.com/show/COVID19_Ensemble_MSM_IMAG_2023_06_28.html) , [download presentation](https://www.clinicalunitmapping.com/download/COVID19_Ensemble_MSM_IMAG_2023_06_28.html)
 * [MODSIM WORLD, Norfolk, VA 22-23 May 2023](https://modsimworld.org/) - [view presentation](https://www.clinicalunitmapping.com/show/COVID19_Ensemble_MODSIM_2023_05_22.html) , [download presentation](https://www.clinicalunitmapping.com/download/COVID19_Ensemble_MODSIM_2023_05_22.html)
 * [San Diego Python Users Group Monthly Meetup 27-April-2023](https://www.meetup.com/pythonsd/events/292436501/) - [view presentation](https://www.clinicalunitmapping.com/show/COVID19_Ensemble_SanDiegoPythonUserGroup_2023_04_27.html) , [download presentation](https://www.clinicalunitmapping.com/download/COVID19_Ensemble_SanDiegoPythonUserGroup_2023_04_27.html) - [video](https://www.youtube.com/live/U9jSxbyJU0I?feature=share&t=1773) 
 * [PyData Chicago on 15-Dec-2022](https://www.meetup.com/pydatachi/events/289899473/) - [view presentation](https://www.clinicalunitmapping.com/show/COVID19_Ensemble_PyDataChicago_2022_12_15.html) , [download presentation](https://www.clinicalunitmapping.com/download/COVID19_Ensemble_PyDataChicago_2022_12_15.html) - [video](https://youtu.be/1M645o5gWrc)
@@ -531,7 +531,7 @@ This simulation has 4 cohorts for each state starting at days 0,15,30,45. Each s
 * The transmission model where warm weather reduces transmission becomes dominant.
 * Preference of the Castiglione mortality model based on cell and organ failure that deals with mortality time.
 * Behavioral response models based of mobility data are less influential than those based on state closure regulations.
-* The observer models with extreme infectiousness multiplier of 20 is eliminated and is replaced by a blend of observer models with multipliers of 1, 5, and 7.5.
+* The observer models with extreme infectiousness multiplier of 20 is eliminated and is replaced by a blend of observer models with multipliers of 1, 5, and 7.15.
 
 """), width=Width, height=600)
 

@@ -185,7 +185,7 @@ The intention is to unify unit standards and machine learning tools that will be
 
 *** This is an interactive presentation. Follow the tabs in from left to right. Different versions can be accessed below: ***
 
-* [2nd Global Congress on Healthcare & Patient Safety, Berlin, July 29 - 30, 2024](https://healthcareconference.pagicle.com/) - [view presentation](https://clinicalunitmapping.com/show/Unit_Mapping_Berlin_2024_07_22.html) , [download presentation](https://clinicalunitmapping.com/download/Unit_Mapping_Berlin_2024_07_22.html)
+* [2nd Global Congress on Healthcare & Patient Safety, Berlin, July 29 - 30, 2024](https://healthcareconference.pagicle.com/) - [view presentation](https://clinicalunitmapping.com/show/Unit_Mapping_Berlin_2024_07_27.html) , [download presentation](https://clinicalunitmapping.com/download/Unit_Mapping_Berlin_2024_07_27.html)
 * [MODSIM WORLD Norfolk, VA, 20-22 May 2024](https://modsimworld.org/)  - [view presentation](https://clinicalunitmapping.com/show/Unit_Mapping_MODSIM_2024_05_19.html) , [download presentation](https://clinicalunitmapping.com/download/Unit_Mapping_MODSIM_2024_05_19.html)
 * [Austin Python meetup, January 10, 2024](https://www.meetup.com/austinpython/events/297392368/) [view presentation](https://www.clinicalunitmapping.com/show/Unit_Mapping_AustinMeetup_2024_01_10.html) , [download presentation](https://www.clinicalunitmapping.com/download/Unit_Mapping_AustinMeetup_2024_01_10.html) , [view video](https://youtu.be/d4qB9xaPU-U?si=MkPfADDtJuyK4T90)
 * [CAFCW23 - Computational Approaches for Cancer Workshop, November 12, 2023](https://ncihub.cancer.gov/groups/cafcw/cafcw23/cafcw23_program) - [view presentation](https://clinicalunitmapping.com/show/Unit_Mapping_CAFCW_2023_10_29.html) , [download presentation](https://clinicalunitmapping.com/download/Unit_Mapping_CAFCW_2023_10_29.html)
@@ -316,7 +316,7 @@ Section3SupervisedMachineLearningOverview = panel.panel(FixReferences(RefDict,""
 | Feature Classification               | LSTM / CNN        | NA                  | Can be simple and fast yet requires mapping and is sensitive.                                                     |[3]                         |
 | Sequence to Sequence Preset Length   | LSTM / CNN        | 38.5% - 61.0%       | Relatively simple flexible and reliable, training reasonable, fast inference. Correction can be applied.          |[4], [6]                    |
 | Sequence to Sequence Encoder/Decoder | LSTM              | 53.6% - 56.2%       | Works well for short sequences, non trivial implementation. Slow inference. Correction can be applied.            |[5], [7], [8], [9], [10]    |
-| Transformers                         | Attention         | 81.4% - 99.8%       | Generative NLP Technology using encoder decoder with attention layers - generates text rather than classifies.    |[16]                          |
+| Transformers                         | Attention         | 79.7% - 99.9%       | Generative NLP Technology using encoder decoder with attention layers - generates text rather than classifies.    |[16]                          |
 
 
 ## Labeling

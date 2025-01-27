@@ -291,7 +291,7 @@ The Reference Model has therefore reached the achievement of being the first kno
 Different versions of this presentation can be accessed below: 
 
 
-* [Code Mavens](https://www.meetup.com/code-mavens/events/305357268/) January 27, 2025 - [download presentation](https://www.clinicalunitmapping.com/download/COVID19_Ensemble_Mavens_2025_01_27.html)
+* [Code Mavens](https://www.meetup.com/code-mavens/events/305357268/) January 27, 2025 - [view presentation](https://www.clinicalunitmapping.com/show/COVID19_Ensemble_Mavens_2025_01_27.html) , [download presentation](https://www.clinicalunitmapping.com/download/COVID19_Ensemble_Mavens_2025_01_27.html)
 * [2nd Global Congress on Healthcare & Patient Safety, Berlin, July 29 - 30, 2024](https://healthcareconference.pagicle.com/) - [view presentation](https://www.clinicalunitmapping.com/show/COVID19_Ensemble_Berlin_2024_07_27.html) , [download presentation](https://www.clinicalunitmapping.com/download/COVID19_Ensemble_Berlin_2024_07_27.html)
 * [MODSIM WORLD, Norfolk, VA 20-22 May 2024](https://modsimworld.org/) - [view presentation](https://www.clinicalunitmapping.com/show/COVID19_Ensemble_MODSIM_2024_05_19.html) , [download presentation](https://www.clinicalunitmapping.com/download/COVID19_Ensemble_MODSIM_2024_05_19.html)
 * [CAFCW23 Computational Approaches for Cancer Workshop, November 12, 2023](https://ncihub.cancer.gov/groups/cafcw/cafcw23/cafcw23_program) - [view presentation](https://www.clinicalunitmapping.com/show/COVID19_Ensemble_CAFCW_2023_11_12.html) , [download presentation](https://www.clinicalunitmapping.com/download/COVID19_Ensemble_CAFCW_2023_11_12.html)

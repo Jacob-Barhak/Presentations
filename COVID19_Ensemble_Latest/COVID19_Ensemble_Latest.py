@@ -154,7 +154,7 @@ QRCodeFileName = 'New_COVID19_Ensemble_Latest.png'
 PresentationURL = panel.panel(ConstractImageLinkAnchor(PublishURL,QRCodeFileName,'View this publication on the web',380), width=380, height=380)
 
 PresentationTitle = panel.panel('# The Reference Model for COVID-19 attempts to explain USA data', width=Width, height=40, margin = (0,0,0,0))
-PresentationVenue = panel.panel('[2nd Global Congress on Healthcare & Patient Safety, Berlin, July 29 - 30, 2024](https://healthcareconference.pagicle.com/)', width=750, height=40, margin = (0,0,0,0))
+PresentationVenue = panel.panel('[Code Mavens](https://www.meetup.com/code-mavens/events/305357268/) January 27, 2025', width=750, height=40, margin = (0,0,0,0))
 
 PresentationAuthors = panel.panel("By: ***[Jacob Barhak](https://sites.google.com/view/jacob-barhak/home)***", width=350, height=40, margin = (0,0,0,0))
 
@@ -263,6 +263,10 @@ ReferencesText = """### References
 
 51. Eric Forgoston Github - Stay-at-home-orders-by-state-for-COVID-19 <https://github.com/eric-forgoston/Stay-at-home-orders-by-state-for-COVID-19>
 
+52. Historical Population Density Data (1910-2020). Accessed: Jan 26, 2025 <https://www.census.gov/data/tables/time-series/dec/density-data-text.html>
+
+53. Glorioso, C., Castiglione, F., Oshinubi, K., Chharia, A., & Barhak, J. (2024). Lessons Learned from Modeling COVID-19: Steps to Take at the Start of the Next Pandemic. Preprints. <https://doi.org/10.20944/preprints202411.2193.v1> 
+
 """
 
 RefDict = ExtractReferencesDict(ReferencesText)
@@ -287,7 +291,7 @@ The Reference Model has therefore reached the achievement of being the first kno
 Different versions of this presentation can be accessed below: 
 
 
-
+* [Code Mavens](https://www.meetup.com/code-mavens/events/305357268/) January 27, 2025 - [download presentation](https://www.clinicalunitmapping.com/download/COVID19_Ensemble_Mavens_2025_01_27.html)
 * [2nd Global Congress on Healthcare & Patient Safety, Berlin, July 29 - 30, 2024](https://healthcareconference.pagicle.com/) - [view presentation](https://www.clinicalunitmapping.com/show/COVID19_Ensemble_Berlin_2024_07_27.html) , [download presentation](https://www.clinicalunitmapping.com/download/COVID19_Ensemble_Berlin_2024_07_27.html)
 * [MODSIM WORLD, Norfolk, VA 20-22 May 2024](https://modsimworld.org/) - [view presentation](https://www.clinicalunitmapping.com/show/COVID19_Ensemble_MODSIM_2024_05_19.html) , [download presentation](https://www.clinicalunitmapping.com/download/COVID19_Ensemble_MODSIM_2024_05_19.html)
 * [CAFCW23 Computational Approaches for Cancer Workshop, November 12, 2023](https://ncihub.cancer.gov/groups/cafcw/cafcw23/cafcw23_program) - [view presentation](https://www.clinicalunitmapping.com/show/COVID19_Ensemble_CAFCW_2023_11_12.html) , [download presentation](https://www.clinicalunitmapping.com/download/COVID19_Ensemble_CAFCW_2023_11_12.html)
@@ -343,7 +347,7 @@ The Reference Model combines these models and matches their results to results f
 Populations for US states and territories were generated from data of multiple sources: 
 
 * The Covid Tracking project [1] at the first day of simulation starting simulations at April 1st 2020.
-* Age and state/territory statistics from US Census [21],[22]. 
+* Age and state/territory statistics from US Census [22] [52] (old link was [21]). 
 * Number of Interaction per individual according to [42],[43].
 * Temperature in US states extracted from NOAA [46].
 
@@ -562,7 +566,10 @@ Section10_1 = panel.panel(FixReferences(RefDict,"""### Conclusions
 
 * Warm weather seems to reduce transmission.
 
+* Published: "Lessons Leaned from Modeling COVID-19: Steps to Take at the Start of the Next Pandemic" [53].
+
 * Future work includes further exploration by adding more cohorts and models. 
+
 
 
 
@@ -622,6 +629,7 @@ Additional Thanks to:
 * Thanks to all other sources of data that make it available easily online, including Apple for mobility data, US Census, Los Alamos National Lab. 
 * Thanks to Harel Dahari who made the connection to the MIDAS network and IMAG wiki for providing information to connect to Rescale.
 * Thanks to Aaron Garrett who helped develop some evolutionary computation algorithms that were incorporated in MIST. 
+* Thanks to Christin Glorioso, Filippo Castiglione, Kayode Oshinubi, and Aviral Chharia for collaborating on this important paper [53].
 * Thanks to Deanna J.M. Isaman who introduced me to disease modeling.
 
 """), width=int(Width * 0.7), height=None)

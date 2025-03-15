@@ -1,6 +1,6 @@
 ###############################################################################
 # The Reference Model for COVID-19 - The First Multi-Scale Ensemble Disease Model
-# Copyright (C) 2021-2024 Jacob Barhak 
+# Copyright (C) 2021-2025 Jacob Barhak 
 # The work reported is protected by 2 US. Patents:
 # 
 # * J. Barhak, Reference model for disease progression - United States Patent 9,858,390, January 2, 2018
@@ -154,11 +154,11 @@ QRCodeFileName = 'New_COVID19_Ensemble_Latest.png'
 PresentationURL = panel.panel(ConstractImageLinkAnchor(PublishURL,QRCodeFileName,'View this publication on the web',380), width=380, height=380)
 
 PresentationTitle = panel.panel('# The Reference Model for COVID-19 attempts to explain USA data', width=Width, height=40, margin = (0,0,0,0))
-PresentationVenue = panel.panel('[Code Mavens](https://www.meetup.com/code-mavens/events/305357268/) January 27, 2025', width=750, height=40, margin = (0,0,0,0))
+PresentationVenue = panel.panel('[Holon Institute of Technology](https://academic.hit.ac.il/en) March 16, 2025', width=750, height=40, margin = (0,0,0,0))
 
 PresentationAuthors = panel.panel("By: ***[Jacob Barhak](https://sites.google.com/view/jacob-barhak/home)***", width=350, height=40, margin = (0,0,0,0))
 
-PresentationHeader = panel.Column( PresentationTitle, panel.Row (PresentationAuthors , PresentationVenue, margin = (0,0,0,0)), margin = (0,0,0,0))
+PresentationHeader = panel.Column(PresentationTitle, panel.Row (PresentationAuthors , PresentationVenue, margin = (0,0,0,0)), margin = (0,0,0,0))
 
 
 ReferencesText = """### References
@@ -291,7 +291,8 @@ The Reference Model has therefore reached the achievement of being the first kno
 Different versions of this presentation can be accessed below: 
 
 
-* [Code Mavens](https://www.meetup.com/code-mavens/events/305357268/) January 27, 2025 - [view presentation](https://www.clinicalunitmapping.com/show/COVID19_Ensemble_Mavens_2025_01_27.html) , [download presentation](https://www.clinicalunitmapping.com/download/COVID19_Ensemble_Mavens_2025_01_27.html)
+* [Holon Institute of Technology](https://academic.hit.ac.il/en) March 16, 2025 - [view presentation](https://www.clinicalunitmapping.com/show/COVID19_Ensemble_Holon_2025_03_15.html) , [download presentation](https://www.clinicalunitmapping.com/download/COVID19_Ensemble_Holon_2025_03_15.html)
+* [Code Mavens](https://www.meetup.com/code-mavens/events/305357268/) January 27, 2025 - [view presentation](https://www.clinicalunitmapping.com/show/COVID19_Ensemble_Mavens_2025_01_27.html) , [download presentation](https://www.clinicalunitmapping.com/download/COVID19_Ensemble_Mavens_2025_01_27.html) - [video](https://youtu.be/Ea_e6xI48Ik?si=WKO_en24v91ERkRQ)
 * [2nd Global Congress on Healthcare & Patient Safety, Berlin, July 29 - 30, 2024](https://healthcareconference.pagicle.com/) - [view presentation](https://www.clinicalunitmapping.com/show/COVID19_Ensemble_Berlin_2024_07_27.html) , [download presentation](https://www.clinicalunitmapping.com/download/COVID19_Ensemble_Berlin_2024_07_27.html)
 * [MODSIM WORLD, Norfolk, VA 20-22 May 2024](https://modsimworld.org/) - [view presentation](https://www.clinicalunitmapping.com/show/COVID19_Ensemble_MODSIM_2024_05_19.html) , [download presentation](https://www.clinicalunitmapping.com/download/COVID19_Ensemble_MODSIM_2024_05_19.html)
 * [CAFCW23 Computational Approaches for Cancer Workshop, November 12, 2023](https://ncihub.cancer.gov/groups/cafcw/cafcw23/cafcw23_program) - [view presentation](https://www.clinicalunitmapping.com/show/COVID19_Ensemble_CAFCW_2023_11_12.html) , [download presentation](https://www.clinicalunitmapping.com/download/COVID19_Ensemble_CAFCW_2023_11_12.html)
@@ -588,7 +589,7 @@ Published versions of this presentation are provided at the first tab.
 
 ### Conflict of Interest Statement:
 Payment/services info: Dr. Barhak reports non-financial support and other from Rescale, and MIDAS Network, other from Amazon AWS, Microsoft Azure, MIDAS network, other from The COVID tracking project at the Atlantic, other from John Rice and Jered Hodges. 
-Financial relationships: Jacob Barhak declare(s) employment from MacroFab, United Solutions, B. Well Connected health. The author had a contract with U.S. Bank / Apexon, MacroFab, United Solutions, and B. Well during the work. However, none of these companies had influence on the modeling work reported in the paper. Jacob Barhak declare(s) employment and technical support from Anaconda. The author contracted with Anaconda in the past and uses their free open source software tools. Also the author received free support from Anaconda Holoviz team and Dask teams. Intellectual property info: Dr. Barhak has a patent US Patent 9,858,390 - Reference model for disease progression issued to Jacob Barhak, and US patent 10,923,234 - Analysis and Verification of Models Derived from Clinical Trials Data Extracted from a Database. Other relationships: During the conduct of the study; personal fees from United Solutions, personal fees from B. Well Connected health, personal fees and non-financial support from Anaconda, outside the submitted work. However, despite all support, Dr. Barhak is solely responsible for decisions made for this publication and is responsible for its contents.
+Financial relationships: Jacob Barhak declare(s) employment from MacroFab, United Solutions, B. Well Connected health, Pronto Telecommunications. The author had a contract with U.S. Bank / Apexon, MacroFab, United Solutions, and B. Well during the work. However, none of these companies had influence on the modeling work reported in the paper. Jacob Barhak declare(s) employment and technical support from Anaconda. The author contracted with Anaconda in the past and uses their free open source software tools. Also the author received free support from Anaconda Holoviz team and Dask teams. Intellectual property info: Dr. Barhak has a patent US Patent 9,858,390 - Reference model for disease progression issued to Jacob Barhak, and US patent 10,923,234 - Analysis and Verification of Models Derived from Clinical Trials Data Extracted from a Database. Other relationships: During the conduct of the study; personal fees from United Solutions, personal fees from B. Well Connected health, personal fees and non-financial support from Anaconda, outside the submitted work. However, despite all support, Dr. Barhak is solely responsible for decisions made for this publication and is responsible for its contents.
 
 """%(PublishURL,CodePublishURL)), width=Width, height=None)
 

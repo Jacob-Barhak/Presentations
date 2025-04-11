@@ -154,7 +154,7 @@ QRCodeFileName = 'New_COVID19_Ensemble_Latest.png'
 PresentationURL = panel.panel(ConstractImageLinkAnchor(PublishURL,QRCodeFileName,'View this publication on the web',380), width=380, height=380)
 
 PresentationTitle = panel.panel('# The Reference Model for COVID-19 attempts to explain USA data', width=Width, height=40, margin = (0,0,0,0))
-PresentationVenue = panel.panel('[Holon Institute of Technology](https://academic.hit.ac.il/en) March 16, 2025', width=750, height=40, margin = (0,0,0,0))
+PresentationVenue = panel.panel('[The 9th Disease Maps Community Meeting Leuven - Belgium, April 14-17, 2025](https://disease-maps.io/DMCM2025/)', width=750, height=40, margin = (0,0,0,0))
 
 PresentationAuthors = panel.panel("By: ***[Jacob Barhak](https://sites.google.com/view/jacob-barhak/home)***", width=350, height=40, margin = (0,0,0,0))
 
@@ -267,6 +267,8 @@ ReferencesText = """### References
 
 53. Glorioso, C., Castiglione, F., Oshinubi, K., Chharia, A., & Barhak, J. (2024). Lessons Learned from Modeling COVID-19: Steps to Take at the Start of the Next Pandemic. Preprints. <https://doi.org/10.20944/preprints202411.2193.v1> 
 
+54. Webinar  MIDAS Network 2025 Mar 28th, Virtual.  Presentation:  https://www.clinicalunitmapping.com/show/Lessons_Learned_COVID19_Latest.pdf  Video: <https://youtu.be/xvmehz_pnUo?si=ExuKpFdUq0mPgxS->  
+
 """
 
 RefDict = ExtractReferencesDict(ReferencesText)
@@ -290,7 +292,7 @@ The Reference Model has therefore reached the achievement of being the first kno
 
 Different versions of this presentation can be accessed below: 
 
-
+* [The 9th Disease Maps Community Meeting Leuven - Belgium, April 14-17, 2025](https://disease-maps.io/DMCM2025/) - [view presentation](https://www.clinicalunitmapping.com/show/COVID19_Ensemble_Leuven_2025_04_07.html) , [download presentation](https://www.clinicalunitmapping.com/download/COVID19_Ensemble_Leuven_2025_04_07.html)
 * [Holon Institute of Technology](https://academic.hit.ac.il/en) March 16, 2025 - [view presentation](https://www.clinicalunitmapping.com/show/COVID19_Ensemble_Holon_2025_03_15.html) , [download presentation](https://www.clinicalunitmapping.com/download/COVID19_Ensemble_Holon_2025_03_15.html)
 * [Code Mavens](https://www.meetup.com/code-mavens/events/305357268/) January 27, 2025 - [view presentation](https://www.clinicalunitmapping.com/show/COVID19_Ensemble_Mavens_2025_01_27.html) , [download presentation](https://www.clinicalunitmapping.com/download/COVID19_Ensemble_Mavens_2025_01_27.html) - [video](https://youtu.be/Ea_e6xI48Ik?si=WKO_en24v91ERkRQ)
 * [2nd Global Congress on Healthcare & Patient Safety, Berlin, July 29 - 30, 2024](https://healthcareconference.pagicle.com/) - [view presentation](https://www.clinicalunitmapping.com/show/COVID19_Ensemble_Berlin_2024_07_27.html) , [download presentation](https://www.clinicalunitmapping.com/download/COVID19_Ensemble_Berlin_2024_07_27.html)
@@ -567,7 +569,7 @@ Section10_1 = panel.panel(FixReferences(RefDict,"""### Conclusions
 
 * Warm weather seems to reduce transmission.
 
-* Published: "Lessons Leaned from Modeling COVID-19: Steps to Take at the Start of the Next Pandemic" [53].
+* Published: "Lessons Leaned from Modeling COVID-19: Steps to Take at the Start of the Next Pandemic" [53],[54].
 
 * Future work includes further exploration by adding more cohorts and models. 
 

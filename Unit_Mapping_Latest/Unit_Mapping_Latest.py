@@ -137,7 +137,7 @@ QRCodeFileName = 'New_Unit_Mapping_Latest.png'
 PresentationURL = panel.panel(ConstractImageLinkAnchor(PublishURL,QRCodeFileName,'View this presentation on the web',480), width=480, height=480)
 
 PresentationTitle = panel.panel('# ClinicalUnitMapping.Com Takes a Small Step Towards Machine Comprehension of Clinical Trial Data', width=700, height=80, margin = (0,0,0,0))
-PresentationVenue = panel.panel('[2nd Global Congress on</br>Healthcare & Patient Safety</br> Berlin, July 29 - 30, 2024](https://healthcareconference.pagicle.com/)', width=280, height=80, margin = (0,0,0,0))
+PresentationVenue = panel.panel('[The 9th Disease Maps Community Meeting </br> Leuven Belgium, April 14-17, 2025](https://disease-maps.io/DMCM2025/)', width=280, height=80, margin = (0,0,0,0))
 PresentationAuthors = panel.panel("By: [Jacob Barhak](http://sites.google.com/site/jacobbarhak/) </br> & [Joshua Schertz](https://joshschertz.com/)", width=120, height=80, margin = (0,0,0,0))
 PresentationHeader = panel.Row ( PresentationTitle,  PresentationAuthors , PresentationVenue, margin = (0,0,0,0))
 
@@ -179,12 +179,13 @@ ClinicalTrials.Gov is the database storing data from clinical trials. Many clini
 
 This presentation will discuss how python tools are used to: 1) Process and index the data, 2) Find similar units using NLP and machine learning, 3) Create a web interface to support user mapping of those units, 4) Use advanced machine learning tools such as transformers for Natural Language Processing (NLP) to drive inference and core-sets to speed up labeling and quickly setup an inference engine. 
 
-This project is ongoing and this presentation is constantly updated for each venue. This presentation will focus on latest improvements of supervised learning using transformers and accelerated labeling and unit inference. The latest interactive presentation with results is accessible through: [https://www.clinicalunitmapping.com/show/Unit_Mapping_Latest.html](https://www.clinicalunitmapping.com/show/Unit_Mapping_Latest.html)
-
 The intention is to unify unit standards and machine learning tools that will be able to map all units reported by clinical trials. With such capabilities, the data in this important clinical trials database would become machine comprehensible.
+
+The latest interactive presentation with results is accessible through: [https://www.clinicalunitmapping.com/show/Unit_Mapping_Latest.html](https://www.clinicalunitmapping.com/show/Unit_Mapping_Latest.html)
 
 *** This is an interactive presentation. Follow the tabs in from left to right. Different versions can be accessed below: ***
 
+* [The 9th Disease Maps Community Meeting Leuven - Belgium, April 14-17, 2025](https://disease-maps.io/DMCM2025/) - [view presentation](https://clinicalunitmapping.com/show/Unit_Mapping_Leuven_2025_04_11.html) , [download presentation](https://clinicalunitmapping.com/download/Unit_Mapping_Leuven_2025_04_11.html)
 * [2nd Global Congress on Healthcare & Patient Safety, Berlin, July 29 - 30, 2024](https://healthcareconference.pagicle.com/) - [view presentation](https://clinicalunitmapping.com/show/Unit_Mapping_Berlin_2024_07_27.html) , [download presentation](https://clinicalunitmapping.com/download/Unit_Mapping_Berlin_2024_07_27.html)
 * [MODSIM WORLD Norfolk, VA, 20-22 May 2024](https://modsimworld.org/)  - [view presentation](https://clinicalunitmapping.com/show/Unit_Mapping_MODSIM_2024_05_19.html) , [download presentation](https://clinicalunitmapping.com/download/Unit_Mapping_MODSIM_2024_05_19.html)
 * [Austin Python meetup, January 10, 2024](https://www.meetup.com/austinpython/events/297392368/) [view presentation](https://www.clinicalunitmapping.com/show/Unit_Mapping_AustinMeetup_2024_01_10.html) , [download presentation](https://www.clinicalunitmapping.com/download/Unit_Mapping_AustinMeetup_2024_01_10.html) , [view video](https://youtu.be/d4qB9xaPU-U?si=MkPfADDtJuyK4T90)
@@ -316,7 +317,7 @@ Section3SupervisedMachineLearningOverview = panel.panel(FixReferences(RefDict,""
 | Feature Classification               | LSTM / CNN        | NA                  | Can be simple and fast yet requires mapping and is sensitive.                                                     |[3]                         |
 | Sequence to Sequence Preset Length   | LSTM / CNN        | 38.5% - 61.0%       | Relatively simple flexible and reliable, training reasonable, fast inference. Correction can be applied.          |[4], [6]                    |
 | Sequence to Sequence Encoder/Decoder | LSTM              | 53.6% - 56.2%       | Works well for short sequences, non trivial implementation. Slow inference. Correction can be applied.            |[5], [7], [8], [9], [10]    |
-| Transformers                         | Attention         | 79.7% - 99.9%       | Generative NLP Technology using encoder decoder with attention layers - generates text rather than classifies.    |[16]                          |
+| Transformers                         | Attention         | 79.3% - 99.9%       | Generative NLP Technology using encoder decoder with attention layers - generates text rather than classifies.    |[16]                          |
 
 
 ## Labeling
@@ -338,21 +339,22 @@ Section3SupervisedMachineLearningOverview = panel.panel(FixReferences(RefDict,""
 - 5,043 units appeared in other standards and auto mapped.
 - 406,857 non units used to contrast units.
 - 679 core-set units.
-- 21,121 units were labeled overall and used in training - from clusters 0-18. 
-- 4029 unique target labels identified so far
-- 2,774,780 / 693,695  unit and context records in train / validate split of 80%/20%.
-- 6,370,898 records/epoch trained for 5 epochs to allow IEEE and CDISC standardization. 
+- 37,478 units were labeled overall and used in training - from clusters 0-70 + standards. 
+- 5519 unique target labels identified so far.
+- 2,873,169 / 718,293 unit and context records in train / validate split of 80%/20%.
+- 6,667,499  records/epoch trained for 5 epochs to allow IEEE and CDISC standardization. 
 
 
 # Inference
 
-- After the AI was trained Inference was performed using transformers.
-- Inference for the IEEE/CDISC standards were conducted as well to build a database. 
-- The NLP tools attempt to comprehend the text and have behavior somewhat comparable to humans.
-- Despite high accuracy of validation set. recall that less than 20% of clusters have been mapped. Accuracy will drop for unmapped clusters.
-- **Actual inference accuracy will be established when manual mapping will finish for all clusters**
-- **The inference engine is still experimental and limited - it is still a prototype.**
-
+* After the AI was trained Inference was performed using transformers.
+* Inference for the IEEE/CDISC standards were conducted as well to build a database. 
+* The NLP tools attempt to comprehend the text and have behavior somewhat comparable to humans.
+* Despite high accuracy of validation set. Previous accuracy for 16462 units in unmapped clusters of was:
+    - 72.8% for units 
+    - 71.2% for units with context
+    - 4.4% for context only
+* **The inference engine is still experimental and limited - it is still a prototype.**
 
 """), width=Width, height=1100)
 
@@ -485,7 +487,7 @@ Section6AdditionalInfo = panel.panel("""
 ## Reproducibility:
 
 This presentation is accessible [here](%s). The code that generated the presentation can be accessed [here](%s) without some data. This presentation is generated using Python 2.7.16, panel-0.8.0, holoviews 1.12.7, bokeh-1.4.0.
-Code for ingestion and clustering are archived in the file: AnalyzeCT_2022_11_19.zip. AI model, accuracy analysis, and web site database were created using the code in AnalyzeCT_full_2024_07_06.zip.
+Code for ingestion and clustering are archived in the file: AnalyzeCT_2022_11_19.zip. AI model and Accuracy analysis were created using the code in AnalyzeCT_full_2025_04_06.zip. Web site database were created using the code in AnalyzeCT_full_2025_04_11.zip
 Clinical Trials data archived in AllPublicXML_2022_08_26.zip. Bio Ontology Units downloaded on 2019_04_09, CDISC data downloaded on 2019_03_30 , RTMMS units downloaded on 2019_03_24 . 
 Tensorflow 2.10 and transformers 4.26.1 was used for Neural Network execution in Python 3.10.9 environment. DataHeroes 0.2 was used for core-set calculations.
 
@@ -493,7 +495,7 @@ Tensorflow 2.10 and transformers 4.26.1 was used for Neural Network execution in
 
 ### Conflict of Interest Statement:
 Payment/services info: Dr. Barhak reports non-financial support and other from Rescale, and MIDAS Network, other from Amazon AWS, Microsoft Azure, MIDAS network, other from The COVID tracking project at the Atlantic, other from John Rice and Jered Hodges. 
-Financial relationships: Jacob Barhak declare(s) employment from MacroFab, United Solutions, B. Well Connected health. The author had a contract with U.S. Bank / Apexon, MacroFab, United Solutions, and B. Well during the work. However, none of these companies had influence on the modeling work reported in the paper. Jacob Barhak declare(s) employment and technical support from Anaconda. The author contracted with Anaconda in the past and uses their free open source software tools. Also the author received free support from Anaconda Holoviz team and Dask teams. Intellectual property info: Dr. Barhak has a patent US Patent 9,858,390 - Reference model for disease progression issued to Jacob Barhak, and US patent 10,923,234 - Analysis and Verification of Models Derived from Clinical Trials Data Extracted from a Database. Other relationships: During the conduct of the study; personal fees from United Solutions, personal fees from B. Well Connected health, personal fees and non-financial support from Anaconda, outside the submitted work. However, despite all support, Dr. Barhak is solely responsible for decisions made for this publication and is responsible for its contents.
+Financial relationships: Jacob Barhak declare(s) employment from MacroFab, United Solutions, B. Well Connected health, Pronto Telecommunications. The author had a contract with U.S. Bank / Apexon, MacroFab, United Solutions, and B. Well during the work. However, none of these companies had influence on the modeling work reported in the paper. Jacob Barhak declare(s) employment and technical support from Anaconda. The author contracted with Anaconda in the past and uses their free open source software tools. Also the author received free support from Anaconda Holoviz team and Dask teams. Intellectual property info: Dr. Barhak has a patent US Patent 9,858,390 - Reference model for disease progression issued to Jacob Barhak, and US patent 10,923,234 - Analysis and Verification of Models Derived from Clinical Trials Data Extracted from a Database. Other relationships: During the conduct of the study; personal fees from United Solutions, personal fees from B. Well Connected health, personal fees and non-financial support from Anaconda, outside the submitted work. However, despite all support, Dr. Barhak is solely responsible for decisions made for this publication and is responsible for its contents.
 """%
 (PublishURL,CodePublishURL), width=Width, height=800)
 
